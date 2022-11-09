@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Home from "../Components/home/Home";
 import Account from "../Pages/Account";
 import Cart from "../Pages/Cart";
-import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import MenuPage from "../Pages/MenuPage";
 import Signup from "../Pages/Signup/Signup";

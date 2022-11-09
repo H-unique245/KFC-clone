@@ -2,7 +2,6 @@ import React from "react";
 import {
   Text,
   Heading,
-
   Input,
   Button,
   Center,
@@ -14,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { auth } from "../../Firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
