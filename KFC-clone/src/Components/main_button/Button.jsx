@@ -1,5 +1,7 @@
 
-import styled  from "styled-components"
+// import styled  from "styled-components"
+
+import styled from "@emotion/styled";
 
 export const Button = styled.button`
     background-color: rgb(228,0,43);
