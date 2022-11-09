@@ -10,8 +10,8 @@ function App() {
     <div className="App">
      <Navbar />
      <Home />
-     {/* <AllRoutes />
-     <Footer/> */}
+      <AllRoutes />
+     {*<Footer/> */}
     </div>
   );
 }
