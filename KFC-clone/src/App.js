@@ -3,7 +3,9 @@ import Cart from "./Pages/Cart";
 function App() {
   return (
     <div className="App">
-      <Cart />
+       <Navbar/>
+     <AllRoutes />
+    {/* <Footer/>*/}
     </div>
   );
 }
