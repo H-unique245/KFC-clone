@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
      <Navbar />
-     <Home />
       <AllRoutes />
      {*<Footer/> */}
     </div>
