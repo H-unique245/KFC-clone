@@ -1,5 +1,7 @@
 import "./home.css";
 import React from 'react';
+import { Carousels } from "../carousels/Carousels";
+import { MenuCards } from "../menuCards/MenuCards";
 import { Button } from '../main_button/Button';
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +17,40 @@ const Home = () => {
         }}>Start Order</Button>
       </div>
 
-      <div>
-        <img className="banner" src="banner.jpg"  alt="banner img"/>
+      <div className="slider">
+        <Carousels
+          img1={"./banner11.webp"}
+          img2={"./banner2.webp"}
+          img3={"./banner3.webp"}
+          img4={"./banner4.webp"}
+          img5={"./banner5.webp"}
+        ></Carousels>
+      </div>
+
+      <div className="userDiv">
+        <img className="bandImg" src="./band.png" alt="" />
+        <h1 className="welcome_text">
+          WELCOME TO EAT MORE!
+        </h1>
+      </div>
+
+      <div className="home_menu">
+        <h1 className="browse">BROWSE CATEGORIES</h1>
+        <br />
+        <div className="home_menu_item">
+          <MenuCards img={"./hotdeals.jpg"} title={"HOT DEALS"} ></MenuCards>
+          <MenuCards img={"./chickenbucket.jpg"} title={"CHICKEN BUCKETS"}></MenuCards>
+          <MenuCards img={"./hotlauches.jpg"} title={"HOT LAUNCHES"}></MenuCards>
+          <MenuCards img={"./boxmeal.jpg"} title={" BOX MEALS"}></MenuCards> 
+        </div> 
+
+        <div className="home_menu_item">
+          <MenuCards img={"./burgers.jpg"} title={"BURGERS"}></MenuCards>
+          <MenuCards img={"./biryanibucket.jpg"} title={"BIRIYANI BUCKETS"}></MenuCards>
+          <MenuCards img={"./snack.jpg"} title={"SNACK"}></MenuCards>
+          <MenuCards img={"./viewallmenu.svg"} title={"View All Menu"}></MenuCards>
+        </div>
+
       </div>
 
       
