@@ -7,7 +7,7 @@ import {
 import thunk from "redux-thunk";
 import { productsReducer } from "./Products/procucts.reducer";
 import { authReducer, OtpVerifier } from "./Auth/auth.reducer";
-import { authReducer } from "./Auth/auth.reducer";
+// import { authReducer } from "./Auth/auth.reducer";
 import { cartReducer } from "./cartRedux/cart.Reducer";
 
 const rootReducer = combineReducers({

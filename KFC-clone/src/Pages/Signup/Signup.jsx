@@ -103,7 +103,7 @@ function Signup() {
         console.log("otp verify");
         let data={"mobile":Number}
         dispatch(authOtphandle(data));
-        if (loading2 == false) {
+        if (loading2 === false) {
           dataExist();
           } 
       })
