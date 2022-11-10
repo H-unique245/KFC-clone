@@ -1,11 +1,19 @@
-import { AUTH_REQ_ERROR, AUTH_REQ_LOADING, AUTH_REQ_LOGOUT, AUTH_REQ_SUCCESS } from "./auth.type";
+import {
+  AUTH_REQ_ERROR,
+  AUTH_REQ_LOADING,
+  AUTH_REQ_LOGOUT,
+  AUTH_REQ_SUCCESS,
+  AUTH_LOGIN_REQ,
+  AUTH_LOGIN_REQ_ERROR,
+  AUTH_LOGIN_LOADING,
+} from "./auth.type";
 
 
 const intialState = {
     isAuth: false,
     loading: false,
     error: "",
-    name:""
+    number:""
 }
 
 export const authReducer = (state=intialState, action) => {
@@ -45,6 +53,7 @@ export const authReducer = (state=intialState, action) => {
               name: "",
             };
       }
+        
 
       default: {
         return state;
@@ -54,4 +63,39 @@ export const authReducer = (state=intialState, action) => {
 
 
 
+}
+
+const file = {
+  loading2: false,
+  token:""
+}
+
+export const OtpVerifier = (state=file, action) => {
+  switch (action.type) {
+    case AUTH_LOGIN_LOADING: {
+      return {
+        ...state,
+        loading2:true
+      }
+    }
+    case AUTH_LOGIN_REQ: {
+      return {
+        ...state,
+        loading2: false,
+        token:action.payload,   
+        }
+    }
+      
+    case AUTH_LOGIN_REQ_ERROR: {
+      return {
+        ...state,
+        loading2: false,
+        token:""
+      }
+      }
+   default: {
+      return state;
+      }
+  }
+    
 }
