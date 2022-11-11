@@ -16,7 +16,12 @@ import { addToCart } from "../Redux/cartRedux/cart.actions";
 function ProductCard() {
   const dispatch = useDispatch();
   return (
-    <Flex p={50} w="full" alignItems="center" justifyContent="center">
+    <Flex
+      p={50}
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW="sm"
@@ -25,7 +30,12 @@ function ProductCard() {
         shadow="lg"
         position="relative"
       >
-        <Box size="10px" position="absolute" top={3} right={3}>
+        <Box
+          size="10px"
+          position="absolute"
+          top={3}
+          right={3}
+        >
           <BsHeart size={20} color="white" />
         </Box>
         <Image
@@ -42,7 +52,12 @@ function ProductCard() {
           </Box>
 
           <HStack>
-            <Badge align="left" variant="outline" colorScheme="red" p={1}>
+            <Badge
+              align="left"
+              variant="outline"
+              colorScheme="red"
+              p={1}
+            >
               <BsTriangleFill />
             </Badge>
             <Text fontSize={"sm"}>Non-veg</Text>
@@ -54,19 +69,21 @@ function ProductCard() {
             onClick={() => {
               dispatch(
                 addToCart({
-                  id: 1,
-                  img: "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/L-8000240.jpg",
-                  tital: "  The Allu Arjun Combo",
+                  id: 8,
+                  title: "The Allu Arjun Combo",
+                  avatar:
+                    "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/L-8000197.jpg?ver=21.88",
                   cata: [
-                    "Hot & Crispy Chicken-1pc",
-                    "Grilled Chicken - Smoky Red -1 pc",
-                    "Chicken Popcorn-Regular",
-                    "Thousand Island",
-                    "Spicy Mix Fries -Medium",
+                    "Peri Peri 5 Leg Pc",
+                    "Eggless Mayo",
+                    "Nashville Hot Pepper Dip",
+                    "French Fries -Medium",
+                    "Pepsi PET",
                   ],
+                  qty: 1,
+                  price: 450,
                 })
               );
-           
             }}
             variant="solid"
             colorScheme="red"

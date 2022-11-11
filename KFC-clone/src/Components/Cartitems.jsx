@@ -6,24 +6,32 @@ import Cartitem from "./Cartitem";
 import styles from "./styles/Cart.module.css";
 
 function Cartitems() {
-  const { data } = useSelector((store) => store.cart);
+  const { data, loading, error } = useSelector(
+    (store) => store.cart
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getcartItem());
   }, []);
-  return (
-    <div>
-      {data.length === 0 ? (
-        <div className={styles.emptyCart}></div>
-      ) : (
-        <div>
-          {data.map((el) => {
-            return <Cartitem key={el.id} data={el} />;
-          })}
-        </div>
-      )}
-    </div>
-  );
+  if (loading) {
+    return <h1>Loading...</h1>;
+  } else if (error) {
+    return <h1>Error..</h1>;
+  } else
+    return (
+      <div>
+        {data.length === 1 ? (
+          <div className={styles.emptyCart}></div>
+        ) : (
+          <div>
+            {data.map((el) => {
+              return <Cartitem key={el.id} data={el} />;
+            })}
+          </div>
+        )}
+      </div>
+    );
 }
 
 export default Cartitems;
