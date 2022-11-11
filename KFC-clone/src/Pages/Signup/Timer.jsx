@@ -1,6 +1,6 @@
 import { Text } from "@chakra-ui/react";
 import React, { memo, useRef } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useState } from "react";
 
 function TimerTracker() {
@@ -14,7 +14,7 @@ function TimerTracker() {
      }, 1000);
    }
    
-    if (Timer == 0) {
+    if (Timer === 0) {
          clearInterval(timerId.current);
       timerId.current = null;
      
