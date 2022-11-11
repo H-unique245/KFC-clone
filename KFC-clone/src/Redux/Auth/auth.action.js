@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 import {
@@ -8,6 +9,9 @@ import {
   AUTH_REQ_LOGOUT,
   AUTH_LOGIN_REQ_ERROR,
   AUTH_LOGIN_LOADING,
+  AUTH_SIGNUP_SUCCESS,
+  AUTH_SIGNUP_LOADING,
+  AUTH_SIGNUP_ERROR,
 } from "./auth.type";
 
 
@@ -41,7 +45,7 @@ return { type: AUTH_LOGIN_LOADING };
 export const authOtphandle = (Number) => async (dispatch) => {
   dispatch({type:AUTH_LOGIN_LOADING})
   try {
-     let res = await axios.post("http://localhost:8080/users/login", Number);
+     let res = await axios.post(`/users/login`,Number);
      dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
     
   } catch (e) {
@@ -49,3 +53,15 @@ export const authOtphandle = (Number) => async (dispatch) => {
   }
  
 };
+
+
+export const signupHandle = (data) => async (dispatch) => {
+  dispatch({ type: AUTH_SIGNUP_LOADING });
+  try {
+    let res = await axios.post(`/users/signup`,data);
+  dispatch({type:AUTH_SIGNUP_SUCCESS,payload:res.data.token})
+  } catch (e) {
+    dispatch({type:AUTH_SIGNUP_ERROR})
+  }
+  
+}

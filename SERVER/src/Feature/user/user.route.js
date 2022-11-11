@@ -23,17 +23,17 @@ app.post("/signup", async (req, res) => {
 
   try {
     let existingUser = await User.findOne({ mobile });
-    if (existingUser) {
-      res.status(404).send("Cannot create an user with existing email");
-    } else {
+    // if (existingUser) {
+    //   res.status(404).send("Cannot create an user with existing email");
+    // } else {
       let user = await User.create({
         name,
         email,
         mobile,
       });
 
-      res.send({ token: `${user.email}_#_${user.password}` });
-    }
+      res.send({ token: `${user.name}` });
+    // }
   } catch (e) {
     res.status(404).send(e.message);
   }
