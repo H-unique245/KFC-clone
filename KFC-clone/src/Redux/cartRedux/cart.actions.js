@@ -10,57 +10,94 @@ import {
   UPDATE_CART_ITEMS_LOADING,
   UPDATE_CART_ITEMS_ERROR,
   REMOVE_CART_ITEMS_SUCCESS,
+  REMOVE_CART_ITEMS_LOADING,
+  REMOVE_CART_ITEMS_ERROR,
+  COUNTER_UPDATE,
+  COUNTER_UPDATEINC,
+  COUNTER_UPDATEDEC,
 } from "./cart.actionType";
 export const getcartItem = () => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
   try {
-    let res = await axios.get("https://reqres.in/api/users");
+    let res = await axios.get("http://localhost:8080/cart");
+
     return dispatch({
       type: GET_CART_ITEMS_SUCCESS,
-      payload: res.data.data,
+      payload: res.data,
     });
   } catch (error) {
     dispatch({ type: GET_CART_ITEMS_ERROR });
   }
 };
 export const addToCart =
-  ({ id, img, tital, cata }) =>
+  ({ avatar, title, cata, qty }) =>
   async (dispatch) => {
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
-      let res = await axios.post("https://reqres.in/api/users", {
-        id,
-        img,
-        tital,
-        cata,
-      });
+      let res = await axios.post(
+        "http://localhost:8080/cart",
+        {
+          avatar,
+          title,
+          cata,
+          qty,
+        }
+      );
       return dispatch({
         type: ADD_ITEM_TO_CART_SUCCESS,
-        payload: res.data.data,
+        payload: res.data,
       });
     } catch (error) {
       dispatch({ type: ADD_ITEM_TO_CART_ERROR });
     }
   };
 export const deleteItem = (id) => async (dispatch) => {
-  let res = await axios.delete(`https://reqres.in/api/users/${id}`);
-  console.log(res);
-  return dispatch({
-    type: REMOVE_CART_ITEMS_SUCCESS,
-  });
-};
-export const updateQty = (id) => async (dispatch) => {
-  dispatch({ type: UPDATE_CART_ITEMS_LOADING });
+  dispatch({ type: REMOVE_CART_ITEMS_LOADING });
   try {
-    let res = await axios.delete(`https://reqres.in/api/users/${id}`, {
-      first_name: "king",
-    });
-    console.log(res);
+    let res = await axios.delete(
+      `http://localhost:8080/cart/${id}`
+    );
+
     return dispatch({
-      type: UPDATE_CART_ITEMS_SUCCESS,
-      payload: res.data.data,
+      type: REMOVE_CART_ITEMS_SUCCESS,
+      payload: res.data,
     });
   } catch (error) {
-    dispatch({ type: UPDATE_CART_ITEMS_ERROR });
+    dispatch({ type: REMOVE_CART_ITEMS_ERROR });
   }
 };
+
+export const updateQty =
+  ({ id, avatar, cata, title, price }) =>
+  async (dispatch) => {
+    dispatch({ type: UPDATE_CART_ITEMS_LOADING });
+
+    try {
+      let res = await axios.put(
+        `http://localhost:8080/cart/${id}`,
+        {
+          qty: 2,
+          avatar,
+          cata,
+          title,
+          price,
+        }
+      );
+
+      return dispatch({
+        type: UPDATE_CART_ITEMS_SUCCESS,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: UPDATE_CART_ITEMS_ERROR });
+    }
+  };
+export const updateInc = (payload) => ({
+  type: COUNTER_UPDATEINC,
+  payload,
+});
+export const updateDec = (payload) => ({
+  type: COUNTER_UPDATEDEC,
+  payload,
+});
