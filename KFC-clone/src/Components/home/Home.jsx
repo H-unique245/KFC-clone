@@ -2,6 +2,8 @@ import "./home.css";
 import React from 'react';
 import { Carousels } from "../carousels/Carousels";
 import { MenuCards } from "../menuCards/MenuCards";
+import Offer from "../home_footer/Offer";
+import Footer from "../home_footer/Footer";
 import { Button } from '../main_button/Button';
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +15,7 @@ const Home = () => {
         <b>LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN</b>
 
         <Button onClick={() => {
-          navigate('')
+          navigate('/menu')
         }}>Start Order</Button>
       </div>
 
@@ -53,6 +55,8 @@ const Home = () => {
 
       </div>
 
+      <Offer />
+      <Footer />
       
     </>
   )
