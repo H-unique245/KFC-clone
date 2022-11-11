@@ -1,22 +1,28 @@
 // import axios from 'axios';
 import React, { useEffect } from 'react';
 import {GrSearch} from 'react-icons/gr';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { getProducts } from '../Redux/Products/products.action';
-import { Box, Container, Heading, HStack, Input, InputGroup, InputLeftElement, Stack, StackDivider } from "@chakra-ui/react"
-import ProductCard from '../Components/ProductCard';
+import { Box,  HStack, Input, InputGroup, InputLeftElement,Stack } from "@chakra-ui/react"
+// import ProductCard from '../Components/ProductCard';
 import MenuFilter from '../Components/MenuFilter';
+import ChikckenBucket from '../Components/menuCards/ChikckenBucket';
+import NewLaunch from '../Components/menuCards/NewLaunch';
+import BiryaniBuckets from '../Components/menuCards/BiryaniBuckets';
+import BoxMeals from '../Components/menuCards/BoxMeals';
 function MenuPage() {
-  const products = useSelector((store) => store.products);
+  // const products = useSelector((store) => store.products.products);
   
-const dispatch = useDispatch();
-console.log(products)
+  const dispatch = useDispatch();
+  // console.log(products)
+  // const data= products[0].Chicken_bucket;
+  // console.log(data)
 
   useEffect(()=>{
     dispatch(getProducts());
   },[])
   return (
-      <HStack spacing={4} p={2} >
+      <HStack  p={2} >
         <Box w="30%" m={8}  border="2px solid">
         <MenuFilter />
         </Box>
@@ -31,27 +37,12 @@ console.log(products)
   </InputGroup>
   </Stack>
     <Stack bgColor="blackAlpha" border={'1px sloid red'}>
-  <div id="new_launch" style={{ height: 500 }}  >
-          <Heading align='left' mt="3rem">New Launch</Heading>
-   <ProductCard />
-        </div>
-        <div id="chicken_buckets" style={{ height: 500 }}>
-          <Heading align='left' mt="3rem">Chiken Buckets</Heading>
 
-   <ProductCard />
-        </div>
-        <div id="biryani_buckets" style={{ height: 500 }} >
-        <Heading align='left' mt="3rem">Biryani Buckets</Heading>
-
-   <ProductCard />
-        </div>
-        <div id="box_meals" style={{ height: 500 }}>
-        <Heading align='left' mt="3rem">Box Meals</Heading>
-   <ProductCard />
-        </div>
+        <ChikckenBucket />
+        <NewLaunch />
+        <BiryaniBuckets />
+        <BoxMeals />
   
-   {/* <ProductCard /> */}
-   <ProductCard />
    </Stack>
       </Box>
       </HStack>
