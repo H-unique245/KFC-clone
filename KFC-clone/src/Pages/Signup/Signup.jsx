@@ -8,28 +8,31 @@ import {
   Box,
   PinInput,
   PinInputField,
-
   Spinner,
 } from "@chakra-ui/react";
 import { auth } from "../../Firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   authLoading,
   authSuccess,
   authError,
+  authOtphandle,
+  otpLoading,
 } from "../../Redux/Auth/auth.action";
 import "./Signup.css";
 import { useState } from "react";
+
+
 
 function Signup() {
   const [Number, setNumber] = useState("");
   const [Authinicated, setAuthinicated] = useState(true);
   const [Otp, setOtp] = useState("");
-  const { loading, isAuth } = useSelector((store) => store.auth);
-
+  const { loading, isAuth, error } = useSelector((store) => store.auth);
+  const { token,loading2 } = useSelector((store) => store.otpVerify);
+  // console.log(token);
   const dispatch = useDispatch();
 
   const Navigate = useNavigate();
@@ -53,23 +56,21 @@ function Signup() {
     dispatch(authLoading());
     generateRecaptcha();
     let appVerifier = window.recaptchaVerifier;
-    // if (name == "" || name == undefined) {
-    //   dispatch({ type: "NoData" });
-    //   return;
-    // }
-    // if (mobile == "" || mobile == undefined) {
-    //   dispatch({ type: "Noinput" });
-    //   return;
-    // }
-    // if (mobile.length !== 10) {
-    //   if (mobile[0] !== "0") {
-    //     dispatch({
-    //       type: "Failure",
-    //       payload: "please Enter a Valid mobile Number",
-    //     });
-    //     return;
-    //   }
-    // }
+    if (Number === "" || Number === undefined) {
+      let data = "Please Enter Mobile Number";
+      dispatch(authError(data));
+      return;
+    }
+
+    if (Number.length > 10) {
+      if (Number[0] !== "0") {
+        dispatch(authError("Please Enter a Valid mobile Number"));
+        return;
+      } else if (Number.length < 10) {
+        dispatch(authError("Please Enter a Valid mobile Number"));
+        return;
+      }
+    }
 
     const phoneNumber = "+91" + Number;
     console.log(phoneNumber);
@@ -78,46 +79,49 @@ function Signup() {
         window.confirmationResult = confirmationResult;
         console.log(confirmationResult);
         setAuthinicated(false);
-        dispatch(authSuccess());
-       
+        dispatch(authSuccess(Number));
       })
-      .catch((error) => dispatch(authError("Something Went wrong")));
+      .catch((error) => {
+        dispatch(authError(""));
+        Navigate("/error");
+      });
   };
 
   const verifyOtp = (e) => {
     e.preventDefault();
-    // dispatch({ type: "Loading" });
+    dispatch(otpLoading());
     if (Otp.length !== 6) {
-      // dispatch({ type: "invalid", payload: "Invalid otp Enter" });
+      dispatch(authError(""));
+      return;
     }
     let confirmationResult = window.confirmationResult;
     confirmationResult
       .confirm(Otp)
       .then((result) => {
         // User signed in successfully.
-        // const user = result.user;
+        const user = result.user;
         console.log("otp verify");
-        
-        Navigate("/");
-
-        // dispatch({ type: "reset_name", payload: name });
-        // return onClose();
-        // ...
+        let data={"mobile":Number}
+        dispatch(authOtphandle(data));
+        if (loading2 === false) {
+          dataExist();
+          } 
       })
       .catch((error) => {
         console.log("error");
-        // User couldn't sign in (bad verification code?)
-        // ...
-        // dispatch({
-        //   type: "Failure",
-        //   payload: "Invalid otp Enter Plaese try again",
-        // });
+        Navigate("/error");
       });
   };
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  // }
+  const dataExist = () => {
+    
+    if (token) {
+      Navigate("/")
+    } else{ 
+    Navigate("/users/signup")
+   }
+    
+  }
 
   return (
     <div className="Sign-up">
@@ -144,7 +148,7 @@ function Signup() {
         {loading ? (
           <Center>
             <Spinner
-              thickness="5px"
+              thickness="4px"
               speed="0.65s"
               emptyColor="gray.400"
               color="blue.500"
@@ -229,6 +233,9 @@ function Signup() {
           <Text>Your code will expire in 0:169sec</Text>
         )}
       </div>
+      <div>
+        <Text color="red">{error}</Text>
+      </div>
 
       {Authinicated ? (
         <Button
@@ -251,7 +258,7 @@ function Signup() {
           fontSize={{ sm: "15px" }}
           color="white"
           borderRadius="30px"
-          disabled={isAuth ? true : false}
+          disabled={Otp.length === 6 ? false : true}
           onClick={verifyOtp}
         >
           Submit
