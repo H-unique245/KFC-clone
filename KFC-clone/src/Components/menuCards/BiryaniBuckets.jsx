@@ -3,11 +3,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Redux/Products/products.action';
 import ProductCard from '../ProductCard';
-
+// import data from "../../../db.json"
 function BiryaniBuckets() {
     const products = useSelector((store) => store.products.products);
-  
-  const dispatch = useDispatch();
+  // console.log("data",data);
+      const dispatch = useDispatch();
   // console.log(products)
   // const data= products[0].Chicken_bucket;
   // console.log(data)
