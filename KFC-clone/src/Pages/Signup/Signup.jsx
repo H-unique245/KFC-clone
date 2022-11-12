@@ -6,10 +6,8 @@ import {
   Button,
   Center,
   Box,
-  PinInput,
-  PinInputField,
   Spinner,
-  Image
+  Image,
 } from "@chakra-ui/react";
 import { auth } from "../../Firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
@@ -22,19 +20,19 @@ import {
   authOtphandle,
   otpLoading,
 } from "../../Redux/Auth/auth.action";
-import "./Signup.css";
+import "./Signup.scss";
 import { useState } from "react";
 import TimerTracker from "./Timer";
+import { AUTH_LOGIN_REQ_ERROR } from "../../Redux/Auth/auth.type";
 
 function Signup() {
   const [Number, setNumber] = useState("");
   const [Authinicated, setAuthinicated] = useState(true);
   const [Otp, setOtp] = useState("");
-  const { loading, isAuth, error } = useSelector((store) => store.auth);
-  const { token, loading2, authOtp } = useSelector((store) => store.otpVerify);
-  // console.log(token);
+  console.log(Otp);
+  const { loading, error } = useSelector((store) => store.auth);
+  const { token, authOtp } = useSelector((store) => store.otpVerify);
   const dispatch = useDispatch();
-
   const Navigate = useNavigate();
 
   const generateRecaptcha = () => {
@@ -60,7 +58,6 @@ function Signup() {
       dispatch(authError(data));
       return;
     }
-
     if (Number.length > 10) {
       if (Number[0] !== "0") {
         dispatch(authError("Please Enter a Valid mobile Number"));
@@ -70,7 +67,6 @@ function Signup() {
         return;
       }
     }
-
     const phoneNumber = "+91" + Number;
     console.log(phoneNumber);
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
@@ -89,9 +85,6 @@ function Signup() {
   };
 
   const verifyOtp = (e) => {
-    e.preventDefault();
-     
-     
     dispatch(otpLoading());
     if (Otp.length !== 6) {
       dispatch(authError(""));
@@ -105,16 +98,15 @@ function Signup() {
         const user = result.user;
         console.log("otp verify");
 
-        
-          if (token && authOtp ) {
-            Navigate("/");
-          } else {
-            Navigate("/users/signup");
-          }
-      
+        dispatch({ type: AUTH_LOGIN_REQ_ERROR });
+        if (token && authOtp) {
+          Navigate("/");
+        } else {
+          Navigate("/users/signup");
+        }
       })
       .catch((error) => {
-        console.log("error");
+        dispatch({ type: AUTH_LOGIN_REQ_ERROR });
         Navigate("/error");
       });
   };
@@ -182,7 +174,15 @@ function Signup() {
             />
           ) : (
             <Center mb="20px">
-              <PinInput type="alphanumeric" mask>
+              <input
+                className="otp-pin"
+                type="text"
+                name="pin"
+                onChange={(e) => setOtp(e.target.value)}
+                pattern=" [0-9] {6}"
+                maxlength="6"
+              />
+              {/* <PinInput type="alphanumeric" mask>
                 <PinInputField
                   mr="5px"
                   onChange={(e) => setOtp(Otp + e.target.value)}
@@ -207,7 +207,7 @@ function Signup() {
                   mr="5px"
                   onChange={(e) => setOtp(Otp + e.target.value)}
                 />
-              </PinInput>
+              </PinInput> */}
             </Center>
           )}
         </div>
@@ -218,7 +218,7 @@ function Signup() {
             Conditions.
           </Text>
         ) : (
-          <TimerTracker />
+          <TimerTracker Otp={Otp} verifyOtp={verifyOtp} />
         )}
       </div>
       <div>
@@ -240,18 +240,7 @@ function Signup() {
           Send me a Code
         </Button>
       ) : (
-        <Button
-          mt="30px"
-          backgroundColor="black"
-          colorScheme="grey"
-          fontSize={{ sm: "15px" }}
-          color="white"
-          borderRadius="30px"
-          disabled={Otp.length === 6 ? false : true}
-          onClick={verifyOtp}
-        >
-          Submit
-        </Button>
+        ""
       )}
     </div>
   );

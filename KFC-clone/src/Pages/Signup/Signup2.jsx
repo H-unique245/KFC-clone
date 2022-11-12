@@ -10,15 +10,24 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./Signup.css";
+import "./Signup.scss";
 
-import { signupHandle } from "../../Redux/Auth/auth.action";
+import { otpLoading } from "../../Redux/Auth/auth.action";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {
+  AUTH_LOGIN_REQ,
+  AUTH_LOGIN_REQ_ERROR,
+} from "../../Redux/Auth/auth.type";
+
+const PostData = async (values) => {
+  let res = await axios.post(`/users/signup`, values);
+  return res;
+};
 
 export default function Signup2() {
   const { number } = useSelector((store) => store.auth);
-  const { loading, token, authnicated } = useSelector((store) => store.signup);
+  const { loading2 } = useSelector((store) => store.otpVerify);
   const Navigate = useNavigate();
   const intilaState = {
     name: "",
@@ -30,8 +39,17 @@ export default function Signup2() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(signupHandle(data));
-    Navigate("/");
+    dispatch(otpLoading());
+
+    PostData(data)
+      .then((res) => {
+        dispatch({ type: AUTH_LOGIN_REQ, payload: res.token });
+        Navigate("/");
+      })
+      .catch((e) => {
+        dispatch({ type: AUTH_LOGIN_REQ_ERROR });
+        Navigate("/error");
+      });
   };
   return (
     <div className="Sign-up">
@@ -50,7 +68,7 @@ export default function Signup2() {
         Please let us know you more.
       </Text>
       <div>
-        {loading ? (
+        {loading2 ? (
           <Center>
             <Spinner
               thickness="4px"

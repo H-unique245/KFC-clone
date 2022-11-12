@@ -1,8 +1,37 @@
 import "./navbar.css";
-import React from 'react'
-import {Link} from "react-router-dom";
+import React, { useState } from 'react'
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { Button } from "@chakra-ui/react";
+
+
+const GetData = async (values) => {
+  let res = await axios.post(`/users/singleuser`, values);
+  return res;
+};
 
 const Navbar = () => {
+  const [name, setname] = useState("signup");
+  const id = JSON.parse(localStorage.getItem("id"));
+  console.log(id);
+
+  if (id) {
+  GetData(id)
+    .then((res) => {
+      setname(res.data);
+      console.log(res.data);
+    })
+    .catch((e) => {
+      console.log("error");
+    });
+  }
+  
+  useEffect(() => {
+    
+  },[name])
+
+ 
   return (
     <>
       <div className="nav_main">
@@ -17,8 +46,8 @@ const Navbar = () => {
           <span>
             <img src="/login2.png" alt="" />
           </span>
-          <b><Link className="link" to="/signup">Signup</Link> </b>
-
+          <b><Link className="link" to="/signup">{ name}</Link> </b>
+           {id ? <Button colorScheme="grey" color="white" bgColor="black">Signout</Button>: ""}
          
           <h6 className="cartCountItems">₹ 0.00</h6>
 
