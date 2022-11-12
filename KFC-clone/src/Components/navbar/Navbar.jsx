@@ -36,11 +36,25 @@ const Navbar = () => {
     <>
       <div className="nav_main">
         <div className="left_side">
-          <Link to="/"> <img className="logo_img" src="/logoeatmore1.png" alt="" /></Link>
+          <Link to="/">
+            {" "}
+            <img
+              className="logo_img"
+              src="/logoeatmore1.png"
+              alt=""
+            />
+          </Link>
 
-          <b><Link className="link" to="/menu">Menu</Link> </b>
-          <b><Link className="link" to="/menu">Deals</Link> </b>
-          
+          <b>
+            <Link className="link" to="/menu">
+              Menu
+            </Link>{" "}
+          </b>
+          <b>
+            <Link className="link" to="/menu">
+              Deals
+            </Link>{" "}
+          </b>
         </div>
         <div className="right_side">
           <span>
@@ -56,7 +70,7 @@ const Navbar = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

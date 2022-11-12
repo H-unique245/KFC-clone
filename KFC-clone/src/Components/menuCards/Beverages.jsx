@@ -1,23 +1,23 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getBoxMealData } from '../../Redux/Products/products.action';
+import { getBeverageData } from '../../Redux/Products/products.action';
 import ProductCard from '../ProductCard';
 
-function BoxMeals() {
-    const boxMeal = useSelector((store) => store.products.boxMeal);
+function Beverages() {
+    const beverage = useSelector((store) => store.products.beverage);
   
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getBoxMealData());
+    dispatch(getBeverageData());
   },[])
   return (
-    <div id="box_meals">
-          <Heading align='left' mt="3rem">Box Meals</Heading>
+    <div id="beverages">
+          <Heading align='left' mt="3rem">Beverages</Heading>
           <SimpleGrid  columns={3} spacing={2}> 
           {
-            boxMeal?.map((el)=>{
+            beverage?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>
               <ProductCard title={el.title} veg={el.type} price={el.price} image={el.image} />
              </Box>
@@ -29,4 +29,4 @@ function BoxMeals() {
   )
 }
 
-export default BoxMeals
+export default Beverages

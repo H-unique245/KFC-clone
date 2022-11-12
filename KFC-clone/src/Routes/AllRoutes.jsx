@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Components/home/Home";
 import Account from "../Pages/Account";
 import Cart from "../Pages/Cart";
+import PaymentPage from "../Pages/PaymentPage";
 import MenuPage from "../Pages/MenuPage";
 import Error from "../Pages/Signup/Error";
 import Signup from "../Pages/Signup/Signup";
@@ -18,6 +19,7 @@ function AllRoutes() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/users/signup" element={<Signup2 />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/payment" element={<PaymentPage />} />
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<p>404 Error</p>} />
       </Routes>
