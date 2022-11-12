@@ -11,10 +11,20 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-   title: {
+    title: {
       type: String,
       required: true,
       unique: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      min: 1,
     },
   },
   {

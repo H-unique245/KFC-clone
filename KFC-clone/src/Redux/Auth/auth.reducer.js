@@ -30,12 +30,13 @@ export const authReducer = (state=intialState, action) => {
         };
       }
       case AUTH_REQ_SUCCESS: {
+       
             return {
               ...state,
               isAuth: true,
               loading: false,
               error: "",
-              name: action.payload,
+              number: action.payload,
             };
       }
       case AUTH_REQ_ERROR: {
@@ -44,20 +45,10 @@ export const authReducer = (state=intialState, action) => {
               isAuth: false,
               loading: false,
               error: action.payload,
-              name: "",
+              number: "",
             };
       }
-      case AUTH_REQ_LOGOUT: {
-            return {
-              ...state,
-              isAuth: false,
-              loading: false,
-              error: "",
-              name: "",
-            };
-      }
-        
-
+   
       default: {
         return state;
       }
@@ -71,7 +62,8 @@ export const authReducer = (state=intialState, action) => {
 const file = {
   loading2: false,
   token: "",
-  authOtp:false,
+  authOtp: false,
+  error:false,
 }
 
 export const OtpVerifier = (state=file, action) => {
@@ -79,29 +71,43 @@ export const OtpVerifier = (state=file, action) => {
     case AUTH_LOGIN_LOADING: {
       return {
         ...state,
-        loading2:true
-      }
+        loading2: true,
+      };
     }
     case AUTH_LOGIN_REQ: {
+      localStorage.setItem("id", JSON.stringify(action.payload));
       return {
         ...state,
         loading2: false,
         token: action.payload,
         authOtp: true,
+        error: false,
       };
     }
-      
+
     case AUTH_LOGIN_REQ_ERROR: {
       return {
         ...state,
         loading2: false,
         token: "",
         authOtp: false,
+        error: true,
       };
-      }
-   default: {
+    }
+
+    case AUTH_REQ_LOGOUT: {
+       localStorage.removeItem("id");
+      return {
+        ...state,
+        loading2: false,
+        token: "",
+        authOtp: false,
+        error: false,
+      };
+    }
+    default: {
       return state;
-      }
+    }
   }
     
 }
