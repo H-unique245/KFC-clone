@@ -1,10 +1,24 @@
 import React from "react";
 import CartItemComponent from "../Components/CartItemComponent";
-// <img src="https://online.kfc.co.in/static/media/empty_cart.32f17a45.png" alt='empty cart' />
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "../Components/main_button/Button";
+
 function Cart() {
+  const navigate = useNavigate();
   return (
     <div>
-      <CartItemComponent />
+      <div className="black">
+        <b>LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN</b>
+
+        <Button
+          onClick={() => {
+            navigate("/menu");
+          }}
+        >
+          Order More
+        </Button>
+      </div>
+      <CartItemComponent s />
     </div>
   );
 }

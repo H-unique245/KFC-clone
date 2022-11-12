@@ -27,8 +27,12 @@ function ProductCard({_id,title,veg,price,image}) {
   // console.log("cart",data)
   const dispatch = useDispatch();
   return (
-    <Flex p={30} w="full" alignItems="center" justifyContent="center">
-    
+    <Flex
+      p={30}
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW="sm"
@@ -46,11 +50,7 @@ function ProductCard({_id,title,veg,price,image}) {
         >
           <BsHeart size={20} color="white" />
         </Box>
-        <Image
-          src={image}
-          alt={`trial`}
-          roundedTop="lg"
-        />
+        <Image src={image} alt={`trial`} roundedTop="lg" />
 
         <Box p="6">
           <Box align={"left"}>

@@ -22,3 +22,4 @@ export const UPDATE_CART_ITEMS_ERROR =
   "cart/items/update/error";
 export const COUNTER_UPDATEINC = "counter/update?INC";
 export const COUNTER_UPDATEDEC = "counter/update/DEC";
+export const SETPRICE = "setPrice/total";

@@ -8,6 +8,8 @@ import {
   deleteItem,
   updateInc,
   updateDec,
+  getcartItem,
+  updateQty,
 } from "../Redux/cartRedux/cart.actions";
 
 function Cartitem({ data }) {
@@ -20,8 +22,8 @@ function Cartitem({ data }) {
         <div className={styles.m}>
           <img
             className={styles.cartitemImg}
-            src={data.avatar}
-            alt={data.first_name}
+            src={data.image}
+            alt={data.title}
           />
           <div className={styles.cartbtnCont}>
             <div>
@@ -47,6 +49,7 @@ function Cartitem({ data }) {
                 <span
                   onClick={() => {
                     dispatch(deleteItem(data.id));
+                    dispatch(getcartItem());
                   }}
                   className={styles.removebtn}
                 >
@@ -56,9 +59,10 @@ function Cartitem({ data }) {
               <div className={styles.cartCounterP}>
                 <div className={styles.cartCounterC}>
                   <button
-                    disabled={data.qty === 0}
+                    disabled={data.qty === 1}
                     onClick={() => {
                       dispatch(updateDec(data.id));
+                      dispatch(updateQty(data));
                     }}
                     className={styles.counterDec}
                   ></button>
@@ -67,8 +71,10 @@ function Cartitem({ data }) {
                   </span>
                   <span className={styles.srOnly}></span>
                   <button
+                    disabled={data.qty === 4}
                     onClick={() => {
                       dispatch(updateInc(data.id));
+                      dispatch(updateQty(data));
                     }}
                     className={styles.counterInc}
                   ></button>
