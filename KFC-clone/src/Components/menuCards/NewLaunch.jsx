@@ -1,28 +1,24 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../Redux/Products/products.action';
+import { getNewLaunchData } from '../../Redux/Products/products.action';
 import ProductCard from '../ProductCard';
 
 function NewLaunch() {
-    const products = useSelector((store) => store.products.products);
+    const launch = useSelector((store) => store.products.launch);
   
   const dispatch = useDispatch();
-  // console.log(products)
-  // const data= products[0].Chicken_bucket;
-  // console.log(data)
-
   useEffect(()=>{
-    dispatch(getProducts());
+    dispatch(getNewLaunchData());
   },[])
   return (
     <div id="new_launch">
           <Heading align='left' mt="3rem">New Launch</Heading>
           <SimpleGrid  columns={3} spacing={2}> 
           {
-            products?.map((el)=>{
-                return   <Box key={el.title} maxHeight= '200vh'>
-              <ProductCard title={el.title} veg={el.veg} price={el.price} image={el.image} />
+            launch?.map((el)=>{
+                return   <Box key={el._id} maxHeight= '200vh'>
+              <ProductCard title={el.title} veg={el.type} price={el.price} image={el.image} />
              </Box>
             })
         }

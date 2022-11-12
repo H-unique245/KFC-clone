@@ -10,14 +10,14 @@ function MenuFilter() {
     </Box>
       <VStack align='left'>
         <Heading>KFC Menu</Heading>
-      <List align="left" spacing={2}>
+      <List align="left" fontSize={'lg'} spacing={4}>
         <ListItem>
-          <Link activeClass="active" to="chicken_buckets" spy={true} smooth={true}>
+          <Link href="#chicken_buckets" >
           Chicken Buckets
           </Link>
         </ListItem>
         <ListItem>
-          <Link href="new_launch">New Launch </Link>
+          <Link href="#new_launch">New Launch </Link>
         </ListItem>
         <ListItem>
           <Link href="#biryani_buckets"> Biryani Buckets</Link>

@@ -11,12 +11,20 @@ import {
 import { BsHeart, BsTriangleFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/cartRedux/cart.actions";
+import { addToCart, getcartItem, updateInc, updateQty } from "../Redux/cartRedux/cart.actions";
 
-function ProductCard({id,title,veg,price,image}) {
-  const {data}= useSelector((store)=>store.cart);
+function ProductCard({_id,title,veg,price,image}) {
+  // const {data}= useSelector((store)=>store.cart);
+  const cart = useSelector((state) => {
 
-  console.log("cart",data)
+    // console.log(state.cart.data);
+
+    return (
+      state.cart.data.find((item) => item.id === _id) || { qty: 0 }
+    );
+  });
+  // data.id===_id -->qty --> +1
+  // console.log("cart",data)
   const dispatch = useDispatch();
   return (
     <Flex p={30} w="full" alignItems="center" justifyContent="center">
@@ -63,35 +71,41 @@ function ProductCard({id,title,veg,price,image}) {
           <Box align={"left"}>
             <Text as="b">₹{price}</Text>
           </Box>
-          <Button
-            onClick={() => {
-              dispatch(
-                
-                addToCart({
-                  id: 8,
-                  title: "The Allu Arjun Combo",
-                  avatar:
-                    "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/L-8000197.jpg?ver=21.88",
-                  cata: [
-                    "Peri Peri 5 Leg Pc",
-                    "Eggless Mayo",
-                    "Nashville Hot Pepper Dip",
-                    "French Fries -Medium",
-                    "Pepsi PET",
-                  ],
-                  qty: 1,
-                  price: 450,
-                })
-              );
-             console.log("added",title);
-            }}
-            variant="solid"
-            colorScheme="red"
-            position={'absolute'}
-            bottom={6} right={12}
-          >
-            Add to Cart <FiShoppingCart />{" "}
-          </Button>
+
+          {
+            cart.qty === 0 ? (<Button
+              onClick={() => {
+                dispatch(
+                  
+                  addToCart({
+                    _id,
+                    image,
+                    title,
+                    price,
+                  })
+                  );
+                  dispatch(getcartItem());
+                  console.log(title,"added to cart");
+              //  console.log("added",title);
+              }}
+              variant="solid"
+              colorScheme="red"
+              position={'absolute'}
+              bottom={6} right={12}
+            >
+              Add to Cart <FiShoppingCart />{" "}
+            </Button>) : (<div>
+
+              <button data-cy="product-increment-cart-item-count-button" onClick={ console.log("Increament") }>+</button>
+    
+              <h4 data-cy="product-count">{cart.qty}</h4>
+    
+              <button data-cy="product-decrement-cart-item-count-button" onClick={() =>console.log("Decreament")}>-</button>
+              
+              <button data-cy="product-remove-cart-item-button" onClick={() => console.log("remove")} >Remove Item</button>
+            </div>)
+          }
+          
         </Box>
       </Box>
     </Flex>
