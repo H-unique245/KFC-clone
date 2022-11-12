@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 import {
   GET_CART_ITEMS_ERROR,
   GET_CART_ITEMS_LOADING,
@@ -12,9 +13,9 @@ import {
   REMOVE_CART_ITEMS_SUCCESS,
   REMOVE_CART_ITEMS_LOADING,
   REMOVE_CART_ITEMS_ERROR,
-  COUNTER_UPDATE,
   COUNTER_UPDATEINC,
   COUNTER_UPDATEDEC,
+  SETPRICE,
 } from "./cart.actionType";
 export const getcartItem = () => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
@@ -30,17 +31,20 @@ export const getcartItem = () => async (dispatch) => {
   }
 };
 export const addToCart =
-  ({ avatar, title, cata, qty }) =>
+  ({ image, id, title, cata, qty, price }) =>
   async (dispatch) => {
+    console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
       let res = await axios.post(
         "http://localhost:8080/cart",
         {
-          avatar,
+          image,
           title,
           cata,
           qty,
+          id,
+          price,
         }
       );
       return dispatch({
@@ -68,22 +72,14 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const updateQty =
-  ({ id, avatar, cata, title, price }) =>
+  ({ id, image, cata, title, price, qty }) =>
   async (dispatch) => {
     dispatch({ type: UPDATE_CART_ITEMS_LOADING });
-
     try {
       let res = await axios.put(
         `http://localhost:8080/cart/${id}`,
-        {
-          qty: 2,
-          avatar,
-          cata,
-          title,
-          price,
-        }
+        { id, qty, image, cata, title, price }
       );
-
       return dispatch({
         type: UPDATE_CART_ITEMS_SUCCESS,
         payload: res.data,
@@ -99,5 +95,9 @@ export const updateInc = (payload) => ({
 });
 export const updateDec = (payload) => ({
   type: COUNTER_UPDATEDEC,
+  payload,
+});
+export const priceSet = (payload) => ({
+  type: SETPRICE,
   payload,
 });

@@ -11,16 +11,22 @@ import {
 import { BsHeart, BsTriangleFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/cartRedux/cart.actions";
+import {
+  addToCart,
+  getcartItem,
+} from "../Redux/cartRedux/cart.actions";
 
-function ProductCard({id,title,veg,price,image}) {
-  const {data}= useSelector((store)=>store.cart);
+function ProductCard({ id, title, veg, price, image }) {
+  const { data } = useSelector((store) => store.cart);
 
-  console.log("cart",data)
   const dispatch = useDispatch();
   return (
-    <Flex p={30} w="full" alignItems="center" justifyContent="center">
-    
+    <Flex
+      p={30}
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW="sm"
@@ -38,11 +44,7 @@ function ProductCard({id,title,veg,price,image}) {
         >
           <BsHeart size={20} color="white" />
         </Box>
-        <Image
-          src={image}
-          alt={`trial`}
-          roundedTop="lg"
-        />
+        <Image src={image} alt={`trial`} roundedTop="lg" />
 
         <Box p="6">
           <Box align={"left"}>
@@ -66,29 +68,16 @@ function ProductCard({id,title,veg,price,image}) {
           <Button
             onClick={() => {
               dispatch(
-                
-                addToCart({
-                  id: 8,
-                  title: "The Allu Arjun Combo",
-                  avatar:
-                    "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/L-8000197.jpg?ver=21.88",
-                  cata: [
-                    "Peri Peri 5 Leg Pc",
-                    "Eggless Mayo",
-                    "Nashville Hot Pepper Dip",
-                    "French Fries -Medium",
-                    "Pepsi PET",
-                  ],
-                  qty: 1,
-                  price: 450,
-                })
+                addToCart({ id, title, veg, price, image })
               );
-             console.log("added",title);
+              dispatch(getcartItem());
+              console.log("added", title);
             }}
             variant="solid"
             colorScheme="red"
-            position={'absolute'}
-            bottom={6} right={12}
+            position={"absolute"}
+            bottom={6}
+            right={12}
           >
             Add to Cart <FiShoppingCart />{" "}
           </Button>

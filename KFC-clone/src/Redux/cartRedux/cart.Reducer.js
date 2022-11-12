@@ -13,6 +13,7 @@ import {
   UPDATE_CART_ITEMS_ERROR,
   UPDATE_CART_ITEMS_LOADING,
   UPDATE_CART_ITEMS_SUCCESS,
+  SETPRICE,
 } from "./cart.actionType";
 
 // Note: Do not update/change the initial state
@@ -20,6 +21,7 @@ const cartInitalState = {
   loading: false,
   error: false,
   data: [],
+  price: 0,
 };
 export const cartReducer = (
   state = cartInitalState,
@@ -42,6 +44,14 @@ export const cartReducer = (
         error: false,
       };
     }
+    case SETPRICE: {
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        price: payload,
+      };
+    }
     case REMOVE_CART_ITEMS_SUCCESS: {
       return {
         ...state,
@@ -59,7 +69,7 @@ export const cartReducer = (
     case UPDATE_CART_ITEMS_LOADING: {
       return {
         ...state,
-        loading: true,
+        loading: false,
         error: false,
       };
     }
@@ -115,8 +125,8 @@ export const cartReducer = (
     case COUNTER_UPDATEINC: {
       const id = payload;
 
-      const updateQty = state.data.map((el) => {
-        if (el.id * 1 === id * 1) {
+      const upQTY = state.data.map((el) => {
+        if (el.id === id) {
           return {
             ...el,
             qty: el.qty + 1,
@@ -128,14 +138,14 @@ export const cartReducer = (
 
       return {
         ...state,
-        data: updateQty,
+        data: upQTY,
       };
     }
     case COUNTER_UPDATEDEC: {
       const id = payload;
 
-      const updateQty = state.data.map((el) => {
-        if (el.id * 1 === id * 1) {
+      const upQTY = state.data.map((el) => {
+        if (el.id === id) {
           return {
             ...el,
             qty: el.qty - 1,
@@ -147,7 +157,7 @@ export const cartReducer = (
 
       return {
         ...state,
-        data: updateQty,
+        data: upQTY,
       };
     }
     default: {
