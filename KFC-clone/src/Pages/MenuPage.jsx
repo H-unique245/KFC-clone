@@ -10,6 +10,10 @@ import ChikckenBucket from '../Components/menuCards/ChikckenBucket';
 import NewLaunch from '../Components/menuCards/NewLaunch';
 import BiryaniBuckets from '../Components/menuCards/BiryaniBuckets';
 import BoxMeals from '../Components/menuCards/BoxMeals';
+import Burgers from '../Components/menuCards/Burgers';
+import StayHome from '../Components/menuCards/StayHome';
+import Snacks from '../Components/menuCards/Snacks';
+import Beverages from '../Components/menuCards/Beverages';
 function MenuPage() {
   // const products = useSelector((store) => store.products.products);
   
@@ -23,11 +27,11 @@ function MenuPage() {
   },[])
   return (
       <HStack  p={2} >
-        <Box w="30%" m={8}  border="2px solid">
+        <Box w="30%" pl={10} mb={15} pb={20} >
         <MenuFilter />
         </Box>
       <Box w="90%" h={'35rem'}  overflowY={'scroll'}>
-      <Stack p={4} borderBottom="2px">
+      <Stack p={4} borderBottom="2px" bgColor="blackAlpha.200">
       <InputGroup>
     <InputLeftElement
       pointerEvents='none'
@@ -36,12 +40,16 @@ function MenuPage() {
     <Input type='text' placeholder='Search Our Menu' fontSize={'sm'} htmlSize={3} width='15rem' />
   </InputGroup>
   </Stack>
-    <Stack bgColor="blackAlpha" border={'1px sloid red'}>
+    <Stack bgColor="blackAlpha.200">
 
         <ChikckenBucket />
         <NewLaunch />
         <BiryaniBuckets />
         <BoxMeals />
+        <Burgers />
+        <StayHome />
+        <Snacks />
+        <Beverages />
   
    </Stack>
       </Box>
