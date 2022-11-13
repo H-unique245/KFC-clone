@@ -56,6 +56,8 @@ const Home = () => {
       </div>
 
       <Offer />
+  
+      
     </>
   )
 }

@@ -1,0 +1,6 @@
+.sidebox{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 150px;
+    height: max-content;
+}

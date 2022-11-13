@@ -21,7 +21,7 @@ const cartInitalState = {
   loading: false,
   error: false,
   data: [],
-  price: 0,
+  price: 0, 
 };
 export const cartReducer = (
   state = cartInitalState,
