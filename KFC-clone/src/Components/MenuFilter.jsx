@@ -9,15 +9,15 @@ function MenuFilter() {
         <Image h={8} src='https://online.kfc.co.in/static/media/Stripes_Small_OffersIcon.87fc6256.svg' alt="menu_list" />
     </Box>
       <VStack align='left'>
-        <Heading>KFC Menu</Heading>
-      <List align="left" spacing={2}>
+        <Heading> Menu</Heading>
+      <List align="left" fontSize={'lg'} spacing={4}>
         <ListItem>
-          <Link activeClass="active" to="chicken_buckets" spy={true} smooth={true}>
+          <Link href="#chicken_buckets" >
           Chicken Buckets
           </Link>
         </ListItem>
         <ListItem>
-          <Link href="new_launch">New Launch </Link>
+          <Link href="#new_launch">New Launch </Link>
         </ListItem>
         <ListItem>
           <Link href="#biryani_buckets"> Biryani Buckets</Link>

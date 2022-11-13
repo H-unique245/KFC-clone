@@ -10,13 +10,27 @@ app.post("/login", async (req, res) => {
       if (user) {
        
       res.send({
-        token: `${user.name}`,
+        token: `${user.id}`,
       });
     }
   } catch (e) {
     res.status(404).send(e.message);
   }
 });
+
+app.post("/singleuser", async (req, res) => {
+  const { id } = req.body;
+  try {
+    let user = await User.findOne({ id });
+
+    if (user) {
+      res.send(user.name);
+    }
+  } catch (e) {
+    res.status(404).send(e.message);
+  }
+});
+
 
 app.post("/signup", async (req, res) => {
   const { name, email, mobile } = req.body;
@@ -32,7 +46,7 @@ app.post("/signup", async (req, res) => {
         mobile,
       });
 
-      res.send({ token: `${user.name}` });
+      res.send({ token: `${user.id}` });
     // }
   } catch (e) {
     res.status(404).send(e.message);

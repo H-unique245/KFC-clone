@@ -7,24 +7,49 @@ import {
   Text,
   HStack,
   Button,
+  useToast,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { BsHeart, BsTriangleFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Redux/cartRedux/cart.actions";
+import { addToCart, getcartItem, updateDec, updateInc, updateQty } from "../Redux/cartRedux/cart.actions";
 
-function ProductCard({id,title,veg,price,image}) {
+function ProductCard({_id,title,price,cata,desc,image}) {
+  const [count,setCount]= useState(0)
   const {data}= useSelector((store)=>store.cart);
-
+  // const cart = useSelector((state) => { // console.log(state.cart.data);
+  //   return (
+  //     state.cart.data.find((item) => item.id === _id) || { qty: 0 }
+  //   );
+  // });
+  // data.id===_id -->qty --> +1
   console.log("cart",data)
+  // const checkCart= data.map((el)=>{
+  //   if(el.id===_id){
+  //     return  el
+  //   }
+  //   return false
+  // });
+
+// console.log(checkCart);
+  const toast = useToast({
+    containerStyle:{
+      bgColor:'red'
+    }
+  })
   const dispatch = useDispatch();
   return (
-    <Flex p={30} w="full" alignItems="center" justifyContent="center">
-    
+    <Flex
+      p={30}
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW="sm"
-        h="370px"
+        // h="370px"
         borderWidth="1px"
         rounded="lg"
         shadow="lg"
@@ -38,18 +63,14 @@ function ProductCard({id,title,veg,price,image}) {
         >
           <BsHeart size={20} color="white" />
         </Box>
-        <Image
-          src={image}
-          alt={`trial`}
-          roundedTop="lg"
-        />
+        <Image h={'15rem'} w="full" src={image} alt={title} roundedTop="lg" />
 
         <Box p="6">
-          <Box align={"left"}>
+          <Box h={"3rem"} align={"left"}>
             <Text as="b">{title}</Text>
           </Box>
 
-          <HStack>
+          <HStack h={6}>
             <Badge
               align="left"
               variant="outline"
@@ -58,40 +79,73 @@ function ProductCard({id,title,veg,price,image}) {
             >
               <BsTriangleFill />
             </Badge>
-            <Text fontSize={"sm"}>{veg}</Text>
+            <Text fontSize={"sm"}>Non-veg
+             {/* <span style={{fontStyle:"italic" }}> {desc ? `◉ [${desc.split("[").splice(-1)}`: null} </span> */}
+              </Text>
+         
           </HStack>
-          <Box align={"left"}>
+          <Box h={"1rem"} m={1} align={"left"}>
             <Text as="b">₹{price}</Text>
           </Box>
-          <Button
-            onClick={() => {
-              dispatch(
-                
-                addToCart({
-                  id: 8,
-                  title: "The Allu Arjun Combo",
-                  avatar:
-                    "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/xl/L-8000197.jpg?ver=21.88",
-                  cata: [
-                    "Peri Peri 5 Leg Pc",
-                    "Eggless Mayo",
-                    "Nashville Hot Pepper Dip",
-                    "French Fries -Medium",
-                    "Pepsi PET",
-                  ],
-                  qty: 1,
-                  price: 450,
-                })
-              );
-             console.log("added",title);
-            }}
-            variant="solid"
-            colorScheme="red"
-            position={'absolute'}
-            bottom={6} right={12}
-          >
-            Add to Cart <FiShoppingCart />{" "}
-          </Button>
+          <Box h={"6rem"} m={1} mt={2} fontSize={"14px"} fontWeight={'black'} align={"left"}>
+            <Text >{desc}</Text>
+          </Box>
+
+          {
+            count === 0 ? (<Button
+              onClick={
+                ()=>{
+                  setCount(count+1);
+                  const el={
+                    id:_id,image,price,cata,title,qty:count+1
+                }
+                dispatch(addToCart(el))
+                  // console.log(title,"added to cart");
+              //  console.log("added",title);
+              toast({
+                title: 'Success',
+                description: "Item Added to cart successfully !",
+                status: 'success',
+                position: 'top',
+                duration: 2000,
+                isClosable: true,
+              })
+              }}
+              variant="solid"
+              colorScheme="red"
+            >
+              Add to Cart <FiShoppingCart />{" "}
+            </Button>) :
+            (<Button
+              variant="solid"
+              colorScheme="green"
+            >
+              Added to Cart <FiShoppingCart />{" "}
+            </Button>)
+            
+            
+            
+          //   (<HStack alignContent={'center'}>
+
+          //     <Button colorScheme={'red'} onClick={()=>{setCount(count-1)
+          //    const el={
+          //       id:_id,image,price,title,qty:count-1
+          //   }
+          //   dispatch(updateDec(el.id)); 
+          // }}>-</Button>
+    
+          //     <Text >{count}</Text>
+    
+          //     <Button colorScheme={'red'} onClick={()=>{setCount(count+1)
+          //    const el={
+          //       id:_id,image,price,title,qty:count+1
+          //   }
+          //   dispatch(updateInc(el.id)); 
+          // }}>+</Button>
+             
+          //   </HStack>)
+          }
+          
         </Box>
       </Box>
     </Flex>

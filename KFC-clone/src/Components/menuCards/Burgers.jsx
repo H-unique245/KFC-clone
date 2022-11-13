@@ -1,23 +1,24 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getChickenRollData } from '../../Redux/Products/products.action';
+import { getBurgerData } from '../../Redux/Products/products.action';
 import ProductCard from '../ProductCard';
 
-function BiryaniBuckets() {
-    const chicken_roll = useSelector((store) => store.products.chicken_roll);
-      const dispatch = useDispatch();
+function Burgers() {
+    const burger = useSelector((store) => store.products.burger);
+  
+  const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(getChickenRollData());
+    dispatch(getBurgerData());
   },[])
   return (
-    <div id="biryani_buckets">
-          <Heading align='left' mt="3rem">Chicken Roll</Heading>
+    <div id="burgers">
+          <Heading align='left' mt="3rem">Burgers </Heading>
           <SimpleGrid  columns={3} spacing={2}> 
           {
-            chicken_roll?.map((el)=>{
-                return   <Box key={el.title} maxHeight= '200vh'>
+            burger?.map((el)=>{
+                return   <Box key={el._id} maxHeight= '200vh'>
               <ProductCard title={el.title} cata={el.cata} _id={el._id} desc={el.desc} price={el.price} image={el.image} />
              </Box>
             })
@@ -28,4 +29,4 @@ function BiryaniBuckets() {
   )
 }
 
-export default BiryaniBuckets
+export default Burgers
