@@ -56,8 +56,10 @@ export default function Signup2() {
   };
   return (
     <div className="Sign-up">
-      <Text mb="20px">Signin/Signup </Text>
-      <Center>
+      <Heading fontSize="23px" mb="20px">
+        Signup
+      </Heading>
+      <Center mb="20px" >
         <Image
           src="/logoeatmore1.png"
           alt="logo"

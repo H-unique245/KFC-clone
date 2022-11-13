@@ -16,7 +16,9 @@ const {error}=useSelector((store)=>store.auth)
 
     return (
       <div className="Sign-up">
-        <Text mb="30px">Signin/Signup </Text>
+        <Heading fontSize="23px" mb="30px">
+          Signin/Signup
+        </Heading>
         <Center mb="40px">
           <Image
             src="/logoeatmore1.png"
@@ -26,9 +28,7 @@ const {error}=useSelector((store)=>store.auth)
         </Center>
 
         <Heading mb="40px">
-          {error
-            ? error
-            : "Something Went wrong Please"}{" "}
+          {error ? error : "Something Went wrong Please"}{" "}
           <Link to="/signup"> Try again</Link>
         </Heading>
 

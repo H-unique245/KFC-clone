@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Button } from "@chakra-ui/react";
+import { Button,Image } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogout } from "../../Redux/Auth/auth.action";
 
@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className="left_side">
           <Link to="/">
             {" "}
-            <img className="logo_img" src="/logoeatmore1.png" alt="" />
+            <Image className="logo_img" src="/logoeatmore1.png" alt="" />
           </Link>
 
           <b>

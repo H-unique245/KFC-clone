@@ -113,8 +113,11 @@ function Signup() {
   };
 
   return (
-    <div className="Sign-up" >
-      <Text mb="30px">Signin/Signup </Text>
+    <div className="Sign-up">
+      <Heading fontSize="23px" mb="25px">
+       
+        {Authinicated ? "Signin / Signup" : "Signin"}
+      </Heading>
       <Center mb="20px">
         <Image
           src="/logoeatmore1.png"
