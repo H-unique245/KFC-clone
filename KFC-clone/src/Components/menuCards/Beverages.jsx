@@ -1,7 +1,7 @@
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getBeverageData } from '../../Redux/Products/products.action';
+import { getBeverageData, getBoxMealData } from '../../Redux/Products/products.action';
 import ProductCard from '../ProductCard';
 
 function Beverages() {
@@ -19,7 +19,7 @@ function Beverages() {
           {
             beverage?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>
-              <ProductCard title={el.title} veg={el.type} price={el.price} image={el.image} />
+              <ProductCard _id={el._id} desc={el.desc} cata={el.cata} title={el.title} veg={el.type} price={el.price} image={el.image} />
              </Box>
             })
         }

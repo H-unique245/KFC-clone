@@ -17,14 +17,6 @@ import Beverages from '../Components/menuCards/Beverages';
 function MenuPage() {
   // const products = useSelector((store) => store.products.products);
   
-  const dispatch = useDispatch();
-  // console.log(products)
-  // const data= products[0].Chicken_bucket;
-  // console.log(data)
-
-  useEffect(()=>{
-    dispatch(getProducts());
-  },[])
   return (
       <HStack  p={2} >
         <Box w="30%" pl={10} mb={15} pb={20} >
