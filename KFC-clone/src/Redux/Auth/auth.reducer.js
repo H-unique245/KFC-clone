@@ -6,7 +6,7 @@ import {
   AUTH_LOGIN_REQ,
   AUTH_LOGIN_REQ_ERROR,
   AUTH_LOGIN_LOADING,
-  AUTH_SIGNUP_SUCCESS,
+  AUTH_OTP_SUCCESS,
   AUTH_SIGNUP_LOADING,
   AUTH_SIGNUP_ERROR,
 } from "./auth.type";
@@ -74,6 +74,7 @@ export const OtpVerifier = (state=file, action) => {
         loading2: true,
       };
     }
+   
     case AUTH_LOGIN_REQ: {
       localStorage.setItem("id", JSON.stringify(action.payload));
       return {
@@ -127,7 +128,7 @@ export const SignupReducer = (state=signupState, { type, payload }) => {
         loading:true,
       }
     }
-    case AUTH_SIGNUP_SUCCESS: {
+    case AUTH_OTP_SUCCESS: {
       return {
         ...state,
         laoding: false,
@@ -140,7 +141,7 @@ export const SignupReducer = (state=signupState, { type, payload }) => {
       return {
         ...state,
         laoding: false,
-        token:"",
+        token:payload,
         authnicate:false,
         error: true,
       }

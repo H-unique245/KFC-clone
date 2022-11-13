@@ -31,7 +31,7 @@ function TimerTracker({Otp,verifyOtp}) {
         Your code will expire in 0:{Timer} sec
       </Text>
       <Center> 
-      { Timer==0 ? 
+      { Timer===0 ? 
       <Link to="/signup" > Please Try again otp Time limit expiry </Link>: " "}</Center>
       <Button
         mt="20px"
@@ -40,7 +40,7 @@ function TimerTracker({Otp,verifyOtp}) {
         fontSize={{ sm: "15px" }}
         color="white"
         borderRadius="30px"
-        disabled={Otp.length !== 6 || Timer==0 ? true : false}
+        disabled={Otp.length !== 6 || Timer===0 ? true : false}
         onClick={() => verifyOtp()}
       >
         Submit

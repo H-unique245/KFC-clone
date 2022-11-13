@@ -6,5 +6,5 @@ export const AUTH_REQ_LOADING = "auth/loading";
 export const AUTH_REQ_ERROR = "auth/error";
 export const AUTH_REQ_LOGOUT = "auth/logout";
 export const AUTH_SIGNUP_ERROR="auth/signup/error"
-export const AUTH_SIGNUP_SUCCESS = "auth/signup/sucess";
+export const AUTH_OTP_SUCCESS = "auth/signup/sucess";
 export const AUTH_SIGNUP_LOADING = "auth/signup/loading";

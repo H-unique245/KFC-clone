@@ -23,13 +23,14 @@ import {
 import "./Signup.scss";
 import { useState } from "react";
 import TimerTracker from "./Timer";
-import { AUTH_LOGIN_REQ_ERROR } from "../../Redux/Auth/auth.type";
+import { AUTH_LOGIN_REQ_ERROR, AUTH_OTP_SUCCESS } from "../../Redux/Auth/auth.type";
+import { memo } from "react";
 
 function Signup() {
   const [Number, setNumber] = useState("");
   const [Authinicated, setAuthinicated] = useState(true);
   const [Otp, setOtp] = useState("");
-  console.log(Otp);
+ 
   const { loading, error } = useSelector((store) => store.auth);
   const { token, authOtp } = useSelector((store) => store.otpVerify);
   const dispatch = useDispatch();
@@ -79,7 +80,7 @@ function Signup() {
         dispatch(authOtphandle(data));
       })
       .catch((error) => {
-        dispatch(authError(""));
+        dispatch(authError("Mobile Number not verify"));
         Navigate("/error");
       });
   };
@@ -98,7 +99,7 @@ function Signup() {
         const user = result.user;
         console.log("otp verify");
 
-        dispatch({ type: AUTH_LOGIN_REQ_ERROR });
+        dispatch({ type: AUTH_OTP_SUCCESS });
         if (token && authOtp) {
           Navigate("/");
         } else {
@@ -112,7 +113,7 @@ function Signup() {
   };
 
   return (
-    <div className="Sign-up">
+    <div className="Sign-up" >
       <Text mb="30px">Signin/Signup </Text>
       <Center mb="20px">
         <Image
@@ -222,7 +223,11 @@ function Signup() {
         )}
       </div>
       <div>
-        <Text color="red">{error}</Text>
+        <Text color="red" mt="10px">
+          {Number.length !== 10 && Number.length !== 0
+            ? "Plaese Enter a 10 digit Number"
+            : ""}
+        </Text>
       </div>
 
       {Authinicated ? (
@@ -246,4 +251,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default memo(Signup);

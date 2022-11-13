@@ -21,7 +21,10 @@ import {
 } from "../../Redux/Auth/auth.type";
 
 const PostData = async (values) => {
-  let res = await axios.post(`/users/signup`, values);
+  let res = await axios.post(
+    `https://backend-server-kfc.herokuapp.com/users/signup`,
+    values
+  );
   return res;
 };
 
@@ -32,7 +35,7 @@ export default function Signup2() {
   const intilaState = {
     name: "",
     email: "",
-    mobile: number,
+    mobile:number,
   };
   const dispatch = useDispatch();
   const [data, setData] = useState(intilaState);
