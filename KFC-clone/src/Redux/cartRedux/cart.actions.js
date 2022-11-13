@@ -21,7 +21,9 @@ import {
 export const getcartItem = () => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
   try {
-    let res = await axios.get("http://localhost:8080/cart");
+    let res = await axios.get(
+      "https://db-files.herokuapp.com/"
+    );
 
     return dispatch({
       type: GET_CART_ITEMS_SUCCESS,
@@ -38,7 +40,7 @@ export const addToCart =
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
       let res = await axios.post(
-        "http://localhost:8080/cart",
+        "https://db-files.herokuapp.com/",
         {
           image,
           title,
@@ -60,7 +62,7 @@ export const deleteItem = (id) => async (dispatch) => {
   dispatch({ type: REMOVE_CART_ITEMS_LOADING });
   try {
     let res = await axios.delete(
-      `http://localhost:8080/cart/${id}`
+      `https://db-files.herokuapp.com/${id}`
     );
 
     return dispatch({
@@ -78,7 +80,7 @@ export const updateQty =
     dispatch({ type: UPDATE_CART_ITEMS_LOADING });
     try {
       let res = await axios.put(
-        `http://localhost:8080/cart/${id}`,
+        `https://db-files.herokuapp.com/${id}`,
         { id, qty, image, cata, title, price }
       );
       return dispatch({
