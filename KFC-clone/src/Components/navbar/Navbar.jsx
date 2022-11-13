@@ -3,32 +3,50 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Button } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { Button,Image } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogout } from "../../Redux/Auth/auth.action";
 
 const GetData = async (values) => {
-  let res = await axios.post(`/users/singleuser`, values);
+  let res = await axios.post(
+    `https://backend-server-kfc.herokuapp.com/users/singleuser`,
+    values
+  );
   return res;
 };
 
 const Navbar = () => {
   const [name, setname] = useState("signup");
   const { price } = useSelector((store) => store.cart);
-  const id = JSON.parse(localStorage.getItem("id"));
-  console.log(id);
+  let id = JSON.parse(localStorage.getItem("id"));
+  const { authnicate } = useSelector((store) => store.signup);
 
-  if (id) {
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(authLogout());
+    setname("signup");
+  };
+
+  const idCollecter = () => {
     GetData(id)
       .then((res) => {
-        setname(res.data);
-        console.log(res.data);
+        let firstName = res.data.split(" ");
+        setname(firstName[0]);
       })
       .catch((e) => {
-        console.log("error");
+        setname("signup");
+        console.log(e);
       });
-  }
+  };
+  console.log(authnicate);
 
-  useEffect(() => {}, [name]);
+  useEffect(() => {
+    if (id) {
+      idCollecter();
+    }
+  }, [id]);
 
   return (
     <>
@@ -36,11 +54,7 @@ const Navbar = () => {
         <div className="left_side">
           <Link to="/">
             {" "}
-            <img
-              className="logo_img"
-              src="/logoeatmore1.png"
-              alt=""
-            />
+            <Image className="logo_img" src="/logoeatmore1.png" alt="" />
           </Link>
 
           <b>
@@ -59,13 +73,14 @@ const Navbar = () => {
             <img src="/login2.png" alt="" />
           </span>
           <b>
-            <Link className="link" to="/signup">
+            <Link className="link" to={id ? "/" : "/signup"}>
               {name}
-            </Link>{" "}
+            </Link>
           </b>
           {id ? (
             <Button
               colorScheme="grey"
+              onClick={handleClick}
               color="white"
               bgColor="black"
             >
@@ -75,14 +90,10 @@ const Navbar = () => {
             ""
           )}
 
-          <h6 className="cartCountItems">₹ {price}</h6>
+          <h6 className="cartCountItems">₹  {price}</h6>
 
           <Link to="/cart">
-            <img
-              className="cart_img"
-              src="/cart.svg"
-              alt=""
-            />
+            <img className="cart_img" src="/cart.svg" alt="" />
           </Link>
         </div>
       </div>

@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Account() {
-  return (
-    <div>
-      this account page to show account details.
-    </div>
-  )
+  return <div>this account page to show account details.</div>;
 }
 
-export default Account
+export default Account;

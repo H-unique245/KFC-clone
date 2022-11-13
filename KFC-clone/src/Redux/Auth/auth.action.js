@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 import {
@@ -9,18 +8,13 @@ import {
   AUTH_REQ_LOGOUT,
   AUTH_LOGIN_REQ_ERROR,
   AUTH_LOGIN_LOADING,
-  AUTH_SIGNUP_SUCCESS,
-  AUTH_SIGNUP_LOADING,
-  AUTH_SIGNUP_ERROR,
 } from "./auth.type";
 
-
-
 export const authLoading = () => {
-    return {
-      type: AUTH_REQ_LOADING,
-    };
-}
+  return {
+    type: AUTH_REQ_LOADING,
+  };
+};
 export const authSuccess = (data) => {
   return {
     type: AUTH_REQ_SUCCESS,
@@ -38,30 +32,19 @@ export const authLogout = () => {
     type: AUTH_REQ_LOGOUT,
   };
 };
-export const otpLoading=()=>{
-return { type: AUTH_LOGIN_LOADING };
-}
-
-export const authOtphandle = (Number) => async (dispatch) => {
-  dispatch({type:AUTH_LOGIN_LOADING})
-  try {
-     let res = await axios.post(`/users/login`,Number);
-     dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
-    
-  } catch (e) {
-     dispatch({ type: AUTH_LOGIN_REQ_ERROR});
-  }
- 
+export const otpLoading = () => {
+  return { type: AUTH_LOGIN_LOADING };
 };
 
-
-export const signupHandle = (data) => async (dispatch) => {
-  dispatch({ type: AUTH_SIGNUP_LOADING });
+export const authOtphandle = (Number) => async (dispatch) => {
+  dispatch({ type: AUTH_LOGIN_LOADING });
   try {
-    let res = await axios.post(`/users/signup`,data);
-  dispatch({type:AUTH_SIGNUP_SUCCESS,payload:res.data.token})
+    let res = await axios.post(
+      `https://backend-server-kfc.herokuapp.com/users/login`,
+      Number
+    );
+    dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
   } catch (e) {
-    dispatch({type:AUTH_SIGNUP_ERROR})
+    dispatch({ type: AUTH_LOGIN_REQ_ERROR });
   }
-  
-}
+};

@@ -3,10 +3,12 @@ const Product= require("./product.model");
 const app = express.Router();
 
 app.get("", async (req, res) => {
-  const { type } = req.params;
+  const query = req.query;
+  
   try {
-    let Products = await Product.find({type:type});
-    res.send(Products);
+    let Products = await Product.find(query);
+  
+    res.json(Products);
   } catch (e) {
     res.status(400).send(e.message);
   }
