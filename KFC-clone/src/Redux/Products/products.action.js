@@ -2,25 +2,25 @@ import axios from 'axios';
 import { GET_PRODUCTS_BEVERAGE, GET_PRODUCTS_BOXMEAL, GET_PRODUCTS_BURGER, GET_PRODUCTS_CHICKEN, GET_PRODUCTS_CHICKENROLL, GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING, GET_PRODUCTS_NEWLAUNCH, GET_PRODUCTS_SNACKS, GET_PRODUCTS_STAYHOME, GET_PRODUCTS_SUCCESS } from "./products.actionTypes"
 
 
-export const getProducts=()=>async(dispatch)=>{
-    dispatch({type:GET_PRODUCTS_LOADING});
-    try{
-        // let res= await axios.get("https://orderserv-kfc-apac-olo-api.yum.com/dev/v1/catalogs/15895bb59f7b4bb588ee933f8cd5344a/KFCIndiaMenu-202-web-delivery");
-        let res= await axios.get("http://localhost:8080/Chicken_bucket");
-    // console.log(res.data.categories[0].categories);
-    let data= res.data    // let data= res.data.categories[0].categories;
-    dispatch({type:GET_PRODUCTS_SUCCESS,payload:data});    
-    }
-    catch(error){
-        dispatch({type:GET_PRODUCTS_ERROR})
+// export const getProducts=()=>async(dispatch)=>{
+//     dispatch({type:GET_PRODUCTS_LOADING});
+//     try{
+//         // let res= await axios.get("https://orderserv-kfc-apac-olo-api.yum.com/dev/v1/catalogs/15895bb59f7b4bb588ee933f8cd5344a/KFCIndiaMenu-202-web-delivery");
+//         let res= await axios.get("http://localhost:8080/Chicken_bucket");
+//     // console.log(res.data.categories[0].categories);
+//     let data= res.data    // let data= res.data.categories[0].categories;
+//     dispatch({type:GET_PRODUCTS_SUCCESS,payload:data});    
+//     }
+//     catch(error){
+//         dispatch({type:GET_PRODUCTS_ERROR})
 
-    }
-}
+//     }
+// }
 
 export const getChickenData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("http://localhost:8080/menu?type=chicken");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=chicken");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_CHICKEN,payload:data});    
     }
@@ -31,7 +31,7 @@ export const getChickenData=()=>async(dispatch)=>{
 export const getNewLaunchData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=launch");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=launch");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_NEWLAUNCH,payload:data});    
     }
@@ -42,7 +42,7 @@ export const getNewLaunchData=()=>async(dispatch)=>{
 export const getChickenRollData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=rolls");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=rolls");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_CHICKENROLL,payload:data});    
     }
@@ -53,7 +53,7 @@ export const getChickenRollData=()=>async(dispatch)=>{
 export const getBoxMealData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=boxmeals");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=boxmeals");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_BOXMEAL,payload:data});    
     }
@@ -64,7 +64,7 @@ export const getBoxMealData=()=>async(dispatch)=>{
 export const getBurgerData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=burger");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=burger");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_BURGER,payload:data});    
     }
@@ -75,7 +75,7 @@ export const getBurgerData=()=>async(dispatch)=>{
 export const getStayHomeData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=stayhome");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=stayhome");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_STAYHOME,payload:data});    
     }
@@ -86,7 +86,7 @@ export const getStayHomeData=()=>async(dispatch)=>{
 export const getSnackData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=snacks");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=snacks");
     let data= res.data  
     dispatch({type:GET_PRODUCTS_SNACKS,payload:data});    
     }
@@ -97,7 +97,7 @@ export const getSnackData=()=>async(dispatch)=>{
 export const getBeverageData=()=>async(dispatch)=>{
     dispatch({type:GET_PRODUCTS_LOADING});
     try{
-        let res= await axios.get("https://kfcapi.herokuapp.com/api/product/menu?type=beverages");
+        let res= await axios.get("https://backend-server-kfc.herokuapp.com/products?type=beverages");
 
     let data= res.data  
     dispatch({type:GET_PRODUCTS_BEVERAGE,payload:data});    

@@ -17,6 +17,7 @@ const GetData = async (values) => {
 
 const Navbar = () => {
   const [name, setname] = useState("signup");
+  const { price } = useSelector((store) => store.cart);
   let id = JSON.parse(localStorage.getItem("id"));
   const { authnicate } = useSelector((store) => store.signup);
 
@@ -89,7 +90,7 @@ const Navbar = () => {
             ""
           )}
 
-          <h6 className="cartCountItems">₹ 0.00</h6>
+          <h6 className="cartCountItems">₹  {price}</h6>
 
           <Link to="/cart">
             <img className="cart_img" src="/cart.svg" alt="" />

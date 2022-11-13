@@ -9,7 +9,7 @@ function MenuFilter() {
         <Image h={8} src='https://online.kfc.co.in/static/media/Stripes_Small_OffersIcon.87fc6256.svg' alt="menu_list" />
     </Box>
       <VStack align='left'>
-        <Heading>KFC Menu</Heading>
+        <Heading> Menu</Heading>
       <List align="left" fontSize={'lg'} spacing={4}>
         <ListItem>
           <Link href="#chicken_buckets" >

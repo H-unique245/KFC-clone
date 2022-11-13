@@ -8,6 +8,7 @@ import MenuPage from "../Pages/MenuPage";
 import Error from "../Pages/Signup/Error";
 import Signup from "../Pages/Signup/Signup";
 import Signup2 from "../Pages/Signup/Signup2";
+import { Box, Image } from "@chakra-ui/react";
 
 function AllRoutes() {
   return (
@@ -21,7 +22,7 @@ function AllRoutes() {
         <Route path="/account" element={<Account />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/error" element={<Error />} />
-        <Route path="*" element={<p>404 Error</p>} />
+        <Route path="*" element={<Box align='center'><Image src="https://webartdevelopers.com/blog/wp-content/uploads/2020/02/404-Error-Lost-And-Alone.gif" alt="Error" /></Box>} />
       </Routes>
     </div>
   );
