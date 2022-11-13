@@ -13,6 +13,7 @@ const GetData = async (values) => {
 
 const Navbar = () => {
   const [name, setname] = useState("signup");
+  const { price } = useSelector((store) => store.cart);
   const id = JSON.parse(localStorage.getItem("id"));
   console.log(id);
 
@@ -28,7 +29,6 @@ const Navbar = () => {
   }
 
   useEffect(() => {}, [name]);
-  const { price } = useSelector((store) => store.cart);
 
   return (
     <>

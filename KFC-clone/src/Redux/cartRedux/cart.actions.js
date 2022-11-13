@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"; 
 import {
   GET_CART_ITEMS_ERROR,
   GET_CART_ITEMS_LOADING,
@@ -21,9 +21,7 @@ import {
 export const getcartItem = () => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
   try {
-    let res = await axios.get(
-      "https://db-files.herokuapp.com/cart"
-    );
+    let res = await axios.get("https://db-files.herokuapp.com/cart");
 
     return dispatch({
       type: GET_CART_ITEMS_SUCCESS,
@@ -36,7 +34,7 @@ export const getcartItem = () => async (dispatch) => {
 export const addToCart =
   ({ image, id, title, cata, qty, price }) =>
   async (dispatch) => {
-    console.log(image, id, title, price);
+    // console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
       let res = await axios.post(
