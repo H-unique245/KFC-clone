@@ -19,7 +19,7 @@ function StayHome() {
           {
             stayHome?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>
-              <ProductCard title={el.title} veg={el.type} price={el.price} image={el.image} />
+              <ProductCard title={el.title} _id={el._id} cata={el.cata} desc={el.desc} price={el.price} image={el.image} />
              </Box>
             })
         }
