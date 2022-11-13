@@ -52,7 +52,7 @@ export default function Offer() {
     ],
   };
   return (
-    <Box>
+    <Box >
       <Spacer h={"100px"} />
       <Box w={"100%"} bgColor={"#202124"}>
         <Box w={"80%"} m={"auto"}>

@@ -56,8 +56,6 @@ const Home = () => {
       </div>
 
       <Offer />
-      <Footer />
-      
     </>
   )
 }

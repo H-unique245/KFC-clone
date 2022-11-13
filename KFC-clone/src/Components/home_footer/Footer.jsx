@@ -1,216 +1,130 @@
-import { Box, Img, Spacer, Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import { Icon } from "@iconify/react";
-import { NavLink } from "react-router-dom";
+import { ReactNode } from 'react';
+import StoreBadge from 'react-store-badge';
+import {
+  Box,
+  Container,
+  Stack,
+  SimpleGrid,
+  Text,
+  Link,
+  VisuallyHidden,
+  chakra,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
 
-export default function Footer() {
-  const [isMobile] = useMediaQuery("(min-width: 768px)");
+
+// import AppStoreBadge from '@/components/AppStoreBadge';
+// import PlayStoreBadge from '@/components/PlayStoreBadge';
+
+const ListHeader = ({ children }) => {
   return (
-    <Box bgColor="#202124" w={"100%"}>
-      <Spacer h={"180px"} />
-      <Flex
-        w={"90%"}
-        h={"156px"}
-        m="auto"
-        // border={"1px solid red"}
-        color={"white"}
-        justifyContent={"space-evenly"}
-        // flexWrap={"wrap"}
-        direction={isMobile ? "row" : "column"}
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2} >
+      {children}
+    </Text>
+  );
+};
+
+const SocialButton = ({
+  children,
+  label,
+  href,
+}) => {
+  return (
+    <chakra.button
+      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      rounded={'full'}
+      w={8}
+      h={8}
+      cursor={'pointer'}
+      as={'a'}
+      href={href}
+      display={'inline-flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      transition={'background 0.3s ease'}
+      _hover={{
+        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+      }}>
+      <VisuallyHidden>{label}</VisuallyHidden>
+      {children}
+    </chakra.button>
+  );
+};
+
+export default function LargeWithAppLinksAndSocial() {
+  return (
+    <Box
+      bg={useColorModeValue('#202124', 'gray.900')}
+      color={useColorModeValue('white', 'gray.200')}
       >
-        <Box mr={"70px"}>
-          <a href={"/"}>
-            <Img
-              src="https://images.ctfassets.net/wtodlh47qxpt/25FSYFuEtGct8NSrtpKe6d/b602f6fe0bf294e6a6dff5d7648bf594/KFC_Logo.svg"
-              alt="logo"
+      <Container as={Stack} maxW={'6xl'} py={10} >
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+          <Stack align={'flex-start'}>
+            <ListHeader>Company</ListHeader>
+            <Link href={'#'}>About Us</Link>
+            <Link href={'#'}>Blog</Link>
+            <Link href={'#'}>Careers</Link>
+            <Link href={'#'}>Contact Us</Link>
+          </Stack>
+
+          <Stack align={'flex-start'}>
+            <ListHeader>Support</ListHeader>
+            <Link href={'#'}>Help Center</Link>
+            <Link href={'#'}>Safety Center</Link>
+            <Link href={'#'}>Community Guidelines</Link>
+          </Stack>
+
+          <Stack align={'flex-start'}>
+            <ListHeader>Legal</ListHeader>
+            <Link href={'#'}>Cookies Policy</Link>
+            <Link href={'#'}>Privacy Policy</Link>
+            <Link href={'#'}>Terms of Service</Link>
+            <Link href={'#'}>Law Enforcement</Link>
+          </Stack>
+
+          <Stack align={'flex-start'} >
+            <ListHeader>Install App</ListHeader>
+            <StoreBadge 
+              name="KFC"
+              appStoreUrl="https://apps.apple.com/in/app/kfc-india/id915824379"
             />
-          </a>
-        </Box>
-        <Box>
-          <Text fontSize={"14px"} fontWeight={"bold"}>
-            KFC Food
-          </Text>
-
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Menu
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Order Lookup
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Gift Card
-            </Text>
-          </NavLink>
-
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Nutrition & Allergen
-            </Text>
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink>
-            <Text fontSize={"14px"} fontWeight={"bold"}>
-              Support
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Get Help
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Contact Us
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              KFC Feedback
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Privacy Policy
-            </Text>
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink>
-            <Text fontSize={"14px"} fontWeight={"bold"}>
-              Legal
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Terms and Conditions
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Privacy Policy
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Disclaimer
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Caution Notice
-            </Text>
-          </NavLink>
-        </Box>
-        <Box>
-          <NavLink>
-            <Text fontSize={"14px"} fontWeight={"bold"}>
-              KFC India
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              About KFC
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              KFC Care
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Careers
-            </Text>
-          </NavLink>
-          <NavLink>
-            <Text fontSize={"14px"} pt={"5px"} pb={"5px"}>
-              Our Golden Past
-            </Text>
-          </NavLink>
-        </Box>
-
-        <Box>
-          <a target="_blank" rel="noreferrer" href="https://restaurants.kfc.co.in/">
-            <Flex>
-              <Text mt={"10px"}>
-                <Icon
-                  icon="carbon:location-filled"
-                  color="red"
-                  fontSize={"20px"}
-                />
-              </Text>
-              <Text ml="5px" mt={"10px"} fontSize={"13px"} fontWeight={"bold"}>
-                <u>Find a KFC</u>
-              </Text>
-            </Flex>
-          </a>
-        </Box>
-        <Box>
-          <a
-            target={"_blank"}
-            rel="noreferrer"
-            href="https://play.google.com/store/apps/details?id=com.yum.kfc"
-          >
-            {" "}
-            <Img
-              src="https://images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg"
-              alt="google_play"
+            <StoreBadge 
+              name="KFC"
+              googlePlayUrl="https://play.google.com/store/apps/details?id=com.yum.kfc"
             />
-          </a>
-        </Box>
-        <Box>
-          <a
-            target={"_blank"}
-            rel="noreferrer"
-            href="https://apps.apple.com/in/app/kfc-india/id915824379"
-          >
-            <Img
-              src="https://images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg"
-              alt="apple_store"
-            />
-          </a>
-        </Box>
-      </Flex>
+            {/* <AppStoreBadge />
+            <PlayStoreBadge /> */}
+          </Stack>
+        </SimpleGrid>
+      </Container>
 
-      <Spacer h={"120px"} />
-      <Flex justifyContent={"space-between"} w={"50%"} m="auto" ml={"550px"}>
-        <Text fontSize={"12px"} color={"white"}>
-          Copyright © KFC Corporation 2021 All Rights Reserved
-        </Text>
-
-        <Box>
-          <Flex justifyContent={"space-around"}>
-            <a
-              target={"_blank"}
-              rel="noreferrer"
-              href="https://www.instagram.com/kfcindia_official/"
-            >
-              <Img
-                src="https://images.ctfassets.net/wtodlh47qxpt/4ZHyPA2EeaoP3aqtNDriBA/463462a9c27b0aa585e12b21ce3766e0/Social_Insta_White.svg"
-                alt="instagram"
-              />
-            </a>
-            <a target={"_blank"} rel="noreferrer" href="https://www.facebook.com/KFCIndia">
-              <Img
-                src="https://images.ctfassets.net/wtodlh47qxpt/dKiu2meLcfz2DNwsg7nZw/7194830b1ba6f25b158a23d6b2c4752c/Social_Facebook_White.svg"
-                alt="facebook"
-              />
-            </a>
-            <a target={"_blank"} rel="noreferrer" href="https://twitter.com/KFC_India">
-              <Img
-                src="https://images.ctfassets.net/wtodlh47qxpt/78z9x0WwdkdXwGVK726EKX/6599ca34ec88e2a6f46d7d94ed85a8ad/Social_Twitter_White.svg"
-                alt="twiter"
-              />
-            </a>
-          </Flex>
-        </Box>
-      </Flex>
-      <Spacer h={"20px"} />
+      <Box
+        borderTopWidth={1}
+        borderStyle={'solid'}
+        borderColor={useColorModeValue('gray.200', 'gray.700')}>
+        <Container
+          as={Stack}
+          maxW={'6xl'}
+          py={4}
+          direction={{ base: 'column', md: 'row' }}
+          spacing={4}
+          justify={{ md: 'space-between' }}
+          align={{ md: 'center' }}>
+          <Text>Copyright © KFC Corporation 2021 All Rights Reserved</Text>
+          <Stack direction={'row'} spacing={6}>
+            <SocialButton label={'Twitter'} href={'#'}>
+              <FaTwitter />
+            </SocialButton>
+            <SocialButton label={'YouTube'} href={'#'}>
+              <FaYoutube />
+            </SocialButton>
+            <SocialButton label={'Instagram'} href={'#'}>
+              <FaInstagram />
+            </SocialButton>
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 }
