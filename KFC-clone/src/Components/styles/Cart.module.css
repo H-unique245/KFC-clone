@@ -385,5 +385,105 @@ input[type="checkbox"] {
 }
 .emptyPoster {
   margin: 120px;
-  border: 1px solid red;
+
+  margin-top: 120px;
+}
+.checkOutCompo {
+  background-color: #f8f7f5;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-left: 11%;
+  text-align: left;
+}
+.CheckOutheading {
+  width: 25%;
+  font-size: large;
+  padding: 40px 40px 40px 40px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.checkOutBody {
+  width: 70%;
+  padding: 40px;
+}
+.resdEVIVERY {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.inputAndLableCheckOut {
+  display: flex;
+  flex-direction: column;
+}
+.inputAddress {
+  border: none;
+  border-bottom: 2px solid #c9c9c9;
+  width: 30%;
+  background-color: #f8f7f5;
+}
+
+.inputAddress:focus,
+textarea:focus,
+select:focus,
+label:focus + label:focus {
+  outline: none;
+  color: #3f51b5;
+  border-bottom: 2px solid #3f51b5;
+}
+.deliveryTime {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+.boldfont1 {
+  font-weight: 600;
+}
+.radioA {
+  width: 30%;
+  padding: 40px;
+}
+.smallFontDF {
+  font-family: "National2-Medium";
+  font-weight: 500;
+  color: #202124;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.smallFontDF1 {
+  font-family: "National2-Medium";
+  font-weight: 500;
+  color: #202124;
+  font-size: 14px;
+}
+.CheckOutheading2 {
+  width: 100%;
+  font-size: large;
+  padding: 40px 40px 40px 40px;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+}
+.addpaymentMethod {
+  padding-right: 40px;
+}
+.addpaymentMethod2 {
+  font-size: 15px;
+
+  width: 160px;
+
+  text-decoration: underline;
+}
+.lastname {
+  display: flex;
+  margin-left: 4%;
+}
+.lastRadioKing {
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
