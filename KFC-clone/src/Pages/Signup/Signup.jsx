@@ -23,19 +23,22 @@ import {
 import "./Signup.scss";
 import { useState } from "react";
 import TimerTracker from "./Timer";
-import { AUTH_LOGIN_REQ_ERROR, AUTH_OTP_SUCCESS } from "../../Redux/Auth/auth.type";
+import {
+  AUTH_LOGIN_REQ_ERROR,
+  AUTH_OTP_SUCCESS,
+} from "../../Redux/Auth/auth.type";
 import { memo } from "react";
 
 function Signup() {
   const [Number, setNumber] = useState("");
   const [Authinicated, setAuthinicated] = useState(true);
   const [Otp, setOtp] = useState("");
- 
-  const { loading, error } = useSelector((store) => store.auth);
-  const { token, authOtp } = useSelector((store) => store.otpVerify);
+
+  const { loading } = useSelector((store) => store.auth);
+  const { token, authOtp,loading2 } = useSelector((store) => store.otpVerify);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-
+console.log(loading2)
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
@@ -86,7 +89,8 @@ function Signup() {
   };
 
   const verifyOtp = (e) => {
-    dispatch(otpLoading());
+   
+
     if (Otp.length !== 6) {
       dispatch(authError(""));
       return;
@@ -98,7 +102,6 @@ function Signup() {
         // User signed in successfully.
         const user = result.user;
         console.log("otp verify");
-
         dispatch({ type: AUTH_OTP_SUCCESS });
         if (token && authOtp) {
           Navigate("/");
@@ -115,7 +118,6 @@ function Signup() {
   return (
     <div className="Sign-up">
       <Heading fontSize="23px" mb="25px">
-       
         {Authinicated ? "Signin / Signup" : "Signin"}
       </Heading>
       <Center mb="20px">

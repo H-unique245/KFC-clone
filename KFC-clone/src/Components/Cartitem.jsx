@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useState } from "react";
 import ItemcataList from "./ItemcataList";
@@ -12,9 +12,13 @@ import {
   updateQty,
 } from "../Redux/cartRedux/cart.actions";
 
-function Cartitem({ data }) {
+function Cartitem({ data,handleclick }) {
   const [cataShow, setCataShow] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+  },[data])
 
   return (
     <div>
@@ -47,10 +51,7 @@ function Cartitem({ data }) {
             <div className={styles.cartActions}>
               <div>
                 <span
-                  onClick={() => {
-                    dispatch(deleteItem(data.id));
-                    dispatch(getcartItem());
-                  }}
+                  onClick={()=>handleclick(data.id)}
                   className={styles.removebtn}
                 >
                   Remove

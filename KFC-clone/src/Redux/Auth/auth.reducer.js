@@ -11,62 +11,54 @@ import {
   AUTH_SIGNUP_ERROR,
 } from "./auth.type";
 
-
 const intialState = {
-    isAuth: false,
-    loading: false,
-    error: "",
-    number:""
-}
+  isAuth: false,
+  loading: false,
+  error: "",
+  number: "",
+};
 
-export const authReducer = (state=intialState, action) => {
-    
-    switch (action.type) {
-      case AUTH_REQ_LOADING: {
-            return {
-                ...state,
-                loading:true,
-                
-        };
-      }
-      case AUTH_REQ_SUCCESS: {
-       
-            return {
-              ...state,
-              isAuth: true,
-              loading: false,
-              error: "",
-              number: action.payload,
-            };
-      }
-      case AUTH_REQ_ERROR: {
-            return {
-              ...state,
-              isAuth: false,
-              loading: false,
-              error: action.payload,
-              number: "",
-            };
-      }
-   
-      default: {
-        return state;
-      }
+export const authReducer = (state = intialState, action) => {
+  switch (action.type) {
+    case AUTH_REQ_LOADING: {
+      return {
+        ...state,
+        loading: true,
+      };
     }
-    
+    case AUTH_REQ_SUCCESS: {
+      return {
+        ...state,
+        isAuth: true,
+        loading: false,
+        error: "",
+        number: action.payload,
+      };
+    }
+    case AUTH_REQ_ERROR: {
+      return {
+        ...state,
+        isAuth: false,
+        loading: false,
+        error: action.payload,
+        number: "",
+      };
+    }
 
-
-
-}
+    default: {
+      return state;
+    }
+  }
+};
 
 const file = {
   loading2: false,
   token: "",
   authOtp: false,
-  error:false,
-}
+  error: false,
+};
 
-export const OtpVerifier = (state=file, action) => {
+export const OtpVerifier = (state = file, action) => {
   switch (action.type) {
     case AUTH_LOGIN_LOADING: {
       return {
@@ -74,7 +66,13 @@ export const OtpVerifier = (state=file, action) => {
         loading2: true,
       };
     }
-   
+    case AUTH_OTP_SUCCESS: {
+      return {
+        ...state,
+        laoding2: false,
+        error: false,
+      };
+    }
     case AUTH_LOGIN_REQ: {
       localStorage.setItem("id", JSON.stringify(action.payload));
       return {
@@ -97,7 +95,7 @@ export const OtpVerifier = (state=file, action) => {
     }
 
     case AUTH_REQ_LOGOUT: {
-       localStorage.removeItem("id");
+      localStorage.removeItem("id");
       return {
         ...state,
         loading2: false,
@@ -106,49 +104,41 @@ export const OtpVerifier = (state=file, action) => {
         error: false,
       };
     }
+
     default: {
       return state;
     }
   }
-    
-}
+};
 
 const signupState = {
   laoding: false,
   token: "",
   authnicate: false,
-  error:false
-}
+  error: false,
+};
 
-export const SignupReducer = (state=signupState, { type, payload }) => {
+export const SignupReducer = (state = signupState, { type, payload }) => {
   switch (type) {
     case AUTH_SIGNUP_LOADING: {
       return {
         ...state,
-        loading:true,
-      }
+        loading: true,
+      };
     }
-    case AUTH_OTP_SUCCESS: {
+   
+    case AUTH_SIGNUP_ERROR: {
       return {
         ...state,
         laoding: false,
         token: payload,
-        authnicate: true,
-        error: false,
+        authnicate: false,
+        error: true,
       };
     }
-    case AUTH_SIGNUP_ERROR:{
-      return {
-        ...state,
-        laoding: false,
-        token:payload,
-        authnicate:false,
-        error: true,
-      }
-      }
-      
+
     default: {
       return state;
-      }
+    }
   }
-}
+};

@@ -9,6 +9,7 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { BsHeart, BsTriangleFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
@@ -17,7 +18,8 @@ import { addToCart, getcartItem, updateDec, updateInc, updateQty } from "../Redu
 
 function ProductCard({_id,title,price,cata,desc,image}) {
   const [count,setCount]= useState(0)
-  const {data}= useSelector((store)=>store.cart);
+  const { data } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   // const cart = useSelector((state) => { // console.log(state.cart.data);
   //   return (
   //     state.cart.data.find((item) => item.id === _id) || { qty: 0 }
@@ -31,6 +33,9 @@ function ProductCard({_id,title,price,cata,desc,image}) {
   //   }
   //   return false
   // });
+  // useEffect(() => {
+  //   dispatch(getcartItem());
+  // },[data])
 
 // console.log(checkCart);
   const toast = useToast({
@@ -38,7 +43,7 @@ function ProductCard({_id,title,price,cata,desc,image}) {
       bgColor:'red'
     }
   })
-  const dispatch = useDispatch();
+ 
   return (
     <Flex
       p={30}

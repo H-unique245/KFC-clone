@@ -25,7 +25,7 @@ $in-w: $n-char * ($char-w + $gap);
     )
     0 100% / #{$in-w - $gap} 2px no-repeat;
   font: 2ch droid sans mono, consolas, monospace;
-  letter-spacing: 20px;
+  letter-spacing: 25px;
 
   &:focus {
     outline: none;

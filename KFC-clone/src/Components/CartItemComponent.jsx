@@ -8,16 +8,15 @@ import Cartitems from "./Cartitems";
 import CartPriceComponent from "./CartPriceComponent";
 import styles from "./styles/Cart.module.css";
 
-function CartItemComponent() {
-  const { data, loading } = useSelector(
-    (store) => store.cart
-  );
+function CartItemComponent({ data, handleclick }) {
+  // const { data, loading } = useSelector(
+  //   (store) => store.cart
+  // );
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getcartItem());
     dispatch(priceSet(0));
-  }, [loading]);
+  }, []);
   return (
     <div>
       {data.length === 0 ? (
@@ -37,9 +36,7 @@ function CartItemComponent() {
               <span className={styles.emptyCartH}>
                 YOUR CART IS EMPTY. LET'S START AN ORDER!
               </span>
-              <button className={styles.emptyCartbtn}>
-                Start Order
-              </button>
+              <button className={styles.emptyCartbtn}>Start Order</button>
             </div>{" "}
             <img
               className={styles.emptyCartimg}
@@ -59,7 +56,7 @@ function CartItemComponent() {
 
             <div className={styles.innerCantainer}>
               <div className={styles.cartCompo}>
-                <Cartitems />
+                <Cartitems data={data} handleclick={handleclick} />
               </div>
 
               <div>

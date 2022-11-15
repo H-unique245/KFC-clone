@@ -31,11 +31,12 @@ const PostData = async (values) => {
 export default function Signup2() {
   const { number } = useSelector((store) => store.auth);
   const { loading2 } = useSelector((store) => store.otpVerify);
+  console.log(loading2)
   const Navigate = useNavigate();
   const intilaState = {
     name: "",
     email: "",
-    mobile:number,
+    mobile: number,
   };
   const dispatch = useDispatch();
   const [data, setData] = useState(intilaState);
@@ -43,23 +44,23 @@ export default function Signup2() {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(otpLoading());
-
     PostData(data)
       .then((res) => {
-        dispatch({ type: AUTH_LOGIN_REQ, payload: res.token });
-        Navigate("/");
+        dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
+        Navigate("/"); 
       })
       .catch((e) => {
         dispatch({ type: AUTH_LOGIN_REQ_ERROR });
         Navigate("/error");
       });
   };
+  
   return (
     <div className="Sign-up">
       <Heading fontSize="23px" mb="20px">
         Signup
       </Heading>
-      <Center mb="20px" >
+      <Center mb="20px">
         <Image
           src="/logoeatmore1.png"
           alt="logo"

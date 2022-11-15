@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteItem,
   getcartItem,
   priceSet,
 } from "../Redux/cartRedux/cart.actions";
 import Cartitem from "./Cartitem";
 import styles from "./styles/Cart.module.css";
 
-function Cartitems() {
-  const { data, loading, error } = useSelector(
+function Cartitems({data,handleclick}) {
+   const dispatch = useDispatch();
+  const {  loading, error } = useSelector(
     (store) => store.cart
   );
   const total = () => {
@@ -20,15 +22,13 @@ function Cartitems() {
 
     dispatch(priceSet(price));
   };
-
+ 
   useEffect(() => {
     total();
   }, [data]);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getcartItem());
-  }, []);
+ console.log(data)
+
   if (loading) {
     return (
       <h1>
@@ -44,9 +44,9 @@ function Cartitems() {
     return (
       <div>
         <div>
-          {data.map((el) => {
-            return <Cartitem key={el.id} data={el} />;
-          })}
+          {data.map((el) => (
+            <Cartitem key={el.id} handleclick={handleclick} data={el} />
+          ))}
         </div>
       </div>
     );

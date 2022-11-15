@@ -1,25 +1,23 @@
 import "./navbar.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Button,Image } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogout } from "../../Redux/Auth/auth.action";
 
 const GetData = async (values) => {
   let res = await axios.post(
-    `https://backend-server-kfc.herokuapp.com/users/singleuser`,
-    values
-  );
+    `https://backend-server-kfc.herokuapp.com/users/singleuser`,values);
   return res;
 };
 
 const Navbar = () => {
   const [name, setname] = useState("signup");
   const { price } = useSelector((store) => store.cart);
-  let id = JSON.parse(localStorage.getItem("id"));
-  const { authnicate } = useSelector((store) => store.signup);
+  let ID = JSON.parse(localStorage.getItem("id"));
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -30,7 +28,8 @@ const Navbar = () => {
   };
 
   const idCollecter = () => {
-    GetData(id)
+    let datas = { _id:ID };
+    GetData(datas)
       .then((res) => {
         let firstName = res.data.split(" ");
         setname(firstName[0]);
@@ -40,32 +39,32 @@ const Navbar = () => {
         console.log(e);
       });
   };
-  console.log(authnicate);
+  console.log(ID);
 
   useEffect(() => {
-    if (id) {
+    if (ID) {
       idCollecter();
     }
-  }, [id]);
+  },[ID]);
 
   return (
     <>
       <div className="nav_main">
         <div className="left_side">
           <Link to="/">
-            {" "}
+    
             <Image className="logo_img" src="/logoeatmore1.png" alt="" />
           </Link>
 
           <b>
             <Link className="link" to="/menu">
               Menu
-            </Link>{" "}
+            </Link>
           </b>
           <b>
             <Link className="link" to="/menu">
               Deals
-            </Link>{" "}
+            </Link>
           </b>
         </div>
         <div className="right_side">
@@ -73,11 +72,11 @@ const Navbar = () => {
             <img src="/login2.png" alt="" />
           </span>
           <b>
-            <Link className="link" to={id ? "/" : "/signup"}>
+            <Link className="link" to={ID ? "/" : "/signup"}>
               {name}
             </Link>
           </b>
-          {id ? (
+          {ID ? (
             <Button
               colorScheme="grey"
               onClick={handleClick}
@@ -90,11 +89,11 @@ const Navbar = () => {
             ""
           )}
 
-          <h6 className="cartCountItems">₹  {price}</h6>
+          <h6 className="cartCountItems">₹ { price}</h6>
 
-          <Link to="/cart">
+          <Button bgColor="white" onClick={()=>navigate("/cart")}>
             <img className="cart_img" src="/cart.svg" alt="" />
-          </Link>
+          </Button>
         </div>
       </div>
     </>

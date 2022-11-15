@@ -11,14 +11,17 @@ import {
 } from "@chakra-ui/react";
 import styles from "./styles/Cart.module.css";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { priceSet } from "../Redux/cartRedux/cart.actions";
 
 function Bux() {
   const navigate = useNavigate();
   const { price } = useSelector((store) => store.cart);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
+  const dispatch = useDispatch();
   return (
     <div>
       <Button
@@ -57,11 +60,14 @@ function Bux() {
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button
-              onClick={() => navigate("/menu")}
+              onClick={() => {
+                dispatch(priceSet(0))
+                navigate("/")
+              }}
               colorScheme="red"
               ml={3}
             >
-              Menu
+              Home
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

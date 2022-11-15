@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import styles from "./styles/Cart.module.css";
 function CartPriceComponent() {
   const { price } = useSelector((store) => store.cart);
@@ -67,6 +68,7 @@ function CartPriceComponent() {
             alt="Add Hope"
           />
         </div>
+        <Link to="/payment" >  
         <button className={styles.checkOut}>
           <span>Checkout</span>
           {checked ? (
@@ -74,7 +76,7 @@ function CartPriceComponent() {
           ) : (
             <span>₹{total}</span>
           )}
-        </button>
+        </button></Link>
       </div>
     </div>
   );
