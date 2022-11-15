@@ -9,6 +9,7 @@ import Error from "../Pages/Signup/Error";
 import Signup from "../Pages/Signup/Signup";
 import Signup2 from "../Pages/Signup/Signup2";
 import { Box, Image } from "@chakra-ui/react";
+import Deals from "../Pages/Deals";
 
 function AllRoutes() {
   return (
@@ -17,6 +18,7 @@ function AllRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/deals" element={<Deals />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/users/signup" element={<Signup2 />} />
         <Route path="/account" element={<Account />} />
