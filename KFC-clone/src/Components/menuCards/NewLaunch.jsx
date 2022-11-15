@@ -14,7 +14,7 @@ function NewLaunch() {
   return (
     <div id="new_launch">
           <Heading align='left' mt="3rem">New Launch</Heading>
-          <SimpleGrid  columns={3} spacing={2}> 
+          <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
           {
             launch?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>

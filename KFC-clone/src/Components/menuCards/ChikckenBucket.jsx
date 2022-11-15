@@ -21,7 +21,7 @@ function ChikckenBucket() {
   return (
     <div id="chicken_buckets">
           <Heading align='left' mt="3rem">Chicken Buckets</Heading>
-          <SimpleGrid  columns={3} spacing={2}> 
+          <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
           {
             chicken?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>

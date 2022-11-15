@@ -15,7 +15,7 @@ function StayHome() {
   return (
     <div id="stay_home_specials">
           <Heading align='left' mt="3rem">Stay Home Special</Heading>
-          <SimpleGrid  columns={3} spacing={2}> 
+          <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
           {
             stayHome?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>

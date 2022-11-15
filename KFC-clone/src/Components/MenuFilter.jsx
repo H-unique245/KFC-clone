@@ -8,9 +8,9 @@ function MenuFilter() {
     <Box m={0}>
         <Image h={8} src='https://online.kfc.co.in/static/media/Stripes_Small_OffersIcon.87fc6256.svg' alt="menu_list" />
     </Box>
-      <VStack align='left'>
+      <VStack align='left' fontSize={{base:'sm',md:'lg'}}>
         <Heading> Menu</Heading>
-      <List align="left" fontSize={'lg'} spacing={4}>
+      <List align="left" fontSize={{base:'sm',lg:'lg'}} spacing={{base:2,md:4}}>
         <ListItem>
           <Link href="#chicken_buckets" >
           Chicken Buckets

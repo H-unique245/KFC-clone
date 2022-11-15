@@ -15,7 +15,7 @@ function BoxMeals() {
   return (
     <div id="box_meals">
           <Heading align='left' mt="3rem">Box Meals</Heading>
-          <SimpleGrid  columns={3} spacing={2}> 
+          <SimpleGrid columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
           {
             boxMeal?.map((el)=>{
                 return   <Box key={el._id} maxHeight= '200vh'>
