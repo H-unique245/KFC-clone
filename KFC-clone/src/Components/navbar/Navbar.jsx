@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Button, Image } from "@chakra-ui/react";
+import { Button, Image, Show,Center } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogout } from "../../Redux/Auth/auth.action";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import Sidebar from "./sidebar";
 
 const GetData = async (values) => {
   let res = await axios.post(
@@ -45,56 +47,71 @@ const Navbar = () => {
     if (ID) {
       idCollecter();
     }
-  },[ID]);
+  }, [ID]);
+  
+  const handleIt = (e) => {
+    e.preventDefault();
+    
+  }
 
   return (
     <>
       <div className="nav_main">
         <div className="left_side">
           <Link to="/">
-    
             <Image className="logo_img" src="/logoeatmore1.png" alt="" />
           </Link>
-
-          <b>
-            <Link className="link" to="/menu">
-              Menu
-            </Link>
-          </b>
-          <b>
-            <Link className="link" to="/deals">
-              Deals
-            </Link>
-          </b>
+          <Show breakpoint="(min-width: 680px)">
+            <b>
+              <Link className="link" to="/menu">
+                Menu
+              </Link>
+            </b>
+            <b>
+              <Link className="link" to="/deals">
+                Deals
+              </Link>
+            </b>
+          </Show>
         </div>
-        <div className="right_side">
-          <span>
-            <img src="/login2.png" alt="" />
-          </span>
-          <b>
-            <Link className="link" to={ID ? "/" : "/signup"}>
-              {name}
-            </Link>
-          </b>
-          {ID ? (
-            <Button
-              colorScheme="grey"
-              onClick={handleClick}
-              color="white"
-              bgColor="black"
-            >
-              Signout
+        <Show breakpoint="(min-width: 680px)">
+          <div className="right_side">
+            <span>
+              <img src="/login2.png" alt="" />
+            </span>
+            <b>
+              <Link className="link" to={ID ? "/" : "/signup"}>
+                {name}
+              </Link>
+            </b>
+            {ID ? (
+              <Button
+                colorScheme="grey"
+                onClick={handleClick}
+                color="white"
+                bgColor="black"
+              >
+                Signout
+              </Button>
+            ) : (
+              ""
+            )}
+
+            <h6 className="cartCountItems">₹ {price}</h6>
+
+            <Button bgColor="white" onClick={() => navigate("/cart")}>
+              <img className="cart_img" src="/cart.svg" alt="" />
             </Button>
-          ) : (
-            ""
-          )}
-
-          <h6 className="cartCountItems">₹ { price}</h6>
-
-          <Button bgColor="white" onClick={()=>navigate("/cart")}>
-            <img className="cart_img" src="/cart.svg" alt="" />
-          </Button>
-        </div>
+          </div>
+        </Show>
+        <Show breakpoint="(max-width: 680px)">
+          <Sidebar
+            price={price}
+            handleClick={handleClick}
+            ID={ID}
+            name={name}
+          />
+        </Show>
       </div>
     </>
   );

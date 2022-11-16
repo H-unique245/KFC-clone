@@ -25,13 +25,13 @@ function TimerTracker({ Otp, verifyOtp }) {
 
   return (
     <div>
-      {" "}
-      <Text color={Timer === 0 ? "red" : "black"}>
+     
+      <Text fontSize={["12px","15px","18px","20px"]} color={Timer === 0 ? "red" : "black"}>
         Your code will expire in 0:{Timer} sec
       </Text>
       <Center>
         {Timer === 0 ? (
-          <Link to="/signup"> Please Try again otp Time limit expiry </Link>
+          <Link fontSize={["12px", "15px", "18px", "20px"]} to="/signup"> Please Try again otp Time limit expiry </Link>
         ) : (
           " "
         )}

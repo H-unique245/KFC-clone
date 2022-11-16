@@ -84,13 +84,13 @@
 }
 @media only screen and (max-width: 456px){
  
-    .nav_main{
+    /* .nav_main{
         flex-direction: column;
         display: flex;
         gap: 10px;
         height: 150px;
 
-    }
+    } */
     .black{
         display: none;
     }

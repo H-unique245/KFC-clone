@@ -3,6 +3,7 @@ import React from 'react';
 import { Carousels } from "../carousels/Carousels";
 import { MenuCards } from "../menuCards/MenuCards";
 import Offer from "../home_footer/Offer";
+import Footer from "../home_footer/Footer";
 import { Button } from '../main_button/Button';
 import { useNavigate } from "react-router-dom";
 
