@@ -21,8 +21,8 @@ function MenuPage() {
   const dispatch = useDispatch();
  
   return (
-    <HStack p={2}>
-      <Box w="30%" pl={10} mb={15} pb={20}>
+    <HStack p={[0,0,2,2]}>
+      <Box w={["40%","30%","30%","20%"]} pl={10} mb={15} pb={20}>
         <MenuFilter />
       </Box>
       <Box w="90%" h={"35rem"} overflowY={"scroll"}>

@@ -46,7 +46,7 @@ function ProductCard({_id,title,price,cata,desc,image}) {
  
   return (
     <Flex
-      p={30}
+      p={[0, 0, 30, 30]}
       w="full"
       alignItems="center"
       justifyContent="center"
@@ -60,97 +60,105 @@ function ProductCard({_id,title,price,cata,desc,image}) {
         shadow="lg"
         position="relative"
       >
-        <Box
-          size="10px"
-          position="absolute"
-          top={3}
-          right={3}
-        >
+        <Box size="10px" position="absolute" top={3} right={3}>
           <BsHeart size={20} color="white" />
         </Box>
-        <Image h={'15rem'} w="full" src={image} alt={title} roundedTop="lg" />
+        <Image
+          h="full"
+          w="full"
+          src={image}
+          alt={title}
+          roundedTop="lg"
+        />
 
         <Box p="6">
           <Box h={"3rem"} align={"left"}>
-            <Text as="b">{title}</Text>
+            <Text as="b" fontSize={["10px", "10px", "15px", "15px"]}>
+              {title}
+            </Text>
           </Box>
 
           <HStack h={6}>
-            <Badge
-              align="left"
-              variant="outline"
-              colorScheme="red"
-              p={1}
-            >
+            <Badge align="left" variant="outline" colorScheme="red" p={1}>
               <BsTriangleFill />
             </Badge>
-            <Text fontSize={"sm"}>Non-veg
-             {/* <span style={{fontStyle:"italic" }}> {desc ? `◉ [${desc.split("[").splice(-1)}`: null} </span> */}
-              </Text>
-         
+            <Text fontSize={["7px", "7px", "sm", "sm"]}>
+              Non-veg
+              {/* <span style={{fontStyle:"italic" }}> {desc ? `◉ [${desc.split("[").splice(-1)}`: null} </span> */}
+            </Text>
           </HStack>
           <Box h={"1rem"} m={1} align={"left"}>
-            <Text as="b">₹{price}</Text>
+            <Text as="b" fontSize={["10px", "10px", "15px", "15px"]}>
+              ₹{price}
+            </Text>
           </Box>
-          <Box h={"6rem"} m={1} mt={2} fontSize={"14px"} fontWeight={'black'} align={"left"}>
-            <Text >{desc}</Text>
+          <Box
+            h={["2rem", "2rem", "6rem", "6rem"]}
+            m={1}
+            mt={2}
+            fontSize={["8px", "8px", "14px", "14px"]}
+            fontWeight={"black"}
+            align={"left"}
+          >
+            <Text>{desc}</Text>
           </Box>
 
           {
-            count === 0 ? (<Button
-              onClick={
-                ()=>{
-                  setCount(count+1);
-                  const el={
-                    id:_id,image,price,cata,title,qty:count+1
-                }
-                dispatch(addToCart(el))
+            count === 0 ? (
+              <Button
+                onClick={() => {
+                  setCount(count + 1);
+                  const el = {
+                    id: _id,
+                    image,
+                    price,
+                    cata,
+                    title,
+                    qty: count + 1,
+                  };
+                  dispatch(addToCart(el));
                   // console.log(title,"added to cart");
-              //  console.log("added",title);
-              toast({
-                title: 'Success',
-                description: "Item Added to cart successfully !",
-                status: 'success',
-                position: 'top',
-                duration: 2000,
-                isClosable: true,
-              })
-              }}
-              variant="solid"
-              colorScheme="red"
-            >
-              Add to Cart <FiShoppingCart />{" "}
-            </Button>) :
-            (<Button
-              variant="solid"
-              colorScheme="green"
-            >
-              Added to Cart <FiShoppingCart />{" "}
-            </Button>)
-            
-            
-            
-          //   (<HStack alignContent={'center'}>
+                  //  console.log("added",title);
+                  toast({
+                    title: "Success",
+                    description: "Item Added to cart successfully !",
+                    status: "success",
+                    position: "top",
+                    duration: 2000,
+                    isClosable: true,
+                  });
+                }}
+                variant="solid"
+                colorScheme="red"
+              >
+                Add to Cart <FiShoppingCart />{" "}
+              </Button>
+            ) : (
+              <Button variant="solid" colorScheme="green">
+                Added to Cart <FiShoppingCart />{" "}
+              </Button>
+            )
 
-          //     <Button colorScheme={'red'} onClick={()=>{setCount(count-1)
-          //    const el={
-          //       id:_id,image,price,title,qty:count-1
-          //   }
-          //   dispatch(updateDec(el.id)); 
-          // }}>-</Button>
-    
-          //     <Text >{count}</Text>
-    
-          //     <Button colorScheme={'red'} onClick={()=>{setCount(count+1)
-          //    const el={
-          //       id:_id,image,price,title,qty:count+1
-          //   }
-          //   dispatch(updateInc(el.id)); 
-          // }}>+</Button>
-             
-          //   </HStack>)
+            //   (<HStack alignContent={'center'}>
+
+            //     <Button colorScheme={'red'} onClick={()=>{setCount(count-1)
+            //    const el={
+            //       id:_id,image,price,title,qty:count-1
+            //   }
+            //   dispatch(updateDec(el.id));
+            // }}>-</Button>
+
+            //     <Text >{count}</Text>
+
+            //     <Button colorScheme={'red'} onClick={()=>{setCount(count+1)
+            //    const el={
+            //       id:_id,image,price,title,qty:count+1
+            //   }
+            //   dispatch(updateInc(el.id));
+            // }}>+</Button>
+
+            //   </HStack>)
           }
-          
         </Box>
       </Box>
     </Flex>

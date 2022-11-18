@@ -14,19 +14,31 @@ function Burgers() {
   },[])
   return (
     <div id="burgers">
-          <Heading align='left' mt="3rem">Burgers </Heading>
-          <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
-          {
-            burger?.map((el)=>{
-                return   <Box key={el._id} maxHeight= '200vh'>
-              <ProductCard title={el.title} cata={el.cata} _id={el._id} desc={el.desc} price={el.price} image={el.image} />
-             </Box>
-            })
-        }
-        </SimpleGrid>
-
-        </div>
-  )
+      <Heading
+        align="left"
+        mt="3rem"
+        fontSize={["10px", "18px", "25px", "30px"]}
+      >
+        Burgers{" "}
+      </Heading>
+      <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 3 }} spacing={2}>
+        {burger?.map((el) => {
+          return (
+            <Box key={el._id} maxHeight="200vh">
+              <ProductCard
+                title={el.title}
+                cata={el.cata}
+                _id={el._id}
+                desc={el.desc}
+                price={el.price}
+                image={el.image}
+              />
+            </Box>
+          );
+        })}
+      </SimpleGrid>
+    </div>
+  );
 }
 
 export default Burgers

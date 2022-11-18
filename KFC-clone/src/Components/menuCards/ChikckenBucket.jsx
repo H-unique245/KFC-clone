@@ -20,18 +20,31 @@ function ChikckenBucket() {
   }
   return (
     <div id="chicken_buckets">
-          <Heading align='left' mt="3rem">Chicken Buckets</Heading>
-          <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
-          {
-            chicken?.map((el)=>{
-                return   <Box key={el._id} maxHeight= '200vh'>
-              <ProductCard _id={el._id} title={el.title} cata={el.cata} desc={el.desc} veg={el.type} price={el.price} image={el.image} />
-             </Box>
-            })
-        }
-        </SimpleGrid>
-
-        </div>
-  )
+      <Heading
+        align="left"
+        mt="3rem"
+        fontSize={["10px", "18px", "25px", "30px"]}
+      >
+        Chicken Buckets
+      </Heading>
+      <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 3 }} spacing={2}>
+        {chicken?.map((el) => {
+          return (
+            <Box key={el._id} maxHeight="200vh">
+              <ProductCard
+                _id={el._id}
+                title={el.title}
+                cata={el.cata}
+                desc={el.desc}
+                veg={el.type}
+                price={el.price}
+                image={el.image}
+              />
+            </Box>
+          );
+        })}
+      </SimpleGrid>
+    </div>
+  );
 }
 export default ChikckenBucket

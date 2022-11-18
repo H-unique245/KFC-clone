@@ -14,7 +14,7 @@ function Beverages() {
   },[])
   return (
     <div id="beverages">
-          <Heading align='left' mt="3rem">Beverages</Heading>
+          <Heading align='left' mt="3rem" fontSize={["10px","18px","25px","30px"]} >Beverages</Heading>
           <SimpleGrid  columns={{base:1,sm:1,md:2,lg:3}} spacing={2}> 
           {
             beverage?.map((el)=>{
