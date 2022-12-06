@@ -22,7 +22,7 @@ import {
 
 const PostData = async (values) => {
   let res = await axios.post(
-    `https://backend-server-kfc.herokuapp.com/users/signup`,
+    `https://eat-more3.onrender.com/users/signup`,
     values
   );
   return res;

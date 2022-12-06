@@ -11,7 +11,9 @@ import Sidebar from "./sidebar";
 
 const GetData = async (values) => {
   let res = await axios.post(
-    `https://backend-server-kfc.herokuapp.com/users/singleuser`,values);
+    `https://eat-more3.onrender.com/users/singleuser`,
+    values
+  );
   return res;
 };
 

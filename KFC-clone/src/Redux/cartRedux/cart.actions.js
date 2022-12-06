@@ -18,10 +18,10 @@ import {
   COUNTER_UPDATEDEC,
   SETPRICE,
 } from "./cart.actionType";
-export const getcartItem = () => async (dispatch) => {
+export const getcartItem = (user) => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
   try {
-    let res = await axios.get("https://db-files.herokuapp.com/cart");
+    let res = await axios.post("http://localhost:5000/carts/",user);
 
     return dispatch({
       type: GET_CART_ITEMS_SUCCESS,
@@ -37,17 +37,14 @@ export const addToCart =
     // console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
-      let res = await axios.post(
-        "https://db-files.herokuapp.com/cart",
-        {
-          image,
-          title,
-          cata,
-          qty,
-          id,
-          price,
-        }
-      );
+      let res = await axios.post("http://localhost:5000/carts/add", {
+        image,
+        title,
+        cata,
+        qty,
+        id,
+        price,
+      });
       return dispatch({
         type: ADD_ITEM_TO_CART_SUCCESS,
         payload: res.data,

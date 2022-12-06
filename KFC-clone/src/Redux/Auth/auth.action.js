@@ -40,7 +40,7 @@ export const authOtphandle = (Number) => async (dispatch) => {
   // dispatch({ type: AUTH_LOGIN_LOADING });
   try {
     let res = await axios.post(
-      `https://backend-server-kfc.herokuapp.com/users/login`,
+      `https://eat-more3.onrender.com/users/login`,
       Number
     );
     dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
