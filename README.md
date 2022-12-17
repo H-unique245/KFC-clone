@@ -39,30 +39,29 @@ ___
 
 
 ## Tech Stack
-___
 
-## Frontend 
-* HTML 5
-* CSS 3
-* JavaScript
-* React JS
-* Chakra UI
-* Redux JS 
+- ### Frontend 
+    * HTML 5
+    * CSS 3
+    * JavaScript
+    * React JS
+    * Chakra UI
+    * Redux JS 
+    
+ - ### Backend
+    * Node JS
+    * Express JS
+    
+ - ### Database
+    * MongoDB
+ 
+ - ### Other Tools and Libraries 
+    * NPM
+    * Firebase
+    * React Icons
+    * React Slick
+    * Git
 
-### Backend
-
-* Node JS
-* Express JS
-
-### Database
-* MongoDB
-
-### Other Tools and Libraries 
-* NPM
-* Firebase
-* React Icons
-* React Slick
-* Git
 
 
 ##  Features
