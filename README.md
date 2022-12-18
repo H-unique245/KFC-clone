@@ -74,3 +74,24 @@ ___
 * User Cart
 * Checkout
 * Payment 
+
+## Glimps of project
+___
+   - ### Homepage
+<img src='https://i.imgur.com/LVS8cEG.png' alt="homepage_image" />
+
+   - ### User signup
+<img src="https://i.imgur.com/XoG8Ha2.png" alt="homepage_image" />
+   
+   - ### User sign in
+<img src="https://i.imgur.com/kPaDXrL.png" alt="homepage_image" />
+
+   - ### Menu page
+<img src="https://i.imgur.com/orrDIjB.png" alt="homepage_image" />
+
+  - ### Cart Page
+<img src="https://i.imgur.com/r8qyBIx.png" alt="homepage_image" />
+
+  - ### Checkout Page
+<img src="https://i.imgur.com/8DsM0JS.png" alt="homepage_image" />
+ 
