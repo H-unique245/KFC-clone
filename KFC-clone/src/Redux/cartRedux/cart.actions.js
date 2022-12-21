@@ -13,7 +13,7 @@ import {
   REMOVE_CART_ITEMS_SUCCESS,
   REMOVE_CART_ITEMS_LOADING,
   REMOVE_CART_ITEMS_ERROR,
-  // COUNTER_UPDATE,
+
   COUNTER_UPDATEINC,
   COUNTER_UPDATEDEC,
   SETPRICE,
@@ -34,6 +34,7 @@ export const getcartItem = (user) => async (dispatch) => {
 export const addToCart =
   ({ image, id, title, cata, qty, price }) =>
   async (dispatch) => {
+    console.log("image",image, "id",id, "title",title, "cata",cata, "qty",qty, "price",price);
     // console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {

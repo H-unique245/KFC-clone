@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import CartItemComponent from "../Components/CartItemComponent";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../Components/main_button/Button";
-import { deleteItem, getcartItem } from "../Redux/cartRedux/cart.actions";
+import {
+  deleteItem,
+  getcartItem,
+} from "../Redux/cartRedux/cart.actions";
 import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
-  const { data} = useSelector((store) => store.cart);
+  const { data } = useSelector((store) => store.cart);
   const [products, setProducts] = useState(data);
 
   const dispatch = useDispatch();
@@ -15,14 +18,14 @@ function Cart() {
 
   const handleclick = (id) => {
     setTimeout(() => {
-       dispatch(getcartItem());
-    setProducts(data);
-   },1000)
-     dispatch(deleteItem(id));
- };
+      dispatch(getcartItem());
+      setProducts(data);
+    }, 1000);
+    dispatch(deleteItem(id));
+  };
   useEffect(() => {
     dispatch(getcartItem());
-},[products])
+  }, [products]);
 
   return (
     <div>
@@ -37,7 +40,12 @@ function Cart() {
           Order More
         </Button>
       </div>
-      <CartItemComponent data={data} handleclick={handleclick} />
+      <CartItemComponent
+        data={data}
+        handleclick={handleclick}
+      />
+      <br />
+      <br />
     </div>
   );
 }

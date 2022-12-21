@@ -7,6 +7,7 @@ import {
 import Cartitems from "./Cartitems";
 import CartPriceComponent from "./CartPriceComponent";
 import styles from "./styles/Cart.module.css";
+import { Link } from "react-router-dom";
 
 function CartItemComponent({ data, handleclick }) {
   // const { data, loading } = useSelector(
@@ -36,7 +37,12 @@ function CartItemComponent({ data, handleclick }) {
               <span className={styles.emptyCartH}>
                 YOUR CART IS EMPTY. LET'S START AN ORDER!
               </span>
-              <button className={styles.emptyCartbtn}>Start Order</button>
+              <Link
+                to={"/menu"}
+                className={styles.emptyCartbtn}
+              >
+                Start Order
+              </Link>
             </div>{" "}
             <img
               className={styles.emptyCartimg}
@@ -56,7 +62,10 @@ function CartItemComponent({ data, handleclick }) {
 
             <div className={styles.innerCantainer}>
               <div className={styles.cartCompo}>
-                <Cartitems data={data} handleclick={handleclick} />
+                <Cartitems
+                  data={data}
+                  handleclick={handleclick}
+                />
               </div>
 
               <div>

@@ -14,10 +14,23 @@ import { useState } from "react";
 import { BsHeart, BsTriangleFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, getcartItem, updateDec, updateInc, updateQty } from "../Redux/cartRedux/cart.actions";
+import {
+  addToCart,
+  getcartItem,
+  updateDec,
+  updateInc,
+  updateQty,
+} from "../Redux/cartRedux/cart.actions";
 
-function ProductCard({_id,title,price,cata,desc,image}) {
-  const [count,setCount]= useState(0)
+function ProductCard({
+  _id,
+  title,
+  price,
+  cata,
+  desc,
+  image,
+}) {
+  const [count, setCount] = useState(0);
   const { data } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
   // const cart = useSelector((state) => { // console.log(state.cart.data);
@@ -26,7 +39,6 @@ function ProductCard({_id,title,price,cata,desc,image}) {
   //   );
   // });
   // data.id===_id -->qty --> +1
-  console.log("cart",data)
   // const checkCart= data.map((el)=>{
   //   if(el.id===_id){
   //     return  el
@@ -37,13 +49,13 @@ function ProductCard({_id,title,price,cata,desc,image}) {
   //   dispatch(getcartItem());
   // },[data])
 
-// console.log(checkCart);
+  // console.log(checkCart);
   const toast = useToast({
-    containerStyle:{
-      bgColor:'red'
-    }
-  })
- 
+    containerStyle: {
+      bgColor: "red",
+    },
+  });
+
   return (
     <Flex
       p={[0, 0, 30, 30]}
@@ -60,7 +72,12 @@ function ProductCard({_id,title,price,cata,desc,image}) {
         shadow="lg"
         position="relative"
       >
-        <Box size="10px" position="absolute" top={3} right={3}>
+        <Box
+          size="10px"
+          position="absolute"
+          top={3}
+          right={3}
+        >
           <BsHeart size={20} color="white" />
         </Box>
         <Image
@@ -73,13 +90,21 @@ function ProductCard({_id,title,price,cata,desc,image}) {
 
         <Box p="6">
           <Box h={"3rem"} align={"left"}>
-            <Text as="b" fontSize={["10px", "10px", "15px", "15px"]}>
+            <Text
+              as="b"
+              fontSize={["10px", "10px", "15px", "15px"]}
+            >
               {title}
             </Text>
           </Box>
 
           <HStack h={6}>
-            <Badge align="left" variant="outline" colorScheme="red" p={1}>
+            <Badge
+              align="left"
+              variant="outline"
+              colorScheme="red"
+              p={1}
+            >
               <BsTriangleFill />
             </Badge>
             <Text fontSize={["7px", "7px", "sm", "sm"]}>
@@ -88,7 +113,10 @@ function ProductCard({_id,title,price,cata,desc,image}) {
             </Text>
           </HStack>
           <Box h={"1rem"} m={1} align={"left"}>
-            <Text as="b" fontSize={["10px", "10px", "15px", "15px"]}>
+            <Text
+              as="b"
+              fontSize={["10px", "10px", "15px", "15px"]}
+            >
               ₹{price}
             </Text>
           </Box>
@@ -117,11 +145,13 @@ function ProductCard({_id,title,price,cata,desc,image}) {
                     qty: count + 1,
                   };
                   dispatch(addToCart(el));
+                  console.log(el);
                   // console.log(title,"added to cart");
                   //  console.log("added",title);
                   toast({
                     title: "Success",
-                    description: "Item Added to cart successfully !",
+                    description:
+                      "Item Added to cart successfully !",
                     status: "success",
                     position: "top",
                     duration: 2000,
