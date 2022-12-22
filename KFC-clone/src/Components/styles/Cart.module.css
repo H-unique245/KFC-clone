@@ -487,3 +487,81 @@ label:focus + label:focus {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+.MediaQuerryPayment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.hhhhhasdf{
+  width: 25%;
+}
+.kkjjhhhss{
+  width: 65%;
+}
+@media (max-width: 992px) {
+  .checkOutCompo{
+    margin-left: 60px;
+    width: 260px;
+  }
+  .CheckOutheading {
+    width: 25%;
+    font-size: 24px;
+    padding: 40px 40px 40px 40px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .CheckOutheading2 {
+    margin-left: -42px;
+  }
+  .checkOutBody {
+    width: 70%;
+    padding: 40px;
+
+    margin-top: -60px;
+  }
+  .resdEVIVERY {
+    display: flex;
+    gap: 20px;
+    width: 190px;
+    margin-bottom: 20px;
+  }
+  .inputAndLableCheckOut {
+    display: flex;
+  }
+  .inputAddress {
+    border: none;
+    border-bottom: 2px solid #c9c9c9;
+    width: 160px;
+    background-color: #f8f7f5;
+  }
+  .radioA {
+    margin-top: -80px;
+    width: 260px;
+  }
+  .MediaQuerryPayment {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .MediaQuerryPayment {
+    margin-left: 15px;
+  }
+  .btnDFGHJK {
+    margin-left: 65px;
+  }
+  .lastname{
+    display: flex;
+    flex-direction: column;
+     margin-top: 4%;
+  }
+  .hhhhhasdf{
+    width: 100%;
+    margin-left: -7%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .kkjjhhhss{
+  width: 70%;
+}
+}

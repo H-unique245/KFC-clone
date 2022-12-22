@@ -29,7 +29,7 @@ function Payment() {
   const cancelRef = React.useRef();
   return (
     <div>
-      <hr style={{ marginTop: "20px" }} />
+      <hr style={{ marginTop: "10px" }} />
       <div className={styles.container}>
         <div className={styles.bars}>
           <img
@@ -40,7 +40,7 @@ function Payment() {
         </div>
       </div>
       <div className={styles.lastname}>
-        <div style={{ width: "65%" }}>
+        <div className={styles.kkjjhhhss}>
           <div className={styles.checkOutCompo}>
             <div className={styles.CheckOutheading}>
               <h2 className={styles.CheckOutheading2}>
@@ -140,25 +140,23 @@ function Payment() {
           <br />
           <div className={styles.checkOutCompo}>
             <div className={styles.CheckOutheading2}>
-              <h2 className={styles.CheckOutheading2}>
-                PAYMENT
-              </h2>
-              <Box
-                ref={finalRef}
-                tabIndex={-1}
-                aria-label="Focus moved to this box"
-              ></Box>
+              <div className={styles.MediaQuerryPayment}>
+                <h2 className={styles.MediaQuerryPayment2}>
+                  PAYMENT
+                </h2>
 
-              <Button
-                style={{
-                  backgroundColor: "#f8f7f5",
-                  textDecoration: "underline",
-                }}
-                mt={4}
-                onClick={onOpen}
-              >
-                Add Payment Method
-              </Button>
+                <Button
+                  className={styles.btnDFGHJK}
+                  style={{
+                    backgroundColor: "#f8f7f5",
+                    textDecoration: "underline",
+                  }}
+                  mt={4}
+                  onClick={onOpen}
+                >
+                  Add Payment Method
+                </Button>
+              </div>
               <Modal
                 finalFocusRef={finalRef}
                 isOpen={isOpen}
@@ -210,7 +208,10 @@ function Payment() {
             </div>
           </div>
         </div>
-        <div style={{ width: "25%" }}>
+        <div
+          className={styles.hhhhhasdf}
+         
+        >
           <div className={styles.priceCompo}>
             <div className={styles.cartOffer}>
               <div className={styles.cartOfferLink}>
