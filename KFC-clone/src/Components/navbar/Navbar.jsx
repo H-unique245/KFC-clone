@@ -164,6 +164,16 @@ const Navbar = () => {
                 Deals
               </Link>
             </b>
+            <b>
+              <Link className="link" to="/about">
+                About
+              </Link>
+            </b>
+            <b>
+              <Link className="link" to="/findKFC">
+                Find A KFC
+              </Link>
+            </b>
           </Show>
         </div>
         <Show breakpoint="(min-width: 680px)">
