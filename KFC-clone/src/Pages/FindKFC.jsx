@@ -305,6 +305,7 @@ const FindKFC = () => {
             )}
           </div>
         </div>
+        
         <div className='mapDisplaySearch'>
                     <iframe
                         className='mapIframe'
@@ -313,9 +314,7 @@ const FindKFC = () => {
                         allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
                         src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAq15HbfCRMW7RqNb5LUNyOLyfzpYI0wl4&q=${textL}`}>
-
                     </iframe>
-
                 </div>
             </div>
     </FindSearchPartStyled>
