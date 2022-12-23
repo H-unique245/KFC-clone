@@ -19,7 +19,7 @@ function Cartitem({ data, handleclick }) {
   useEffect(() => {}, [data]);
 
   return (
-    <div >
+    <div>
       <div className={styles.cartitem}>
         <div className={styles.m}>
           <img
@@ -28,7 +28,7 @@ function Cartitem({ data, handleclick }) {
             alt={data.title}
           />
           <div className={styles.cartbtnCont}>
-            <div>
+            <div >
               <button
                 className={styles.cartitembtn}
                 onClick={() => setCataShow(!cataShow)}
@@ -44,7 +44,7 @@ function Cartitem({ data, handleclick }) {
               </button>
               {cataShow ? (
                 <ItemcataList data={data.cata} />
-              ) : null}
+              ) :<div></div>}
             </div>
             <div className={styles.cartActions}>
               <div>
