@@ -101,7 +101,3 @@ export const priceSet = (payload) => ({
   payload,
 });
 
-export const priceSet2= (payload) => ({
-  type: SETPRICE,
-  payload,
-});

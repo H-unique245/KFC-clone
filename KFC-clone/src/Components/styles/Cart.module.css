@@ -188,6 +188,7 @@
   display: flex;
   align-items: center;
   background: #f8f7f5;
+
   margin-bottom: 80px;
   width: 80%;
   margin-left: 11%;
@@ -221,6 +222,7 @@
   background-color: #e4002b;
   border: 1px solid #e4002b;
   color: #fff;
+  font-weight: 600;
   padding: 11px 40px;
   border-radius: 200px;
   height: 44px;
@@ -231,6 +233,9 @@
   font-style: normal;
   font-size: 14px;
   line-height: 24px;
+}
+.emptyCartbtn:hover {
+  color: #fff;
 }
 .innerCantainer {
   display: flex;
@@ -493,14 +498,14 @@ label:focus + label:focus {
   align-items: center;
   width: 100%;
 }
-.hhhhhasdf{
+.hhhhhasdf {
   width: 25%;
 }
-.kkjjhhhss{
+.kkjjhhhss {
   width: 65%;
 }
 @media (max-width: 992px) {
-  .checkOutCompo{
+  .checkOutCompo {
     margin-left: 60px;
     width: 260px;
   }
@@ -550,18 +555,62 @@ label:focus + label:focus {
   .btnDFGHJK {
     margin-left: 65px;
   }
-  .lastname{
+  .lastname {
     display: flex;
     flex-direction: column;
-     margin-top: 4%;
+    margin-top: 4%;
   }
-  .hhhhhasdf{
+  .hhhhhasdf {
     width: 100%;
     margin-left: -7%;
     margin-top: 40px;
     margin-bottom: 40px;
   }
-  .kkjjhhhss{
-  width: 70%;
-}
+  .kkjjhhhss {
+    width: 70%;
+  }
+  .emptyCart {
+   
+    display: flex;
+    align-items: center;
+    background: #f8f7f5;
+    background-image: url("https://online.kfc.co.in/static/media/empty_cart.32f17a45.png");
+    margin-bottom: 80px;
+    width: 80%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 120px;
+    padding: 50px;
+    overflow: hidden;
+  }
+  .emptyCartimg {
+    display: block;
+    display: none;
+  }
+  .emptyCartH {
+    width: 200px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: -150px;
+    text-transform: uppercase;
+    color: #202124;
+   
+    text-align: left;
+  }
+  .emptyCartbtn {
+    background-color: #e4002b;
+    border: 1px solid #e4002b;
+    color: #fff;
+
+    border-radius: 200px;
+    height: 44px;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+    width: 180px;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 24px;
+  }
 }

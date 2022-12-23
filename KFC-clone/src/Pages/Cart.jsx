@@ -32,7 +32,7 @@ function Cart() {
       <div className="black">
         <b>LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN</b>
 
-        <Button
+        <Button style={{fontWeight:"600"}}
           onClick={() => {
             navigate("/menu");
           }}
