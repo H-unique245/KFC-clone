@@ -125,8 +125,7 @@ function Cart() {
         data={data}
         handleclick={handleclick}
       />
-      <br />
-      <br />
+    
     </div>
   );
 }
