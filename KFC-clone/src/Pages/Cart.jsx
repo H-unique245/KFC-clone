@@ -46,7 +46,7 @@ function Cart() {
         <b>LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN</b>
 
         <>
-          <Button mt={4} onClick={onOpen}>
+          <Button bg={"red"} onClick={onOpen}>
             <Text fontWeight={"bold"}> Order Now</Text>
           </Button>
           <Modal
@@ -60,37 +60,57 @@ function Cart() {
               <ModalCloseButton />
               <ModalBody>
                 <Box>
-                  <Button >Button</Button>
+                  <Link to="/menu#chicken_buckets">
+                    <Button width={"400px"}>
+                      Chicken Buckets
+                    </Button>
+                  </Link>
                 </Box>
-                <br/>
+                <br />
                 <Box>
-                  <Button >Button</Button>
+                  <Link to="/menu#new_launch">
+                    <Button width={"400px"}>
+                      New Launch
+                    </Button>
+                  </Link>
                 </Box>
-                  <br/>
+                <br />
                 <Box>
-                  <Button >Button</Button>
+                  <Link to="/menu#biryani_buckets">
+                    <Button width={"400px"}>
+                      Chicken Buckets
+                    </Button>
+                  </Link>
                 </Box>
-                  <br/>
+                <br />
                 <Box>
-                  <Button >Button</Button>
+                  <Link to="/menu#stay_home_specials">
+                    <Button width={"400px"}>
+                      Stay Home Special
+                    </Button>
+                  </Link>
                 </Box>
-                  <br/>
+                <br />
                 <Box>
-                  <Button >Button</Button>
+                  <Link to="/menu#box_meals">
+                    <Button width={"400px"}>
+                      Box Meals
+                    </Button>
+                  </Link>
                 </Box>
               </ModalBody>
 
               <ModalFooter>
                 <Link
-                  to={"/deal"}
+                  to={"/deals"}
                   style={{ marginRight: "10px" }}
                 >
-                  <Button colorScheme="blue">
+                  <Button bg={"red"} color={"white"}>
                     <Text fontWeight={"bold"}> Deals</Text>
                   </Button>
                 </Link>
                 <Link to={"/menu"}>
-                  <Button variant="ghost">
+                  <Button bg={"red"} color={"white"}>
                     <Text fontWeight={"bold"} Menu>
                       Menu
                     </Text>
