@@ -9,54 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
-  // const { data } = useSelector((store) => store.cart);
-  const data = [
-    {
-      id: "62ac55446d5d09f1b64880db",
-      image:
-        "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/lg/D-K511.jpg?ver=1.10",
-      price: 499,
-      cata: [
-        "Peri Peri 5 Leg Pc",
-        "Eggless Mayo",
-        "Nashville Hot Pepper Dip",
-        "French Fries -Medium",
-        "Pepsi PET",
-      ],
-      title: "5pc Leg Piece Bucket & 2 Dips",
-      qty: 1,
-    },
-    {
-      id: "62ac55446d5d09f1b64880e2",
-      image:
-        "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/lg/D-K012.jpg?ver=1.10",
-      price: 619,
-      cata: [
-        "Peri Peri 5 Leg Pc",
-        "Eggless Mayo",
-        "Nashville Hot Pepper Dip",
-        "French Fries -Medium",
-        "Pepsi PET",
-      ],
-      title: "6 pc Hot & Crispy Chicken",
-      qty: 1,
-    },
-    {
-      id: "62ac55446d5d09f1b64880e0",
-      image:
-        "https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/items/lg/D-K445.jpg?ver=1.10",
-      price: 499,
-      cata: [
-        "Peri Peri 5 Leg Pc",
-        "Eggless Mayo",
-        "Nashville Hot Pepper Dip",
-        "French Fries -Medium",
-        "Pepsi PET",
-      ],
-      title: "5pc Smoky Red Chicken",
-      qty: 1,
-    },
-  ];
+  const { data } = useSelector((store) => store.cart);
+ 
   const [products, setProducts] = useState(data);
 
   const dispatch = useDispatch();
