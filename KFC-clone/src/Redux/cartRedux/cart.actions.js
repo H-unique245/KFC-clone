@@ -100,3 +100,8 @@ export const priceSet = (payload) => ({
   type: SETPRICE,
   payload,
 });
+
+export const priceSet2= (payload) => ({
+  type: SETPRICE,
+  payload,
+});
