@@ -305,7 +305,19 @@ const FindKFC = () => {
             )}
           </div>
         </div>
-        
+        <div className='mapDisplaySearch'>
+                    <iframe
+                        className='mapIframe'
+                        title="Map of City"
+                        loading="lazy"
+                        allowFullScreen
+                        referrerPolicy="no-referrer-when-downgrade"
+                        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAq15HbfCRMW7RqNb5LUNyOLyfzpYI0wl4&q=${textL}`}>
+
+                    </iframe>
+
+                </div>
+            </div>
     </FindSearchPartStyled>
   );
 };
