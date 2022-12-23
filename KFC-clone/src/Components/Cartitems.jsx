@@ -27,7 +27,7 @@ function Cartitems({data,handleclick}) {
     total();
   }, [data]);
 
- console.log(data)
+
 
   if (loading) {
     return (

@@ -493,14 +493,14 @@ label:focus + label:focus {
   align-items: center;
   width: 100%;
 }
-.hhhhhasdf{
+.hhhhhasdf {
   width: 25%;
 }
-.kkjjhhhss{
+.kkjjhhhss {
   width: 65%;
 }
 @media (max-width: 992px) {
-  .checkOutCompo{
+  .checkOutCompo {
     margin-left: 60px;
     width: 260px;
   }
@@ -550,18 +550,118 @@ label:focus + label:focus {
   .btnDFGHJK {
     margin-left: 65px;
   }
-  .lastname{
+  .lastname {
     display: flex;
     flex-direction: column;
-     margin-top: 4%;
+    margin-top: 4%;
   }
-  .hhhhhasdf{
+  .hhhhhasdf {
     width: 100%;
     margin-left: -7%;
     margin-top: 40px;
     margin-bottom: 40px;
   }
-  .kkjjhhhss{
-  width: 70%;
-}
+  .kkjjhhhss {
+    width: 70%;
+  }
+  .cartitem {
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 11px 16px;
+    background-color: #f8f7f5;
+    border-radius: 3px;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .innerCantainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .cartCompo {
+    width: 90%;
+  }
+  .priceCompo {
+    margin-top: 40px;
+    width: 90%;
+    margin-left: 0%;
+  }
+  .m {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    width: 100%;
+  }
+  .cartitemImg {
+    border-radius: 3px;
+    width: 160px;
+    margin-left: 24%;
+
+    object-fit: contain;
+  }
+  .cartbtnCont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    gap: 10px;
+
+  }
+  .cartCounterP {
+    display: flex;
+    align-items: center;
+    background-color: #f8f7f5;
+    width: 290px;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    height: 45px;
+  
+
+  }
+  .itemPrice {
+    width: 90px;
+    font-family: "National 2 Regular";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #202124;
+    display: flex;
+    flex-direction: column;
+  }
+  .removebtn {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 22px;
+    -webkit-text-decoration-line: underline;
+    text-decoration-line: underline;
+    color: #202124;
+    cursor: pointer;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: -20%;
+  }
+  .cartitembtn {
+    padding: 0 19px 19px 0;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
+  }
+  .cartCounterC {
+    display: flex;
+    align-items: center;
+  }
 }

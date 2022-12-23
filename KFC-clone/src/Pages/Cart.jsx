@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
   const { data } = useSelector((store) => store.cart);
+  
   const [products, setProducts] = useState(data);
 
   const dispatch = useDispatch();
