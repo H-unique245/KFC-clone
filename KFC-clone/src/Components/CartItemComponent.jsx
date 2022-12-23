@@ -18,6 +18,7 @@ function CartItemComponent({ data, handleclick }) {
   useEffect(() => {
     dispatch(priceSet(0));
   }, []);
+  console.log(data);
   return (
     <div>
       {data.length === 0 ? (
@@ -62,7 +63,7 @@ function CartItemComponent({ data, handleclick }) {
 
             <div className={styles.innerCantainer}>
               <div className={styles.cartCompo}>
-                <Cartitems
+                <Cartitems 
                   data={data}
                   handleclick={handleclick}
                 />

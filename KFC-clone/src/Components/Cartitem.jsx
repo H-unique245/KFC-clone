@@ -12,16 +12,14 @@ import {
   updateQty,
 } from "../Redux/cartRedux/cart.actions";
 
-function Cartitem({ data,handleclick }) {
+function Cartitem({ data, handleclick }) {
   const [cataShow, setCataShow] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    
-  },[data])
+  useEffect(() => {}, [data]);
 
   return (
-    <div>
+    <div >
       <div className={styles.cartitem}>
         <div className={styles.m}>
           <img
@@ -51,7 +49,7 @@ function Cartitem({ data,handleclick }) {
             <div className={styles.cartActions}>
               <div>
                 <span
-                  onClick={()=>handleclick(data.id)}
+                  onClick={() => handleclick(data.id)}
                   className={styles.removebtn}
                 >
                   Remove

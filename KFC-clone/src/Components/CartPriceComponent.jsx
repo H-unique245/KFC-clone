@@ -25,7 +25,7 @@ function CartPriceComponent() {
             </span>
           </div>
           <button className={styles.cartOfferBtn}>
-            View All
+            View 
           </button>
         </div>
         <div className={styles.cartOfferSum}>
