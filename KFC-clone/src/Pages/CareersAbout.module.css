@@ -1,0 +1,11 @@
+.careersDiv{
+    margin-top:10rem;
+    width:100%;
+    height:100%;
+}
+
+.careersDiv > img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}

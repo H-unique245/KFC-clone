@@ -25,6 +25,7 @@ function Cart() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const { data } = useSelector((store) => store.cart);
+  
   const [products, setProducts] = useState(data);
 
   const dispatch = useDispatch();

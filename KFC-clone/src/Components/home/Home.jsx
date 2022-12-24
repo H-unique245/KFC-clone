@@ -12,12 +12,11 @@ import Footer from "../home_footer/Footer";
 import { Button } from '../main_button/Button';
 import { useNavigate } from "react-router-dom";
 import loading_gif from "./loading_gif.gif";
+import axios from "axios";
 
 
 const browseCategoriesDataFromApi = () => {
-  return fetch(`https://apicategories.vercel.app/browseCategories`).then((res) =>
-    res.json()
-  );
+  return axios(`https://elated-pink-swallow.cyclic.app/browseCategories`);
 };
 
 const Home = () => {
@@ -44,7 +43,8 @@ const Home = () => {
       browseCategoriesDataFromApi()
         .then((res) => {
           // setIsLoading(false)
-          setCategoriesData(res);
+          console.log(res);
+          setCategoriesData(res.data);
         })
         .catch((err) => {
           setIsError(true);

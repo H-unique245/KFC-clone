@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import styles from "./CareersAbout.module.css";
+
+let imgsrc = require("./assets/about.jpg");
 
 const About = () => {
   return (
-    <div>About</div>
-  )
+    <div className={styles.careersDiv}>
+      <img src={imgsrc} alt="Careers Page" />
+    </div>
+  );
 }
 
-export default About
+export default About;
