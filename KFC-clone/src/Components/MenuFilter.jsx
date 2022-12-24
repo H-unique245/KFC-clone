@@ -4,7 +4,7 @@ import React from 'react'
 // import {Link as LinkItem} from "react-scroll"
 function MenuFilter() {
   return (
-    <Box align="left" ml={2}>
+    <Box align="left" ml={2} >
       <Box m={0}>
         <Image
           h={8}
