@@ -12,8 +12,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Deals = () => {
+  const navigate = useNavigate();
   return (
     <Box mt={2}>
       <Flex
@@ -65,11 +68,15 @@ const Deals = () => {
                 <Heading
                   color={"white"}
                   align="center"
-                  w={{base:'50%',md:'70%'}}
+                  w={{ base: "50%", md: "70%" }}
                   fontWeight={700}
                   lineHeight={1.2}
                   textTransform={"uppercase"}
-                  fontSize={useBreakpointValue({ base: "md", md: "2xl",lg: "3xl" })}
+                  fontSize={useBreakpointValue({
+                    base: "md",
+                    md: "2xl",
+                    lg: "3xl",
+                  })}
                 >
                   SELECT A KFC TO SEE LOCAL OFFERS
                 </Heading>
@@ -85,7 +92,7 @@ const Deals = () => {
               </VStack>
             </Flex>
           </VStack>
-          <VStack h={"xl"} borderRadius={"lg"} boxShadow="base">
+          <VStack h={"xxl"} borderRadius={"lg"} boxShadow="base">
             <Box>
               <Image
                 h="50vh"
@@ -95,19 +102,41 @@ const Deals = () => {
               />
             </Box>
             <Heading color="red">1 Pc free Chicken</Heading>
-            <Text w={{base:'60%',md:'50%',lg:"90%"}} h="30%" overflow={'hidden'} mb={3} fontSize={{base:"sm",md:"md",lg:"xl"}} align="center">
+            <Text
+              w={{ base: "60%", md: "50%", lg: "90%" }}
+              h="30%"
+              overflow={"hidden"}
+              mb={3}
+              fontSize={{ base: "sm", md: "md", lg: "xl" }}
+              align="center"
+            >
               1 Pc free Chicken Zinger on a cart value of 499 or above on first
               order. Only for registerd users
             </Text>
             <HStack spacing={20}>
-              <Text fontSize={"xl"} textDecoration="underline">
+              {/* <Text fontSize={"xl"} textDecoration="underline">
                 View Details
-              </Text>
-              <Button borderRadius={20}>Redeem</Button>
+              </Text> */}
+              <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                View All
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                Redeem
+              </Button>
             </HStack>
           </VStack>
 
-          <VStack h={"xl"} borderRadius={"lg"} boxShadow="base">
+          <VStack h={"xxl"} borderRadius={"lg"} boxShadow="base">
             <Image
               h="50vh"
               w="100%"
@@ -115,19 +144,38 @@ const Deals = () => {
               alt="veg_zinger"
             />
             <Heading color="red">1 Pc free Veg Zinger</Heading>
-            <Text w={{base:'60%',md:'50%',lg:"90%"}} h="30%" overflow={'hidden'} mb={3} fontSize={{base:"sm",md:"md",lg:"xl"}} align="center">
+            <Text
+              w={{ base: "60%", md: "50%", lg: "90%" }}
+              h="30%"
+              overflow={"hidden"}
+              mb={3}
+              fontSize={{ base: "sm", md: "md", lg: "xl" }}
+              align="center"
+            >
               1 Pc free Veg Zinger on a cart value of 499 or above on first
               order. Only for registerd users
             </Text>
             <HStack spacing={20}>
-              <Text fontSize={"xl"} textDecoration="underline">
-                View Details
-              </Text>
-              <Button borderRadius={20}>Redeem</Button>
+            <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                View All
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                Redeem
+              </Button>
             </HStack>
           </VStack>
 
-          <VStack h={"xl"} borderRadius={"lg"} boxShadow="base">
+          <VStack h={"xxl"} borderRadius={"lg"} boxShadow="base">
             <Box>
               <Image
                 h="50vh"
@@ -137,19 +185,38 @@ const Deals = () => {
               />
             </Box>
             <Heading color="red">1 Pc free Chicken</Heading>
-            <Text w={{base:'60%',md:'50%',lg:"90%"}} h="30%" overflow={'hidden'} mb={3} fontSize={{base:"sm",md:"md",lg:"xl"}} align="center">
+            <Text
+              w={{ base: "60%", md: "50%", lg: "90%" }}
+              h="30%"
+              overflow={"hidden"}
+              mb={3}
+              fontSize={{ base: "sm", md: "md", lg: "xl" }}
+              align="center"
+            >
               Add 2 Pc Hot n Crispy Chicken @ just Rs 99 on min cart value of Rs
               499 or more. Applicable dor 2nd and 3rd order.
             </Text>
             <HStack spacing={20}>
-              <Text fontSize={"xl"} textDecoration="underline">
-                View Details
-              </Text>
-              <Button borderRadius={20}>Redeem</Button>
+            <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                View All
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                Redeem
+              </Button>
             </HStack>
           </VStack>
 
-          <VStack h={"xl"} borderRadius={"lg"} boxShadow="base">
+          <VStack h={"xxl"} borderRadius={"lg"} boxShadow="base">
             <Box>
               <Image
                 h="50vh"
@@ -159,15 +226,34 @@ const Deals = () => {
               />
             </Box>
             <Heading color="red">Upto Rs 100 off</Heading>
-            <Text w={{base:'60%',md:'50%',lg:"90%"}} h="30%" overflow={'hidden'} mb={3} fontSize={{base:"sm",md:"md",lg:"xl"}} align="center">
+            <Text
+              w={{ base: "60%", md: "50%", lg: "90%" }}
+              h="30%"
+              overflow={"hidden"}
+              mb={3}
+              fontSize={{ base: "sm", md: "md", lg: "xl" }}
+              align="center"
+            >
               Upto Rs 100 off on min cart value of Rs 599 or more . Applicable
               on 4th order onwards.
             </Text>
             <HStack spacing={20}>
-              <Text fontSize={"xl"} textDecoration="underline">
-                View Details
-              </Text>
-              <Button borderRadius={20}>Redeem</Button>
+            <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                View All
+              </Button>
+              <Button
+                onClick={() => {
+                  navigate("/menu");
+                }}
+                borderRadius={20}
+              >
+                Redeem
+              </Button>
             </HStack>
           </VStack>
         </SimpleGrid>

@@ -1,0 +1,139 @@
+{
+    "restaurantDetails": [
+        {
+            "title": "KFC Kalwad",
+            "time": "2:53 AM",
+            "address": "81908 International Lane, Pune, Maharashtra",
+            "contact": "+91-7898943994",
+            "catering": false,
+            "wifi": true,
+            "delivery": false
+        },
+        {
+            "title": "KFC Kondwa",
+            "time": "9:55 PM",
+            "address": "267 Anniversary Drive, Pune, Maharashtra",
+            "contact": "+91-3247788429",
+            "catering": true,
+            "wifi": true,
+            "delivery": true
+        },
+        {
+            "title": "WTC KFC",
+            "time": "6:26 AM",
+            "address": "2 Gerald Junction, Pune, Maharashtra",
+            "contact": "+91-9781714093",
+            "catering": false,
+            "wifi": true,
+            "delivery": true
+        },
+        {
+            "title": "Old Gate",
+            "time": "6:58 AM",
+            "address": "9 Debs Road, Pune, Maharashtra",
+            "contact": "+91-8092232017",
+            "catering": false,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "KFC Khadki ",
+            "time": "2:04 AM",
+            "address": "765 Merrick Trail, Pune, Maharashtra",
+            "contact": "+91-4617086516",
+            "catering": true,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Grim",
+            "time": "8:50 AM",
+            "address": "00 Macpherson Alley, Pune, Maharashtra",
+            "contact": "+91-5673541392",
+            "catering": false,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Cottonwood",
+            "time": "3:31 PM",
+            "address": "7106 6th Terrace, Pune, Maharashtra",
+            "contact": "+91-7493343940",
+            "catering": true,
+            "wifi": true,
+            "delivery": true
+        },
+        {
+            "title": "Birchwood",
+            "time": "1:08 PM",
+            "address": "87483 Lakeland Circle, Pune, Maharashtra",
+            "contact": "+91-5654655242",
+            "catering": false,
+            "wifi": true,
+            "delivery": true
+        },
+        {
+            "title": "Manitowish",
+            "time": "3:43 AM",
+            "address": "73 Burning Wood Trail, Pune, Maharashtra",
+            "contact": "+91-9413166357",
+            "catering": true,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Cherokee",
+            "time": "1:32 PM",
+            "address": "97 Esch Trail, Pune, Maharashtra",
+            "contact": "+91-5709934345",
+            "catering": false,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Badeau",
+            "time": "10:12 PM",
+            "address": "88 Miller Avenue, Pune, Maharashtra",
+            "contact": "+91-8439469245",
+            "catering": true,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Independence",
+            "time": "2:07 AM",
+            "address": "0893 Barby Drive, Pune, Maharashtra",
+            "contact": "+91-5145152356",
+            "catering": true,
+            "wifi": false,
+            "delivery": true
+        },
+        {
+            "title": "Springview",
+            "time": "7:39 AM",
+            "address": "45051 Hovde Terrace, Pune, Maharashtra",
+            "contact": "+91-9352636026",
+            "catering": true,
+            "wifi": false,
+            "delivery": true
+        },
+        {
+            "title": "Birchwood",
+            "time": "2:30 AM",
+            "address": "0533 Continental Hill, Pune, Maharashtra",
+            "contact": "+91-2317247731",
+            "catering": false,
+            "wifi": false,
+            "delivery": false
+        },
+        {
+            "title": "Kennedy",
+            "time": "10:04 PM",
+            "address": "32500 Towne Junction, Pune, Maharashtra",
+            "contact": "+91-1965226304",
+            "catering": false,
+            "wifi": true,
+            "delivery": true
+        }
+    ]
+}
