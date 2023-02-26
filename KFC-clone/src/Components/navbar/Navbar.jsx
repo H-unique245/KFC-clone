@@ -30,11 +30,15 @@ import { authLogout } from "../../Redux/Auth/auth.action";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Sidebar from "./sidebar";
+import { GET_LOCAL } from "../../utils/localData";
+import { priceSet } from "../../Redux/cartRedux/cart.actions";
 
-const GetData = async (values) => {
-  let res = await axios.post(
-    `https://eat-more3.onrender.com/users/singleuser`,
-    values
+const GetData = async (token) => {
+  let res = await axios.get(
+    `https://pleasant-newt-twill.cyclic.app/users/singleuser`,
+    {
+      headers: { Authorization: token },
+    }
   );
   return res;
 };
@@ -44,6 +48,7 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [location, setLocation] = useState("");
   const { price } = useSelector((store) => store.cart);
+   const { token } = useSelector((store) => store.otpVerify);
   let ID = JSON.parse(localStorage.getItem("id"));
   const navigate = useNavigate();
 
@@ -53,6 +58,8 @@ const Navbar = () => {
     e.preventDefault();
     dispatch(authLogout());
     setname("signup");
+    navigate("/");
+    dispatch(priceSet(0));
   };
 
   const handleLocationState = (event) => setLocation(event.target.value);
@@ -62,10 +69,11 @@ const Navbar = () => {
   };
 
   const idCollecter = () => {
-    let datas = { _id: ID };
-    GetData(datas)
+    let token = GET_LOCAL("id");
+    GetData(token)
       .then((res) => {
-        let firstName = res.data.split(" ");
+        let firstName = res.data.user.name.split(" ");
+        
         setname(firstName[0]);
       })
       .catch((e) => {
@@ -74,6 +82,13 @@ const Navbar = () => {
       });
   };
   console.log(ID);
+  const handleCartdata = () => {
+    if (token) {
+      navigate("/cart");
+    } else {
+      navigate("/signup")
+    }
+  }
 
   useEffect(() => {
     if (ID) {
@@ -138,7 +153,13 @@ const Navbar = () => {
                     size="sm"
                     mb={4}
                   />
-                  <Button _hover={{ bg: "black", color: "white" }} mb={100} onClick={onClose}>Submit</Button>
+                  <Button
+                    _hover={{ bg: "black", color: "white" }}
+                    mb={100}
+                    onClick={onClose}
+                  >
+                    Submit
+                  </Button>
                 </Stack>
               </ModalBody>
             </ModalContent>
@@ -198,10 +219,8 @@ const Navbar = () => {
             ) : (
               ""
             )}
-
-            <h6 className="cartCountItems">₹ {price}</h6>
-
-            <Button bgColor="white" onClick={() => navigate("/cart")}>
+            <Text className="cartCountItems">₹{price}</Text>
+            <Button bgColor="white" onClick={handleCartdata}>
               <img className="cart_img" src="/cart.svg" alt="" />
             </Button>
           </div>

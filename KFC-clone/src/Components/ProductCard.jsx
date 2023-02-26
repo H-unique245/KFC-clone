@@ -32,6 +32,7 @@ function ProductCard({
 }) {
   const [count, setCount] = useState(0);
   const { data } = useSelector((store) => store.cart);
+  const { token,loading2 } = useSelector((store) => store.otpVerify);
   const dispatch = useDispatch();
   // const cart = useSelector((state) => { // console.log(state.cart.data);
   //   return (
@@ -50,6 +51,7 @@ function ProductCard({
   // },[data])
 
   // console.log(checkCart);
+  console.log(token,loading2,"token")
   const toast = useToast({
     containerStyle: {
       bgColor: "red",
@@ -144,8 +146,7 @@ function ProductCard({
                     title,
                     qty: count + 1,
                   };
-                  dispatch(addToCart(el));
-                  console.log(el);
+                  dispatch(addToCart(el,token));
                   // console.log(title,"added to cart");
                   //  console.log("added",title);
                   toast({

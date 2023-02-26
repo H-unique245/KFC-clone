@@ -45,7 +45,7 @@ function Cartitems({data,handleclick}) {
       <div>
         <div>
           {data.map((el) => (
-            <Cartitem key={el.id} handleclick={handleclick} data={el} />
+            <Cartitem id={el._id} handleclick={handleclick} data={el} />
           ))}
         </div>
       </div>

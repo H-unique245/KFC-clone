@@ -9,8 +9,11 @@ function Snacks() {
   
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getSnackData());
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getSnackData());
+    },8500)
+    
   },[])
   return (
     <div id="snack">

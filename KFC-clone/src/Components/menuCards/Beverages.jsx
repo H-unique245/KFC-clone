@@ -9,8 +9,11 @@ function Beverages() {
   
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getBeverageData());
+  useEffect(() => {
+    setTimeout(() => {
+       dispatch(getBeverageData());
+    },9500)
+   
   },[])
   return (
     <div id="beverages">

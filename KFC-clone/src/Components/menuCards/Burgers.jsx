@@ -1,7 +1,8 @@
-import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, Center, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getBurgerData } from '../../Redux/Products/products.action';
+import Loading from '../Loading/Loading';
 import ProductCard from '../ProductCard';
 
 function Burgers() {
@@ -9,8 +10,11 @@ function Burgers() {
   
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getBurgerData());
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getBurgerData()); 
+    },6500)
+   
   },[])
   return (
     <div id="burgers">
@@ -21,6 +25,7 @@ function Burgers() {
       >
         Burgers{" "}
       </Heading>
+      <Center>{burger.length === 0 ? <Loading /> : ""}</Center>
       <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 3 }} spacing={2}>
         {burger?.map((el) => {
           return (

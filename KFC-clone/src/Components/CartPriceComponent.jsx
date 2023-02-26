@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import styles from "./styles/Cart.module.css";
 function CartPriceComponent() {
   const { price } = useSelector((store) => store.cart);
+  console.log(price)
   let gst = (price / 100) * 5;
     gst = gst.toFixed(2)
   const hs = 35;
-  const total = price + hs + gst;
+  const total = price + hs + (+gst);
   const [checked, setchecked] = useState(false);
 
   return (

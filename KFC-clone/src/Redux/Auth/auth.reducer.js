@@ -1,3 +1,4 @@
+import { GET_LOCAL, REMOVE_LOCAL, SET_LOCAL } from "../../utils/localData";
 import {
   AUTH_REQ_ERROR,
   AUTH_REQ_LOADING,
@@ -53,7 +54,7 @@ export const authReducer = (state = intialState, action) => {
 
 const file = {
   loading2: false,
-  token: "",
+  token: GET_LOCAL("id") || "",
   authOtp: false,
   error: false,
 };
@@ -74,7 +75,7 @@ export const OtpVerifier = (state = file, action) => {
       };
     }
     case AUTH_LOGIN_REQ: {
-      localStorage.setItem("id", JSON.stringify(action.payload));
+      SET_LOCAL("id", action.payload);
       return {
         ...state,
         loading2: false,
@@ -95,7 +96,7 @@ export const OtpVerifier = (state = file, action) => {
     }
 
     case AUTH_REQ_LOGOUT: {
-      localStorage.removeItem("id");
+      REMOVE_LOCAL("id");
       return {
         ...state,
         loading2: false,
@@ -126,7 +127,7 @@ export const SignupReducer = (state = signupState, { type, payload }) => {
         loading: true,
       };
     }
-   
+
     case AUTH_SIGNUP_ERROR: {
       return {
         ...state,

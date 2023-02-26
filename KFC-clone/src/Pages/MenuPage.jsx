@@ -21,11 +21,24 @@ import Burgers from "../Components/menuCards/Burgers";
 import StayHome from "../Components/menuCards/StayHome";
 import Snacks from "../Components/menuCards/Snacks";
 import Beverages from "../Components/menuCards/Beverages";
-import { getcartItem } from "../Redux/cartRedux/cart.actions";
+import { getcartItem, priceSet } from "../Redux/cartRedux/cart.actions";
+
+
+
 function MenuPage() {
   const { data, loading, error } = useSelector((store) => store.cart);
-  // const products = useSelector((store) => store.products.products);
+  // const products = useSelector((store) => store.products.products); 
   const dispatch = useDispatch();
+ const total = () => {
+   const price = data.reduce((sum, i) => (sum += i.price * i.qty), 0);
+   console.log(price)
+   dispatch(priceSet(price));
+ };
+ 
+
+  useEffect(() => {
+    total();
+  },[data])
 
   return (
     <Box >

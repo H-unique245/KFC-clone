@@ -9,8 +9,11 @@ function StayHome() {
   
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getStayHomeData());
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(getStayHomeData());
+    },7500)
+    
   },[])
   return (
     <div id="stay_home_specials">

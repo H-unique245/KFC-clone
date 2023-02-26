@@ -1,23 +1,24 @@
-import { Box, Heading, Image, SimpleGrid } from '@chakra-ui/react';
-import React, { useEffect } from 'react'
+import { Box, Center, Heading, Image, SimpleGrid } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getChickenData } from '../../Redux/Products/products.action';
+import Loading from '../Loading/Loading';
 import ProductCard from '../ProductCard';
 
 function ChikckenBucket() {
     // const products = useSelector((store) => store.products.products);
-  const {chicken,loading} = useSelector((store) => store.products);
+  const { chicken, loading } = useSelector((store) => store.products);
+ 
    const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(getChickenData())
+  useEffect(() => {
+    setTimeout(() => {
+        dispatch(getChickenData())
+    },1000)
+  
   },[])
 
-  if(loading){
-    <Box>
-      <Image src='https://acegif.com/wp-content/uploads/loading-78.gif' alt='loading' />
-    </Box>
-  }
+ 
   return (
     <div id="chicken_buckets">
       <Heading
@@ -27,6 +28,7 @@ function ChikckenBucket() {
       >
         Chicken Buckets
       </Heading>
+      <Center>{chicken.length === 0 ? <Loading /> : ""}</Center>
       <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 3 }} spacing={2}>
         {chicken?.map((el) => {
           return (

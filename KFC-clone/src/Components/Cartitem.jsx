@@ -19,7 +19,7 @@ function Cartitem({ data, handleclick }) {
   useEffect(() => {}, [data]);
 
   return (
-    <div>
+    <div key={data._id} >
       <div className={styles.cartitem}>
         <div className={styles.m}>
           <img
@@ -49,7 +49,7 @@ function Cartitem({ data, handleclick }) {
             <div className={styles.cartActions}>
               <div>
                 <span
-                  onClick={() => handleclick(data.id)}
+                  onClick={() => handleclick(data._id)}
                   className={styles.removebtn}
                 >
                   Remove
@@ -60,8 +60,8 @@ function Cartitem({ data, handleclick }) {
                   <button
                     disabled={data.qty === 1}
                     onClick={() => {
-                      dispatch(updateDec(data.id));
-                      dispatch(updateQty(data));
+                      dispatch(updateDec(data._id));
+                      dispatch(updateQty(data._id));
                     }}
                     className={styles.counterDec}
                   ></button>
@@ -72,8 +72,8 @@ function Cartitem({ data, handleclick }) {
                   <button
                     disabled={data.qty === 4}
                     onClick={() => {
-                      dispatch(updateInc(data.id));
-                      dispatch(updateQty(data));
+                      dispatch(updateInc(data._id));
+                      dispatch(updateQty(data._id));
                     }}
                     className={styles.counterInc}
                   ></button>

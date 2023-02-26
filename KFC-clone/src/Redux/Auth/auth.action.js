@@ -40,7 +40,7 @@ export const authOtphandle = (Number) => async (dispatch) => {
   // dispatch({ type: AUTH_LOGIN_LOADING });
   try {
     let res = await axios.post(
-      `https://eat-more3.onrender.com/users/login`,
+      `https://pleasant-newt-twill.cyclic.app/users/login`,
       Number
     );
     dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });

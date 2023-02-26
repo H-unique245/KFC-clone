@@ -29,7 +29,7 @@ function Payment() {
   const cancelRef = React.useRef();
   return (
     <div>
-      <hr style={{ marginTop: "10px" }} />
+      <hr style={{ marginTop: "20px" }} />
       <div className={styles.container}>
         <div className={styles.bars}>
           <img
@@ -40,12 +40,10 @@ function Payment() {
         </div>
       </div>
       <div className={styles.lastname}>
-        <div className={styles.kkjjhhhss}>
+        <div style={{ width: "65%" }}>
           <div className={styles.checkOutCompo}>
             <div className={styles.CheckOutheading}>
-              <h2 className={styles.CheckOutheading2}>
-                DELIVERY INFO
-              </h2>
+              <h2 className={styles.CheckOutheading2}>DELIVERY INFO</h2>
             </div>
             <div className={styles.checkOutBody}>
               <div>
@@ -56,21 +54,12 @@ function Payment() {
                   />
                   <div style={{ display: "flex" }}>
                     {" "}
-                    <span className={styles.boldfont1}>
-                      EAT MORE-{" "}
-                    </span>
-                    <span className={styles.boldfont1}>
-                      Delhi
-                    </span>
+                    <span className={styles.boldfont1}>EAT MORE- </span>
+                    <span className={styles.boldfont1}>Delhi</span>
                   </div>
                 </div>
-                <div
-                  className={styles.inputAndLableCheckOut}
-                >
-                  <label
-                    className={styles.smallFontDF1}
-                    htmlFor=""
-                  >
+                <div className={styles.inputAndLableCheckOut}>
+                  <label className={styles.smallFontDF1} htmlFor="">
                     Full Address
                   </label>
                   <input
@@ -84,9 +73,7 @@ function Payment() {
                     src="https://online.kfc.co.in/static/media/WatchLater.3ca73ea2.svg"
                     alt=""
                   />
-                  <span className={styles.boldfont1}>
-                    Today
-                  </span>
+                  <span className={styles.boldfont1}>Today</span>
                   <span></span>
                 </div>
               </div>
@@ -100,25 +87,15 @@ function Payment() {
               </h2>
             </div>
             <div className={styles.radioA}>
-              <input
-                type="radio"
-                id="html"
-                name="fav_language"
-                value="HTML"
-              />
-              <label
-                className={styles.smallFontDF}
-                for="html"
-              >
+              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <label className={styles.smallFontDF} for="html">
                 Leave at my door
               </label>
               <br />
               <span className={styles.smallFontDF1}>
-                To protect you and our team, we practice
-                contactless delivery. Your driver will leave
-                the order at your door, knock, step away,
-                and wait at a safe distance for you to
-                collect your food.
+                To protect you and our team, we practice contactless delivery.
+                Your driver will leave the order at your door, knock, step away,
+                and wait at a safe distance for you to collect your food.
               </span>
               <br />
               <input
@@ -129,10 +106,7 @@ function Payment() {
                 value="Hand it to me"
               />
                {" "}
-              <label
-                className={styles.smallFontDF}
-                for="css"
-              >
+              <label className={styles.smallFontDF} for="css">
                 Hand it to me
               </label>
             </div>
@@ -140,28 +114,24 @@ function Payment() {
           <br />
           <div className={styles.checkOutCompo}>
             <div className={styles.CheckOutheading2}>
-              <div className={styles.MediaQuerryPayment}>
-                <h2 className={styles.MediaQuerryPayment2}>
-                  PAYMENT
-                </h2>
+              <h2 className={styles.CheckOutheading2}>PAYMENT</h2>
+              <Box
+                ref={finalRef}
+                tabIndex={-1}
+                aria-label="Focus moved to this box"
+              ></Box>
 
-                <Button
-                  className={styles.btnDFGHJK}
-                  style={{
-                    backgroundColor: "#f8f7f5",
-                    textDecoration: "underline",
-                  }}
-                  mt={4}
-                  onClick={onOpen}
-                >
-                  Add Payment Method
-                </Button>
-              </div>
-              <Modal
-                finalFocusRef={finalRef}
-                isOpen={isOpen}
-                onClose={onClose}
+              <Button
+                style={{
+                  backgroundColor: "#f8f7f5",
+                  textDecoration: "underline",
+                }}
+                mt={4}
+                onClick={onOpen}
               >
+                Add Payment Method
+              </Button>
+              <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
                   <ModalHeader>Payment Methods</ModalHeader>
@@ -175,10 +145,7 @@ function Payment() {
                           name="fav_lang"
                           value="CSS"
                         />
-                         {" "}
-                        <label for="css">
-                          COD (cash on delivery)
-                        </label>
+                          <label for="css">COD (cash on delivery)</label>
                         <br /> {" "}
                       </Box>
                       <Box className={styles.lastRadioKing}>
@@ -188,18 +155,13 @@ function Payment() {
                           name="fav_lang"
                           value="JavaScript"
                         />
-                         {" "}
-                        <label for="javascript">UPI</label>
+                          <label for="javascript">UPI</label>
                       </Box>
                     </Box>
                   </ModalBody>
 
                   <ModalFooter>
-                    <Button
-                      colorScheme="blue"
-                      mr={3}
-                      onClick={onClose}
-                    >
+                    <Button colorScheme="blue" mr={3} onClick={onClose}>
                       Save
                     </Button>
                   </ModalFooter>
@@ -208,10 +170,7 @@ function Payment() {
             </div>
           </div>
         </div>
-        <div
-          className={styles.hhhhhasdf}
-         
-        >
+        <div style={{ width: "25%" }}>
           <div className={styles.priceCompo}>
             <div className={styles.cartOffer}>
               <div className={styles.cartOfferLink}>
@@ -224,9 +183,7 @@ function Payment() {
                   Apply Offers & Deals
                 </span>
               </div>
-              <button className={styles.cartOfferBtn}>
-                View All
-              </button>
+              <button className={styles.cartOfferBtn}>View All</button>
             </div>
             <div className={styles.cartOfferSum}>
               <div className={styles.sub}>
@@ -235,9 +192,7 @@ function Payment() {
               </div>
               <div className={styles.sub}>
                 <div className={styles.Sum}>GST</div>
-                <div className={styles.Amo}>
-                  ₹ {Math.floor(gst2)}
-                </div>
+                <div className={styles.Amo}>₹ {Math.floor(gst2)}</div>
               </div>
               <div className={styles.sub}>
                 <div className={styles.Sum}>

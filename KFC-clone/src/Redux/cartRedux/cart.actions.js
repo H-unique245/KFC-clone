@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux"; 
 import {
   GET_CART_ITEMS_ERROR,
   GET_CART_ITEMS_LOADING,
@@ -13,39 +12,41 @@ import {
   REMOVE_CART_ITEMS_SUCCESS,
   REMOVE_CART_ITEMS_LOADING,
   REMOVE_CART_ITEMS_ERROR,
-
   COUNTER_UPDATEINC,
   COUNTER_UPDATEDEC,
   SETPRICE,
 } from "./cart.actionType";
-export const getcartItem = (user) => async (dispatch) => {
+import {GET_LOCAL} from "../../utils/localData"
+
+const token=GET_LOCAL("id")
+export const getcartItem = () => async (dispatch) => {
   dispatch({ type: GET_CART_ITEMS_LOADING });
   try {
-    let res = await axios.post("http://localhost:5000/carts/",user);
-
+    let res = await axios.get("https://pleasant-newt-twill.cyclic.app/carts", {
+      headers: { Authorization: token },
+    });
     return dispatch({
       type: GET_CART_ITEMS_SUCCESS,
-      payload: res.data,
+      payload: res.data.Items,
     });
   } catch (error) {
     dispatch({ type: GET_CART_ITEMS_ERROR });
   }
 };
 export const addToCart =
-  ({ image, id, title, cata, qty, price }) =>
-  async (dispatch) => {
-    console.log("image",image, "id",id, "title",title, "cata",cata, "qty",qty, "price",price);
+  ({ image, id, title, cata, qty, price },token) =>
+    async (dispatch) => {
+    console.log(token,image)
     // console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
-      let res = await axios.post("http://localhost:5000/carts/add", {
-        image,
-        title,
-        cata,
-        qty,
-        id,
-        price,
-      });
+      let res = await axios.post(
+        "https://pleasant-newt-twill.cyclic.app/carts/add",
+        { image, title, qty, cata, price },
+        {
+          headers: { Authorization: token },
+        }
+      );
       return dispatch({
         type: ADD_ITEM_TO_CART_SUCCESS,
         payload: res.data,
@@ -56,9 +57,13 @@ export const addToCart =
   };
 export const deleteItem = (id) => async (dispatch) => {
   dispatch({ type: REMOVE_CART_ITEMS_LOADING });
+  console.log(id)
   try {
     let res = await axios.delete(
-      `https://db-files.herokuapp.com/cart/${id}`
+      `https://pleasant-newt-twill.cyclic.app/carts/${id}`,
+      {
+        headers: { Authorization: token },
+      }
     );
 
     return dispatch({
@@ -71,13 +76,17 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const updateQty =
-  ({ id, image, cata, title, price, qty }) =>
+  (data) =>
   async (dispatch) => {
     dispatch({ type: UPDATE_CART_ITEMS_LOADING });
+
     try {
-      let res = await axios.put(
-        `https://db-files.herokuapp.com/cart/${id}`,
-        { id, qty, image, cata, title, price }
+      let res = await axios.patch(
+        `https://pleasant-newt-twill.cyclic.app/carts/${data._id}`,
+        { quantity:data.quantity },
+        {
+          headers: { Authorization: token },
+        }
       );
       return dispatch({
         type: UPDATE_CART_ITEMS_SUCCESS,
@@ -100,4 +109,3 @@ export const priceSet = (payload) => ({
   type: SETPRICE,
   payload,
 });
-

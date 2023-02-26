@@ -28,6 +28,7 @@ import {
   AUTH_OTP_SUCCESS,
 } from "../../Redux/Auth/auth.type";
 import { memo } from "react";
+import Loading from "../../Components/Loading/Loading";
 
 function Signup() {
   const [Number, setNumber] = useState("");
@@ -72,11 +73,10 @@ console.log(loading2)
       }
     }
     const phoneNumber = "+91" + Number;
-    console.log(phoneNumber);
+  
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        console.log(confirmationResult);
         setAuthinicated(false);
         let data = { mobile: Number };
         dispatch(authSuccess(Number));
@@ -101,7 +101,6 @@ console.log(loading2)
       .then((result) => {
         // User signed in successfully.
         const user = result.user;
-        console.log("otp verify");
         dispatch({ type: AUTH_OTP_SUCCESS });
         if (token && authOtp) {
           Navigate("/");
@@ -127,131 +126,99 @@ console.log(loading2)
           w={["20%", "20%", "20%", "20%"]}
         />
       </Center>
-      <div>
-        {loading ? (
-          <Center>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.400"
-              color="blue.500"
-              size="xl"
-            />
-          </Center>
-        ) : (
-          " "
-        )}
-      </div>
-      <div>
-        {Authinicated ? (
+      {/* <div>{loading ? <Loading /> : " "}</div> */}
+      {
+        <>
+          {" "}
           <div>
-            <Heading fontSize={["10px", "10px", "20px", "20px"]}>
-              LET’S SIGN IN OR CREATE ACCOUNT WITH YOUR PHONE
-            </Heading>
-            <Heading fontSize={["10px", "10px", "20px", "20px"]} mb="20px">
-              NUMBER!
-            </Heading>
+            {Authinicated ? (
+              <div>
+                <Heading fontSize={["10px", "10px", "20px", "20px"]}>
+                  LET’S SIGN IN OR CREATE ACCOUNT WITH YOUR PHONE
+                </Heading>
+                <Heading fontSize={["10px", "10px", "20px", "20px"]} mb="20px">
+                  NUMBER!
+                </Heading>
+              </div>
+            ) : (
+              <Heading fontSize={["10px", "10px", "20px", "20px"]}>
+                WE JUST TEXTED YOU
+              </Heading>
+            )}
+            {Authinicated ? (
+              ""
+            ) : (
+              <Text mt="20px" mb="35px">
+                Please enter the verification code we just sent to {Number}
+              </Text>
+            )}
+            <div>
+              {Authinicated ? (
+                <> 
+                {!loading ?     
+                <Input
+                  colorScheme="black"
+                  variant="flushed"
+                  type="tel"
+                  minlength="10"
+                  maxlength="10"
+                  placeholder="Phone Number *"
+                  color="black"
+                  mb="20px"
+                  value={Number}
+                  onChange={(e) => setNumber(e.target.value)}
+                />: <Loading/>} </>
+              ) : (
+                <Center mb="20px">
+                  <input
+                    className="otp-pin"
+                    type="text"
+                    name="pin"
+                    onChange={(e) => setOtp(e.target.value)}
+                    pattern=" [0-9] {6}"
+                    maxlength="6"
+                  />
+                </Center>
+              )}
+            </div>
+            <Box id="recaptcha-container" mb="10px" />
+            {Authinicated ? (
+              <Text fontSize={["8px", "8px", "12px", "14px"]}>
+                By “logging in to KFC”, you agree to our Privacy Policy and
+                Terms & Conditions.
+              </Text>
+            ) : (
+              <TimerTracker Otp={Otp} verifyOtp={verifyOtp} />
+            )}
           </div>
-        ) : (
-          <Heading fontSize={["10px", "10px", "20px", "20px"]}>
-            WE JUST TEXTED YOU
-          </Heading>
-        )}
-        {Authinicated ? (
-          ""
-        ) : (
-          <Text mt="20px" mb="35px">
-            Please enter the verification code we just sent to {Number}
-          </Text>
-        )}
-        <div>
+          <div>
+            <Text color="red" mt="10px">
+              {Number.length !== 10 && Number.length !== 0
+                ? "Plaese Enter a 10 digit Number"
+                : ""}
+            </Text>
+          </div>
           {Authinicated ? (
-            <Input
-              colorScheme="black"
-              variant="flushed"
-              type="tel"
-              minlength="10"
-              maxlength="10"
-              placeholder="Phone Number *"
-              color="black"
-              mb="20px"
-              value={Number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
+            <Button
+              mt="30px"
+              onClick={handleSubmit}
+              backgroundColor="black"
+              colorScheme="grey"
+              fontSize={{ sm: "15px" }}
+              color="white"
+              borderRadius="30px"
+              p="4% 7%"
+              disabled={ loading ||
+                Number.length !== 10 || Number[0] === "0" ? true : false
+              }
+            >
+              Send me a Code
+            </Button>
           ) : (
-            <Center mb="20px">
-              <input
-                className="otp-pin"
-                type="text"
-                name="pin"
-                onChange={(e) => setOtp(e.target.value)}
-                pattern=" [0-9] {6}"
-                maxlength="6"
-              />
-              {/* <PinInput type="alphanumeric" mask>
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-                <PinInputField
-                  mr="5px"
-                  onChange={(e) => setOtp(Otp + e.target.value)}
-                />
-              </PinInput> */}
-            </Center>
+            ""
           )}
-        </div>
-        <Box id="recaptcha-container" mb="10px" />
-        {Authinicated ? (
-          <Text fontSize={["8px", "8px", "12px", "14px"]}>
-            By “logging in to KFC”, you agree to our Privacy Policy and Terms &
-            Conditions.
-          </Text>
-        ) : (
-          <TimerTracker Otp={Otp} verifyOtp={verifyOtp} />
-        )}
-      </div>
-      <div>
-        <Text color="red" mt="10px">
-          {Number.length !== 10 && Number.length !== 0
-            ? "Plaese Enter a 10 digit Number"
-            : ""}
-        </Text>
-      </div>
-
-      {Authinicated ? (
-        <Button
-          mt="30px"
-          onClick={handleSubmit}
-          backgroundColor="black"
-          colorScheme="grey"
-          fontSize={{ sm: "15px" }}
-          color="white"
-          borderRadius="30px"
-          p="4% 7%"
-          disabled={Number.length !== 10 || Number[0] === "0" ? true : false}
-        >
-          Send me a Code
-        </Button>
-      ) : (
-        ""
-      )}
+        </>
+      }
     </div>
   );
 }

@@ -19,10 +19,11 @@ import {
   AUTH_LOGIN_REQ,
   AUTH_LOGIN_REQ_ERROR,
 } from "../../Redux/Auth/auth.type";
+import Loading from "../../Components/Loading/Loading";
 
 const PostData = async (values) => {
   let res = await axios.post(
-    `https://eat-more3.onrender.com/users/signup`,
+    `https://pleasant-newt-twill.cyclic.app/users/signup`,
     values
   );
   return res;
@@ -75,15 +76,7 @@ export default function Signup2() {
       </Text>
       <div>
         {loading2 ? (
-          <Center>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.400"
-              color="blue.500"
-              size="xl"
-            />
-          </Center>
+          <Loading/>
         ) : (
           " "
         )}
