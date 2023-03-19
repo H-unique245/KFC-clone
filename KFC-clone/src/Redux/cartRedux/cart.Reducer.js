@@ -49,12 +49,12 @@ const cartInitalState4 = {
   price4: 0,
 };
 
-const cartInitalState5 = {
-  loading5: false,
-  error5: false,
-  data4: [],
-  price5: 0,
-};
+// const cartInitalState5 = {
+//   loading5: false,
+//   error5: false,
+//   data4: [],
+//   price5: 0,
+// };
 
 export const cartReducer = (
   state = cartInitalState,

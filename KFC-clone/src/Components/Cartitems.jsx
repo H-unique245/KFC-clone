@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteItem,
-  getcartItem,
+  // deleteItem,
+  // getcartItem,
   priceSet,
 } from "../Redux/cartRedux/cart.actions";
 import Cartitem from "./Cartitem";
@@ -45,7 +45,7 @@ function Cartitems({data,handleclick}) {
       <div>
         <div>
           {data.map((el) => (
-            <Cartitem id={el._id} handleclick={handleclick} data={el} />
+            <Cartitem key={el._id} id={el._id} handleclick={handleclick} data={el} />
           ))}
         </div>
       </div>

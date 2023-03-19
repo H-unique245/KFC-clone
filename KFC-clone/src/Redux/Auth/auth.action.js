@@ -43,7 +43,9 @@ export const authOtphandle = (Number) => async (dispatch) => {
       `https://pleasant-newt-twill.cyclic.app/users/login`,
       Number
     );
-    dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
+    if (res.data.token) {
+      dispatch({ type: AUTH_LOGIN_REQ, payload: res.data.token });
+    }
   } catch (e) {
     dispatch({ type: AUTH_LOGIN_REQ_ERROR });
   }

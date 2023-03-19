@@ -36,7 +36,7 @@ export const getcartItem = () => async (dispatch) => {
 export const addToCart =
   ({ image, id, title, cata, qty, price },token) =>
     async (dispatch) => {
-    console.log(token,image)
+    // console.log(token,image)
     // console.log(image, id, title, price);
     dispatch({ type: ADD_ITEM_TO_CART_LOADING });
     try {
@@ -62,7 +62,7 @@ export const deleteItem = (id) => async (dispatch) => {
     let res = await axios.delete(
       `https://pleasant-newt-twill.cyclic.app/carts/${id}`,
       {
-        headers: { Authorization: token },
+        headers: { authorization: token },
       }
     );
 
@@ -76,22 +76,24 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const updateQty =
-  (data) =>
+  (data,quant) =>
   async (dispatch) => {
     dispatch({ type: UPDATE_CART_ITEMS_LOADING });
-
+    // console.log("DATA",data)
     try {
       let res = await axios.patch(
         `https://pleasant-newt-twill.cyclic.app/carts/${data._id}`,
-        { quantity:data.quantity },
+        { qty:data.qty+ quant  },
         {
-          headers: { Authorization: token },
+          headers: { authorization: token },
         }
-      );
-      return dispatch({
-        type: UPDATE_CART_ITEMS_SUCCESS,
-        payload: res.data,
-      });
+        );
+        console.log("response",res.data)
+        console.log("quantity check",data.qty)
+        return dispatch({
+          type: UPDATE_CART_ITEMS_SUCCESS,
+          payload: res.data,
+        });
     } catch (error) {
       console.log(error);
       dispatch({ type: UPDATE_CART_ITEMS_ERROR });

@@ -5,7 +5,7 @@ import {
   applyMiddleware,
 } from "redux";
 import thunk from "redux-thunk";
-import { productsReducer } from "./Products/procucts.reducer";
+import { productsReducer } from "./Products/products.reducer";
 import { authReducer, OtpVerifier, SignupReducer } from "./Auth/auth.reducer";
 // import { authReducer } from "./Auth/auth.reducer";
 import { cartReducer } from "./cartRedux/cart.Reducer";

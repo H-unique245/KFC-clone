@@ -20,14 +20,14 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
+  // ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogout } from "../../Redux/Auth/auth.action";
-import { HamburgerIcon } from "@chakra-ui/icons";
+// import { HamburgerIcon } from "@chakra-ui/icons";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Sidebar from "./sidebar";
 import { GET_LOCAL } from "../../utils/localData";
@@ -81,7 +81,7 @@ const Navbar = () => {
         console.log(e);
       });
   };
-  console.log(ID);
+  // console.log(ID);
   const handleCartdata = () => {
     if (token) {
       navigate("/cart");

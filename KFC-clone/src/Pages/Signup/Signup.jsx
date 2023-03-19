@@ -6,7 +6,7 @@ import {
   Button,
   Center,
   Box,
-  Spinner,
+  // Spinner,
   Image,
 } from "@chakra-ui/react";
 import { auth } from "../../Firebase";
@@ -18,7 +18,7 @@ import {
   authSuccess,
   authError,
   authOtphandle,
-  otpLoading,
+  // otpLoading,
 } from "../../Redux/Auth/auth.action";
 import "./Signup.scss";
 import { useState } from "react";
@@ -36,10 +36,10 @@ function Signup() {
   const [Otp, setOtp] = useState("");
 
   const { loading } = useSelector((store) => store.auth);
-  const { token, authOtp,loading2 } = useSelector((store) => store.otpVerify);
+  const { token, authOtp} = useSelector((store) => store.otpVerify);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-console.log(loading2)
+// console.log(loading2)
   const generateRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "recaptcha-container",
@@ -160,8 +160,8 @@ console.log(loading2)
                   colorScheme="black"
                   variant="flushed"
                   type="tel"
-                  minlength="10"
-                  maxlength="10"
+                  minLength="10"
+                  maxLength="10"
                   placeholder="Phone Number *"
                   color="black"
                   mb="20px"
@@ -176,7 +176,7 @@ console.log(loading2)
                     name="pin"
                     onChange={(e) => setOtp(e.target.value)}
                     pattern=" [0-9] {6}"
-                    maxlength="6"
+                    maxLength="6"
                   />
                 </Center>
               )}

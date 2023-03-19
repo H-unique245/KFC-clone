@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
-  getcartItem,
+  // getcartItem,
   priceSet,
 } from "../Redux/cartRedux/cart.actions";
 import Cartitems from "./Cartitems";
@@ -18,7 +18,7 @@ function CartItemComponent({ data, handleclick }) {
   useEffect(() => {
     dispatch(priceSet(0));
   }, []);
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       {data.length === 0 ? (

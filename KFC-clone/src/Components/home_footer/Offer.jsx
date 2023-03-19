@@ -72,6 +72,7 @@ export default function Offer() {
             <Slider {...settings}>
               {slider.map((ele) => (
                 <Box
+                key={ele.id}
                   color={"white"}
                   h={"398px"}
                   maxW="310px"

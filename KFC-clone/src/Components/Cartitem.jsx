@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-
 import { useState } from "react";
 import ItemcataList from "./ItemcataList";
 import styles from "./styles/Cart.module.css";
 import { useDispatch } from "react-redux";
 import {
-  deleteItem,
+  // deleteItem,
   updateInc,
   updateDec,
   getcartItem,
@@ -61,7 +60,8 @@ function Cartitem({ data, handleclick }) {
                     disabled={data.qty === 1}
                     onClick={() => {
                       dispatch(updateDec(data._id));
-                      dispatch(updateQty(data._id));
+                      dispatch(updateQty(data, -1));
+                      dispatch(getcartItem());
                     }}
                     className={styles.counterDec}
                   ></button>
@@ -73,7 +73,8 @@ function Cartitem({ data, handleclick }) {
                     disabled={data.qty === 4}
                     onClick={() => {
                       dispatch(updateInc(data._id));
-                      dispatch(updateQty(data._id));
+                      dispatch(updateQty(data,1));
+                      dispatch(getcartItem());
                     }}
                     className={styles.counterInc}
                   ></button>
@@ -90,4 +91,4 @@ function Cartitem({ data, handleclick }) {
   );
 }
 
-export default Cartitem;
+export default React.memo(Cartitem);

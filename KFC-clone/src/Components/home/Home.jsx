@@ -1,14 +1,16 @@
 import "./home.css";
 import React from 'react';
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { 
+  // Link,
+   NavLink } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import {Box, Hide,Heading,Grid, GridItem, Center, Image} from "@chakra-ui/react";
 import Line from "../Line";
-import { Carousels } from "../carousels/Carousels";
-import { MenuCards } from "../menuCards/MenuCards";
+// import { Carousels } from "../carousels/Carousels";
+// import { MenuCards } from "../menuCards/MenuCards";
 import Offer from "../home_footer/Offer";
-import Footer from "../home_footer/Footer";
+// import Footer from "../home_footer/Footer";
 import { Button } from '../main_button/Button';
 import { useNavigate } from "react-router-dom";
 import loading_gif from "./loading_gif.gif";
@@ -43,7 +45,6 @@ const Home = () => {
       browseCategoriesDataFromApi()
         .then((res) => {
           // setIsLoading(false)
-          console.log(res);
           setCategoriesData(res.data);
         })
         .catch((err) => {
@@ -58,6 +59,14 @@ const Home = () => {
       return (
         <Center>
           <Image z-index="10" src={loading_gif} />
+        </Center>
+      );
+    }
+    else  if (isError) {
+      return (
+        <Center>
+          <Box>Error</Box>
+          {/* <Image z-index="10" src={loading_gif} /> */}
         </Center>
       );
     }
@@ -168,7 +177,7 @@ const Home = () => {
         // width={{md:"80%"}}
       >
         {categoriesData?.map((item) => (
-          <GridItem justifyContent="center" height="fit-content" m="auto auto" borderRadius="8px" key={item.id} w="90%" boxShadow="base">
+          <GridItem key={item.id} justifyContent="center" height="fit-content" m="auto auto" borderRadius="8px"  w="90%" boxShadow="base">
             <NavLink to={`/menu`}>
             {/* <a href={`${item.cate}`}> */}
               <Image w="100%" borderRadius="8px 8px 0 0"  src={item.image} />

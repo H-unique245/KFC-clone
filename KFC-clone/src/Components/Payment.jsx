@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./styles/Cart.module.css";
 import Bux from "./Bux";
@@ -14,7 +14,7 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Payment() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -24,9 +24,9 @@ function Payment() {
   const gst1 = (price / 100) * 5;
   const gst2 = ((price - gst1) / 100) * 5;
   const hs = 35;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const cancelRef = React.useRef();
+  // const cancelRef = React.useRef();
   return (
     <div>
       <hr style={{ marginTop: "20px" }} />
@@ -40,7 +40,7 @@ function Payment() {
         </div>
       </div>
       <div className={styles.lastname}>
-        <div style={{ width: "65%" }}>
+        <Box width= {{base:"90%",sm:"60%",md:"85%",lg:"62%"}} >
           <div className={styles.checkOutCompo}>
             <div className={styles.CheckOutheading}>
               <h2 className={styles.CheckOutheading2}>DELIVERY INFO</h2>
@@ -59,7 +59,7 @@ function Payment() {
                   </div>
                 </div>
                 <div className={styles.inputAndLableCheckOut}>
-                  <label className={styles.smallFontDF1} htmlFor="">
+                  <label className={styles.smallFontDF1}>
                     Full Address
                   </label>
                   <input
@@ -87,8 +87,8 @@ function Payment() {
               </h2>
             </div>
             <div className={styles.radioA}>
-              <input type="radio" id="html" name="fav_language" value="HTML" />
-              <label className={styles.smallFontDF} for="html">
+              <input type="radio" id="html" name="fav_language"  />
+              <label className={styles.smallFontDF} htmlFor="leavemydoor">
                 Leave at my door
               </label>
               <br />
@@ -106,7 +106,7 @@ function Payment() {
                 value="Hand it to me"
               />
                {" "}
-              <label className={styles.smallFontDF} for="css">
+              <label className={styles.smallFontDF} htmlFor="css">
                 Hand it to me
               </label>
             </div>
@@ -145,7 +145,7 @@ function Payment() {
                           name="fav_lang"
                           value="CSS"
                         />
-                          <label for="css">COD (cash on delivery)</label>
+                          <label htmlFor="css">COD (cash on delivery)</label>
                         <br /> {" "}
                       </Box>
                       <Box className={styles.lastRadioKing}>
@@ -155,7 +155,7 @@ function Payment() {
                           name="fav_lang"
                           value="JavaScript"
                         />
-                          <label for="javascript">UPI</label>
+                          <label htmlFor="javascript">UPI</label>
                       </Box>
                     </Box>
                   </ModalBody>
@@ -169,8 +169,8 @@ function Payment() {
               </Modal>
             </div>
           </div>
-        </div>
-        <div style={{ width: "25%" }}>
+        </Box>
+        <Box width= {{base:"90%",sm:"80%",md:"95%",lg:"38%"}}  >
           <div className={styles.priceCompo}>
             <div className={styles.cartOffer}>
               <div className={styles.cartOfferLink}>
@@ -204,7 +204,7 @@ function Payment() {
 
             <Bux />
           </div>
-        </div>
+        </Box>
       </div>
     </div>
   );
